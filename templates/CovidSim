@@ -1,0 +1,20 @@
+
+cd $job_results
+$run_prefix
+
+/usr/bin/env > env.log
+
+export OMP_NUM_THREADS=$corespernode
+
+start_time="$$(date -u +%s.%N)"
+
+python3 run_sample.py --outputdir $output_dir --threads $corespernode United_Kingdom 2>&1 | tee output_log.txt
+
+end_time="$$(date -u +%s.%N)"
+elapsed="$$(bc <<<"$$end_time-$$start_time")"
+echo "Total Executing Time = $$elapsed seconds" | tee -a "elapsed_time.txt"
+
+# Run visualisation with R
+Rscript Rscripts/PlotRuns.R output_dir
+Rscript Rscripts/CompareRuns.R output_dir
+
