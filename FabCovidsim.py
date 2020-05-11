@@ -14,7 +14,7 @@ import csv
 from pprint import pprint
 
 # Add local script, blackbox and template path.
-add_local_paths("FabCovidSim")
+add_local_paths("FabCovidsim")
 
 
 @task
