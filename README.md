@@ -1,4 +1,5 @@
 
+
 # FabCovidsim
 This is a FabSim3 plugin for Covid-19 simulation
 
@@ -23,7 +24,6 @@ qcg:
   ...
   ...
   # setting for Imperial College COVID-19 simulator
-  corespernode: 28
   cores: 28
   # job wall time for each job, format P[nD]T[nH][nM]
   # nD - number of days, nH - number of hours, nM - number of minutes
@@ -40,7 +40,6 @@ eagle_vecma:
   ...
   ...
   # setting for Imperial College COVID-19 simulator
-  corespernode: 28
   cores: 28
   # job wall time for each job, format Days-Hours:Minutes:Seconds
   job_wall_time : "0-0:20:00" # job wall time for each single job without PJ
@@ -54,18 +53,25 @@ eagle_vecma:
   
 ## Testing
 1. To run a single job, simply type:
-	>``` sh
-	> fab <qcg/eagle_vecma> CovidSim:UK_sample[,memory=MemorySize][,label=your_lable]
-	> ```   
-	> _NOTE:_
-	> 	- by default **memory=20000** (20GB).
-	> 	
+  >``` sh
+  > fab <qcg/eagle_vecma> CovidSim:UK_sample[,memory=MemorySize][,label=your_lable]
+  > ```   
+  > _NOTE:_
+  >   - by default **memory=20GB** .
+  >   
 
 2. To run the ensemble, you can type, simply type:
-	>``` sh
-	> fab <qcg/eagle_vecma> CovidSim_ensemble:UK_sample[,<memory=MemorySize>][,replicas=replica_number]
-	> ```   
-	> _NOTE:_
-	> 	-  **replicas=N** : will generate N replicas
-	>    - if you want to run multiple simulations with different configuration, to do that, create your own folder name under `SWEEP` directory, and change the parameters files, there are some examples under `/config_files/SWEEP_examples` folder,
+  >``` sh
+  > fab <qcg/eagle_vecma> CovidSim_ensemble:UK_sample[,<memory=MemorySize>][,replicas=replica_number]
+  > ```   
+  > _NOTE:_
+  >   -  **replicas=N** : will generate N replicas
+  >    - if you want to run multiple simulations with different configuration, to do that, create your own folder name under `SWEEP` directory, and change the parameters files, there are some examples under `/config_files/SWEEP_examples` folder,
+  > _Examples:_
+  >     `fab eagle_vecma CovidSim_ensemble:UK_sample`
+  >     `fab qcg CovidSim_ensemble:UK_sample,PilotJob=True`
+  >     `fab qcg CovidSim_ensemble:UK_sample,replicas=5,PilotJob=True`  
+  >     `fab eagle_vecma CovidSim_ensemble:UK_sample,PilotJob=True` 
+  >     `fab eagle_vecma CovidSim_ensemble:UK_sample,replicas=5`  
+  >   
 
