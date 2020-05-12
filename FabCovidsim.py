@@ -19,7 +19,7 @@ add_local_paths("FabCovidsim")
 
 @task
 def CovidSim(config,
-             memory='20000',
+             memory='20GB',
              label="",
              **args):
     """
@@ -44,7 +44,7 @@ def CovidSim(config,
 
 @task
 def CovidSim_ensemble(config,
-                      memory='20000',
+                      memory='20GB',
                       label="",
                       **args):
     """
