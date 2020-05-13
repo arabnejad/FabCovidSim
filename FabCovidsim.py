@@ -64,6 +64,8 @@ def CovidSim_ensemble(config,
     if len(label) > 0:
         print("adding label: ", label)
         env.job_name_template += "_{}".format(label)
+    # required by qcg-pj to distribute threads correctly
+    env.task_model = 'threads'
     env.script = 'CovidSim'
     path_to_config = find_config_file_path(config)
     print("local config file path at: %s" % path_to_config)
