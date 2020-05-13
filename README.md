@@ -27,6 +27,7 @@ qcg:
   ...
   # setting for Imperial College COVID-19 simulator
   cores: 28
+  budget: "vecma2020"
   # job wall time for each job, format P[nD]T[nH][nM]
   # nD - number of days, nH - number of hours, nM - number of minutes
   job_wall_time : "PT20M" # job wall time for each single job without PJ
@@ -43,6 +44,7 @@ eagle_vecma:
   ...
   # setting for Imperial College COVID-19 simulator
   cores: 28
+  budget: "vecma2020"
   # job wall time for each job, format Days-Hours:Minutes:Seconds
   job_wall_time : "0-0:20:00" # job wall time for each single job without PJ
   PJ_size : "2" # number of requested nodes for PJ
