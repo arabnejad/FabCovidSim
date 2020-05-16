@@ -117,6 +117,41 @@ def analyse_covid_easyvvuq(config, ** args):
 
     work_dir = os.path.join(env.local_results, template(env.job_name_template))
 
+    json_file = rearrange_files(work_dir)
+    # load campaign
+    covidsim_campaign = uq.Campaign(state_file=json_file, work_dir=work_dir)
+
+    # Combine the output from all runs associated with the current app
+    covidsim_campaign.collate()
+
+    # Return dataframe containing all collated results
+    collation_result = covidsim_campaign.get_collation_result()
+    collation_result.to_csv(env.local_results + '/' +
+                            template(env.job_name_template) +
+                            '/collation_result.csv',
+                            index=False
+                            )
+    print(collation_result)
+
+    # Post-processing analysis
+    covidsim_analysis = uq.analysis.SCAnalysis(
+        sampler=covidsim_campaign._active_sampler,
+        qoi_cols=output_columns
+    )
+    covidsim_campaign.apply_analysis(covidsim_analysis)
+
+    results = covidsim_campaign.get_last_analysis()
+    mu = results['statistical_moments']['cumDeath']['mean']
+    std = results['statistical_moments']['cumDeath']['std']
+
+    covid_analysis_add_file = env.local_results + '/' + \
+        template(env.job_name_template) + '/covid_analysis.txt'
+
+    plot_grid(covidsim_analysis, ['Household_level_compliance_with_quarantine',
+                                  'Symptomatic_infectiousness_relative_to_asymptomatic'])
+
+
+def rearrange_files(work_dir):
     # walk through all files in results_dir
     for root, _, _ in os.walk(os.path.join(work_dir, 'RUNS')):
         try:
@@ -223,37 +258,8 @@ def analyse_covid_easyvvuq(config, ** args):
         result = con.execute(sql_cmd)
         result.close()
 
-    # load campaign
-    covidsim_campaign = uq.Campaign(state_file=json_file, work_dir=work_dir)
-
-    # Combine the output from all runs associated with the current app
-    covidsim_campaign.collate()
-
-    # Return dataframe containing all collated results
-    collation_result = covidsim_campaign.get_collation_result()
-    collation_result.to_csv(env.local_results + '/' +
-                            template(env.job_name_template) +
-                            '/collation_result.csv',
-                            index=False
-                            )
-    print(collation_result)
-
-    # Post-processing analysis
-    covidsim_analysis = uq.analysis.SCAnalysis(
-        sampler=covidsim_campaign._active_sampler,
-        qoi_cols=output_columns
-    )
-    covidsim_campaign.apply_analysis(covidsim_analysis)
-
-    results = covidsim_campaign.get_last_analysis()
-    mu = results['statistical_moments']['cumDeath']['mean']
-    std = results['statistical_moments']['cumDeath']['std']
-
-    covid_analysis_add_file = env.local_results + '/' + \
-        template(env.job_name_template) + '/covid_analysis.txt'
-
-    plot_grid(covidsim_analysis, ['Household_level_compliance_with_quarantine',
-                                  'Symptomatic_infectiousness_relative_to_asymptomatic'])
+    # return json_file address
+    return json_file
 
 
 def plot_grid(covid_analysis, keys):
