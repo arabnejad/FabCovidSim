@@ -3,7 +3,7 @@
 # This source file is part of the FabSim software toolkit, which is distributed under the BSD 3-Clause license.
 # Please refer to LICENSE for detailed information regarding the licensing.
 #
-# This file contains FabSim definitions specific to FabCovid19.
+# This file contains FabSim definitions specific to FabCovidsim.
 #
 # authors: Hamid Arabnejad, Derek Groen
 
@@ -72,3 +72,6 @@ def CovidSim_ensemble(config,
     sweep_dir = path_to_config + "/SWEEP"
 
     run_ensemble(config, sweep_dir, **args)
+
+from plugins.FabCovidsim.covid_easyvvuq import run_covid_easyvvuq
+from plugins.FabCovidsim.covid_easyvvuq import analyse_covid_easyvvuq
