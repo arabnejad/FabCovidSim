@@ -72,3 +72,17 @@ def CovidSim_ensemble(config,
     sweep_dir = path_to_config + "/SWEEP"
 
     run_ensemble(config, sweep_dir, **args)
+    
+@task
+def run_covid_uq_ensemble(config, campaign_dir, skip=0, **args):
+    """
+    Subsmission of CovidSim EasyVVUQ samples
+    """
+    campaign2ensemble(config, campaign_dir=campaign_dir)
+    #option to remove earlier runs from the sweep dir
+    if int(skip) > 0:
+        path_to_config = find_config_file_path(config)
+        sweep_dir = path_to_config + "/SWEEP"
+        for i in range(int(skip)):
+            os.system('rm -r %s/Run_%s' %(sweep_dir, i+1))
+    CovidSim_ensemble(config, **args)
