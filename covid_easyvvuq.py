@@ -138,6 +138,7 @@ def analyse_covid_easyvvuq(config, ** args):
         sampler=covidsim_campaign._active_sampler,
         qoi_cols=output_columns
     )
+
     covidsim_campaign.apply_analysis(covidsim_analysis)
 
     results = covidsim_campaign.get_last_analysis()
@@ -189,23 +190,20 @@ def rearrange_files(work_dir):
     #
     db_copied = False
     json_copied = False
+    print('Start copying csv files ...')
     for root, dirs, files in os.walk(os.path.join(work_dir, 'RUNS')):
         for file in files:
-            if file.endswith(".severity.xls"):
+            if file.endswith(".severity.csv"):
                 src_f = root
                 des_f = os.path.join(easyvvuq_folder,
                                      'runs',
                                      root.split('/RUNS/')[1].split('/')[0])
                 if not os.path.exists(des_f):
                     os.makedirs(des_f)
-                csv_file = file.replace(".xls", ".csv")
-                # the output files are in xls format, can not be read with read_csv
-                # pandas.read_xls and xlrd did not work, complained about \t in file
-                # for now we can convert it by ssconvert
-                # To install on Ubuntu : apt-get install gnumeric
-                # To install on Mac: brew install gnumeric
-                local("ssconvert %s %s" % (os.path.join(src_f, file),
-                                           os.path.join(des_f, csv_file)))
+
+                with hide('output', 'running', 'warnings'), settings(warn_only=True):
+                    local("cp %s %s" % (os.path.join(src_f, file),
+                                        os.path.join(des_f, file)), capture=True)
 
             elif file == "campaign.db" and db_copied is False:
                 # copy db file
@@ -219,7 +217,7 @@ def rearrange_files(work_dir):
                          os.path.join(easyvvuq_folder,
                                       'covid_easyvvuq_state.json'))
                 json_copied = True
-
+    print('copying finished ...')
     # change database location file name in json file
     json_data['db_location'] = "sqlite:///" + \
         os.path.join(work_dir, json_data['campaign_dir'], 'campaign.db')
