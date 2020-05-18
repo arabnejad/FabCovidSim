@@ -73,16 +73,27 @@ def CovidSim_ensemble(config,
 
     run_ensemble(config, sweep_dir, **args)
     
+
 @task
-def run_covid_uq_ensemble(config, campaign_dir, skip=0, **args):
-    """
-    Subsmission of CovidSim EasyVVUQ samples
-    """
+def run_adaptive_covid_easyvvuq(config, campaign_dir, skip=0, ** args):
+    # copy generated run folders to SWEEP directory
+    # clean SWEEP, this part will be added to FabSim3.campaign2ensemble
+    path_to_config = find_config_file_path(config)
+    sweep_dir = path_to_config + "/SWEEP"
+    local("rm -rf %s/SWEEP/*" % (sweep_dir))
     campaign2ensemble(config, campaign_dir=campaign_dir)
+
+    # copy campaign.db and covid_easyvvuq_state.json to config folder
+    # cp %s/*.{db,json} %s/  not working !!! with run function !!!
+    local("cp %s/*.db %s/*.json %s/" % (campaign_dir,
+                                        campaign_dir,
+                                        path_to_config))
+
     #option to remove earlier runs from the sweep dir
     if int(skip) > 0:
         path_to_config = find_config_file_path(config)
         sweep_dir = path_to_config + "/SWEEP"
         for i in range(int(skip)):
             os.system('rm -r %s/Run_%s' %(sweep_dir, i+1))
+
     CovidSim_ensemble(config, **args)
