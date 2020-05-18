@@ -173,7 +173,6 @@ def rearrange_files(work_dir):
         if os.path.exists(easyvvuq_folder):
             rmtree(easyvvuq_folder)
         os.mkdir(easyvvuq_folder)
-        os.mkdir(os.path.join(easyvvuq_folder, 'runs'))
     except OSError:
         print("Creation of the directory %s failed" % easyvvuq_folder)
     else:
@@ -193,19 +192,7 @@ def rearrange_files(work_dir):
     print('Start copying csv files ...')
     for root, dirs, files in os.walk(os.path.join(work_dir, 'RUNS')):
         for file in files:
-            if file.endswith(".severity.csv"):
-                src_f = root
-                des_f = os.path.join(easyvvuq_folder,
-                                     'runs',
-                                     root.split('/RUNS/')[1].split('/')[0])
-                if not os.path.exists(des_f):
-                    os.makedirs(des_f)
-
-                with hide('output', 'running', 'warnings'), settings(warn_only=True):
-                    local("cp %s %s" % (os.path.join(src_f, file),
-                                        os.path.join(des_f, file)), capture=True)
-
-            elif file == "campaign.db" and db_copied is False:
+            if file == "campaign.db" and db_copied is False:
                 # copy db file
                 copyfile(os.path.join(root, file),
                          os.path.join(easyvvuq_folder,
@@ -241,8 +228,8 @@ def rearrange_files(work_dir):
         # from /tmp/covid2yqcgs0w/runs/Run_1
         # to <FabSim_results>/UK_easyvvuq_test_eagle_vecma_28/Run_3/runs/Run_1
         sql_cmd = "UPDATE run "
-        sql_cmd += "SET run_dir = '%s/'||run_name" % (
-            os.path.join(work_dir, json_data['campaign_dir'], 'runs'))
+        sql_cmd += "SET run_dir = '%s/'||run_name||'/%s'" % (
+            os.path.join(work_dir, 'RUNS'), 'output_dir')
         result = con.execute(sql_cmd)
         result.close()
 
