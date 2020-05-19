@@ -1,3 +1,11 @@
+"""
+==============================================================================
+INITIALIZATION OF A (DIMENSION-ADAPTIVE) STOCHASTIC COLLOCATION CAMPAIGN
+
+Execute once.
+==============================================================================
+"""
+
 import easyvvuq as uq
 import chaospy as cp
 import os
@@ -6,14 +14,14 @@ import fabsim3_cmd_api as fab
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
-work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+work_dir = '/tmp'
+config = 'dummy_covid'
 
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params_p_PC7_CI_HQ_SD = json.load(open(home + '/templates/params_p_PC7_CI_HQ_SD.json'))
+params_p_PC7_CI_HQ_SD = json.load(open(home + '/../templates/params_p_PC7_CI_HQ_SD.json'))
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
@@ -21,17 +29,18 @@ directory_tree = {'param_files': None}
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/templates/template_p_PC7_CI_HQ_SD.txt',
+        template_fname=home + '/../templates/template_p_PC7_CI_HQ_SD.txt',
         delimiter='$',
         target_filename='param_files/template_p_PC7_CI_HQ_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/templates/template_preUK_R0=2.0.txt',
+        template_fname=home + '/../templates/template_preUK_R0=2.0.txt',
         delimiter='$',
         target_filename='param_files/preUK_R0=2.0.txt')
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='???', output_columns=output_columns, header=0)
+    target_filename='output_dir/foo.severity.xls', 
+    output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)
 
@@ -45,11 +54,10 @@ campaign.add_app(name="covid_p_PC7_CI_HQ_SD",
 # has been added)
 campaign.set_app("covid_p_PC7_CI_HQ_SD")
 
-# Create a collation element for this campaign
-
+#parameters to vary
 vary = {
     "Household_level_compliance_with_quarantine": cp.Uniform(0.3, 0.75),
-    "Symptomatic_infectiousness_relative_to_asymptomatic": cp.Uniform(1.3, 1.70),
+    "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.4, 1.6),
 }
 
 #=================================
@@ -69,10 +77,9 @@ campaign.set_sampler(sampler)
 campaign.draw_samples()
 campaign.populate_runs_dir()
 
-campaign.save_state(os.path.join(
-    campaign.campaign_dir, "covid_easyvvuq_state.json"))
-sampler.save_state(os.path.join(
-    campaign.campaign_dir, "covid_sampler_state.pickle"))
+campaign.save_state("covid_easyvvuq_state.json")
+sampler.save_state("covid_sampler_state.pickle")
 
-fab.run_uq_ensemble(config, campaign.campaign_dir, script="CovidSim",
-                    machine="eagle_vecma")
+#run the UQ ensemble
+fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',
+                    machine="localhost")

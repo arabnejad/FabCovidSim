@@ -133,7 +133,7 @@
 0.25
 
 [Household level compliance with quarantine]
-0.525
+0.43889622771785486
 
 [Individual level compliance with quarantine]
 1.0
