@@ -69,7 +69,7 @@ def init_covid_campaign():
             template_fname=get_plugin_path(
                 "FabCovidsim") + '/templates/template_p_PC7_CI_HQ_SD.txt',
             delimiter='$',
-            target_filename='param_files/template_p_PC7_CI_HQ_SD.txt'),
+            target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
         uq.encoders.GenericEncoder(
             template_fname=get_plugin_path(
                 "FabCovidsim") + '/templates/template_preUK_R0=2.0.txt',
