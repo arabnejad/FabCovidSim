@@ -15,7 +15,7 @@ elapsed="$$(bc <<<"$$end_time-$$start_time")"
 echo "Total Executing Time = $$elapsed seconds" | tee -a "elapsed_time.txt"
 
 # convert all xls file to csv
-Rscript Rscripts/Convert_xls_to_csv.R output_dir
+# Rscript Rscripts/Convert_xls_to_csv.R output_dir
 
 # Run visualisation with R
 Rscript Rscripts/PlotRuns.R output_dir

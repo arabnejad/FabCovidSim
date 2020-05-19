@@ -124,7 +124,7 @@
 364.0
 
 [Relative household contact rate after quarantine]
-1.5
+1.5774596669241483
 
 [Residual place contacts after household quarantine by place type]
 0.25 0.25 0.25 0.25 
