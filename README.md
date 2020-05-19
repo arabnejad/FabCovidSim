@@ -71,7 +71,7 @@ eagle_vecma:
   > _NOTE:_
   >   -  **replicas=N** : will generate N replicas
   >    - if you want to run multiple simulations with different configuration, to do that, create your own folder name under `SWEEP` directory, and change the parameters files, there are some examples under `/config_files/SWEEP_examples` folder,
-  >    - if you want to use QCG-PJ with `eagle_vecma` make sure that you first install it by `fab eagle_vecma install_app:QCG-PilotJob,virtual_env=True`
+  >    - if you want to use QCG-PJ with `eagle_vecma` make sure that you first install it by `fab eagle_vecma install_app:QCG-PilotJob,virtualenv=True`
   >
   > _Examples:_
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample`
