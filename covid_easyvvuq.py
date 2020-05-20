@@ -34,6 +34,48 @@ if not os.path.exists(tmp_dir):
     os.makedirs(tmp_dir)
 output_columns = ["cumDeath"]
 
+class CustomEncoder(uq.encoders.JinjaEncoder, encoder_name='CustomEncoder'):
+    def encode(self, params={}, target_dir='', fixtures=None):
+        """
+        # Logistic curve for mortality
+        k = params["mortality_k"]
+        x0 = params["mortality_x0"]
+
+        age = np.arange(5,90,5)
+        curve = 1 / (1 + e**(-k*(age-x0)))
+        """
+        # scale default values found in pre param file
+        default_mortality = np.array([0,
+                                      1.60649128,
+                                      2.291051747,
+                                      2.860938008,
+                                      3.382077741,
+                                      3.880425012,
+                                      4.37026577,
+                                      4.861330415,
+                                      5.361460943,
+                                      5.877935626,
+                                      6.4183471,
+                                      6.991401405,
+                                      7.607881726,
+                                      8.282065409,
+                                      9.034104744,
+                                      9.894486491,
+                                      10.91341144,
+                                      12.18372915,
+                                      13.9113346,
+                                      16.74394356,
+                                      22.96541429])
+        curve = default_mortality * params["mortality_factor"]
+        params["mortality_curve"] = curve
+
+        proportion_symptomatic = [params["p_symptomatic"]] * 17
+        params["Proportion_symptomatic"] = proportion_symptomatic
+
+        super().encode(params, target_dir, fixtures)
+
+
+
 
 class custom_redirection(object):
 
@@ -57,8 +99,16 @@ def init_covid_campaign():
     my_campaign = uq.Campaign(name='covid', work_dir=tmp_dir)
 
     # Define parameter space for the cannonsim app
-    params_p_PC7_CI_HQ_SD = json.load(open(get_plugin_path(
-        "FabCovidsim") + '/templates/params_p_PC7_CI_HQ_SD.json'))
+    params = json.load(open(get_plugin_path(
+        "FabCovidsim") + '/templates/params.json'))
+    params["mortality_factor"] = {
+                                    "default": 1,
+                                    "type": "float"
+                                }
+    params["p_symptomatic"] = {
+                                      "default": 0.5,
+                                      "type": "float"
+                                  }
 
     # Create an encoder and decoder
     directory_tree = {'param_files': None}
@@ -84,7 +134,7 @@ def init_covid_campaign():
 
     # Add the app
     my_campaign.add_app(name="covid_p_PC7_CI_HQ_SD",
-                        params=params_p_PC7_CI_HQ_SD,
+                        params=params,
                         encoder=multiencoder_p_PC7_CI_HQ_SD,
                         collater=collater,
                         decoder=decoder)
@@ -93,12 +143,14 @@ def init_covid_campaign():
     my_campaign.set_app("covid_p_PC7_CI_HQ_SD")
 
     # Create a collation element for this campaign
-
     vary = {
-        "Household_level_compliance_with_quarantine": cp.Uniform(0.3, 0.75),
-        "Symptomatic_infectiousness_relative_to_asymptomatic": cp.Uniform(1.3, 1.70),
+        "Symptomatic_infectiousness_relative_to_asymptomatic": cp.Uniform(1.0, 2.5),
+        "p_symptomatic": cp.Uniform(0.1, 0.9),
+        "Latent_period": cp.Uniform(2.0, 16.0), # days
+        "mortality_factor": cp.Uniform(0.5, 1.5),
     }
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=2)
+    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1)
+
     my_campaign.set_sampler(my_sampler)
     my_campaign.draw_samples()
 
