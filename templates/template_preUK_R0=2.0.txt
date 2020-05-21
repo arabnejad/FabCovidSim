@@ -1,54 +1,5 @@
-[Output every realisation]
-{{ Output_every_realisation }}
 
-[Output bitmap]
-{{ Output_bitmap }}
-
-[OutputAge]
-{{ OutputAge }}
-
-[OutputSeverityAdminUnit]
-{{ OutputSeverityAdminUnit }}
-
-[OutputR0]
-{{ OutputR0 }}
-
-[OutputControls]
-{{ OutputControls }}
-
-[OutputCountry]
-{{ OutputCountry }}
-
-[OutputAdUnitVar]
-{{ OutputAdUnitVar }}
-
-[OutputHousehold]
-{{ OutputHousehold }}
-
-[OutputInfType]
-{{ OutputInfType }}
-
-[OutputNonSeverity]
-{{ OutputNonSeverity }}
-
-[OutputNonSummaryResults]
-{{ OutputNonSummaryResults }}
-
-[Output incidence by administrative unit]
-{{ Output_incidence_by_administrative_unit }}
-
-[Output infection tree]
-{{ Output_infection_tree }}
-
-[Only output non-extinct realisations]
-{{ Only_output_non_extinct_realisations }}
-
-
-==========================================================
-
-[Include administrative units within countries]
-{{ Include_administrative_units_within_countries }}
-
+												
 [Update timestep]
 {{ Update_timestep }}
 
@@ -61,17 +12,17 @@
 [Sampling time]
 {{ Sampling_time }}
 
-[Grid size]
+[Grid size]	
 {{ Grid_size }}
 
-[Spatial domain for simulation]
+[Spatial domain for simulation]	
 {{ Spatial_domain_for_simulation0 }} {{ Spatial_domain_for_simulation1 }} 
 136	54
 
 [Number of micro-cells per spatial cell width]
 {{ Number_of_micro_cells_per_spatial_cell_width }}
 
-[Initial immunity profile by age]
+[Initial immunity profile by age]	
 {{ Initial_immunity_profile_by_age0 }} {{ Initial_immunity_profile_by_age1 }} {{ Initial_immunity_profile_by_age2 }} {{ Initial_immunity_profile_by_age3 }} {{ Initial_immunity_profile_by_age4 }} {{ Initial_immunity_profile_by_age5 }} {{ Initial_immunity_profile_by_age6 }} {{ Initial_immunity_profile_by_age7 }} {{ Initial_immunity_profile_by_age8 }} {{ Initial_immunity_profile_by_age9 }} {{ Initial_immunity_profile_by_age10 }} {{ Initial_immunity_profile_by_age11 }} {{ Initial_immunity_profile_by_age12 }} {{ Initial_immunity_profile_by_age13 }} {{ Initial_immunity_profile_by_age14 }} {{ Initial_immunity_profile_by_age15 }} {{ Initial_immunity_profile_by_age16 }} 
 
 [Initial immunity applied to all household members]
@@ -79,7 +30,9 @@
 
 [Relative spatial contact rates by age]
 {{ Relative_spatial_contact_rates_by_age0 }} {{ Relative_spatial_contact_rates_by_age1 }} {{ Relative_spatial_contact_rates_by_age2 }} {{ Relative_spatial_contact_rates_by_age3 }} {{ Relative_spatial_contact_rates_by_age4 }} {{ Relative_spatial_contact_rates_by_age5 }} {{ Relative_spatial_contact_rates_by_age6 }} {{ Relative_spatial_contact_rates_by_age7 }} {{ Relative_spatial_contact_rates_by_age8 }} {{ Relative_spatial_contact_rates_by_age9 }} {{ Relative_spatial_contact_rates_by_age10 }} {{ Relative_spatial_contact_rates_by_age11 }} {{ Relative_spatial_contact_rates_by_age12 }} {{ Relative_spatial_contact_rates_by_age13 }} {{ Relative_spatial_contact_rates_by_age14 }} {{ Relative_spatial_contact_rates_by_age15 }} {{ Relative_spatial_contact_rates_by_age16 }} 
-(POLYMOD, averaging 20-70)
+[POLYMOD, averaging 20-70]
+0.25	0.25	0.5	0.75	1	1	1	1	1	1	1	1	1	0.75	0.5	0.25	0.25
+
 
 [Household attack rate]
 {{ Household_attack_rate }}
@@ -91,10 +44,10 @@
 
 [Relative transmission rates for place types]
 {{ Relative_transmission_rates_for_place_types0 }} {{ Relative_transmission_rates_for_place_types1 }} {{ Relative_transmission_rates_for_place_types2 }} {{ Relative_transmission_rates_for_place_types3 }} 
-(School=2 x workplace. This gives Longini AJE 1988 age-specific infection attack rates for R0=1.3.
+(School=2 x workplace. This gives Longini AJE 1988 age-specific infection attack rates for R0=1.3. 
 Also comparable with 1957 pandemic attack rates from Chin.)
 
-[Proportion of between group place links]
+[Proportion of between group place links]	
 {{ Proportion_of_between_group_place_links0 }} {{ Proportion_of_between_group_place_links1 }} {{ Proportion_of_between_group_place_links2 }} {{ Proportion_of_between_group_place_links3 }} 
 (25% of within-group contacts)
 
@@ -129,18 +82,8 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Duration of place absenteeism for cases who withdraw]
 {{ Duration_of_place_absenteeism_for_cases_who_withdraw }}
 
-[Place close round household]
-{{ Place_close_round_household }}
-
-[Absenteeism place closure]
-{{ Absenteeism_place_closure }}
-
-#[Max absent time]
-#0
-#Not used because [Absenteeism Place Closure] is 0.
-
-[Initial number of infecteds]
-{{ Initial_number_of_infecteds }}
+[Proportion of cases dying]
+{{ Proportion_of_cases_dying }}
 
 [Time when infection rate changes]
 {{ Time_when_infection_rate_changes }}
@@ -156,6 +99,11 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 
 [Daily importation time profile]
 {{ Daily_importation_time_profile0 }} {{ Daily_importation_time_profile1 }} {{ Daily_importation_time_profile2 }} {{ Daily_importation_time_profile3 }} {{ Daily_importation_time_profile4 }} {{ Daily_importation_time_profile5 }} {{ Daily_importation_time_profile6 }} {{ Daily_importation_time_profile7 }} {{ Daily_importation_time_profile8 }} {{ Daily_importation_time_profile9 }} {{ Daily_importation_time_profile10 }} {{ Daily_importation_time_profile11 }} {{ Daily_importation_time_profile12 }} {{ Daily_importation_time_profile13 }} {{ Daily_importation_time_profile14 }} {{ Daily_importation_time_profile15 }} {{ Daily_importation_time_profile16 }} {{ Daily_importation_time_profile17 }} {{ Daily_importation_time_profile18 }} {{ Daily_importation_time_profile19 }} {{ Daily_importation_time_profile20 }} {{ Daily_importation_time_profile21 }} {{ Daily_importation_time_profile22 }} {{ Daily_importation_time_profile23 }} {{ Daily_importation_time_profile24 }} {{ Daily_importation_time_profile25 }} {{ Daily_importation_time_profile26 }} {{ Daily_importation_time_profile27 }} {{ Daily_importation_time_profile28 }} {{ Daily_importation_time_profile29 }} {{ Daily_importation_time_profile30 }} {{ Daily_importation_time_profile31 }} {{ Daily_importation_time_profile32 }} {{ Daily_importation_time_profile33 }} {{ Daily_importation_time_profile34 }} {{ Daily_importation_time_profile35 }} {{ Daily_importation_time_profile36 }} {{ Daily_importation_time_profile37 }} {{ Daily_importation_time_profile38 }} {{ Daily_importation_time_profile39 }} {{ Daily_importation_time_profile40 }} {{ Daily_importation_time_profile41 }} {{ Daily_importation_time_profile42 }} {{ Daily_importation_time_profile43 }} {{ Daily_importation_time_profile44 }} {{ Daily_importation_time_profile45 }} {{ Daily_importation_time_profile46 }} {{ Daily_importation_time_profile47 }} {{ Daily_importation_time_profile48 }} {{ Daily_importation_time_profile49 }} {{ Daily_importation_time_profile50 }} {{ Daily_importation_time_profile51 }} {{ Daily_importation_time_profile52 }} {{ Daily_importation_time_profile53 }} {{ Daily_importation_time_profile54 }} {{ Daily_importation_time_profile55 }} {{ Daily_importation_time_profile56 }} {{ Daily_importation_time_profile57 }} {{ Daily_importation_time_profile58 }} {{ Daily_importation_time_profile59 }} {{ Daily_importation_time_profile60 }} {{ Daily_importation_time_profile61 }} {{ Daily_importation_time_profile62 }} {{ Daily_importation_time_profile63 }} {{ Daily_importation_time_profile64 }} {{ Daily_importation_time_profile65 }} {{ Daily_importation_time_profile66 }} {{ Daily_importation_time_profile67 }} {{ Daily_importation_time_profile68 }} {{ Daily_importation_time_profile69 }} {{ Daily_importation_time_profile70 }} {{ Daily_importation_time_profile71 }} {{ Daily_importation_time_profile72 }} {{ Daily_importation_time_profile73 }} {{ Daily_importation_time_profile74 }} {{ Daily_importation_time_profile75 }} {{ Daily_importation_time_profile76 }} {{ Daily_importation_time_profile77 }} {{ Daily_importation_time_profile78 }} {{ Daily_importation_time_profile79 }} {{ Daily_importation_time_profile80 }} {{ Daily_importation_time_profile81 }} {{ Daily_importation_time_profile82 }} {{ Daily_importation_time_profile83 }} {{ Daily_importation_time_profile84 }} {{ Daily_importation_time_profile85 }} {{ Daily_importation_time_profile86 }} {{ Daily_importation_time_profile87 }} {{ Daily_importation_time_profile88 }} {{ Daily_importation_time_profile89 }} {{ Daily_importation_time_profile90 }} {{ Daily_importation_time_profile91 }} {{ Daily_importation_time_profile92 }} {{ Daily_importation_time_profile93 }} {{ Daily_importation_time_profile94 }} {{ Daily_importation_time_profile95 }} {{ Daily_importation_time_profile96 }} {{ Daily_importation_time_profile97 }} {{ Daily_importation_time_profile98 }} {{ Daily_importation_time_profile99 }} {{ Daily_importation_time_profile100 }} {{ Daily_importation_time_profile101 }} {{ Daily_importation_time_profile102 }} {{ Daily_importation_time_profile103 }} {{ Daily_importation_time_profile104 }} {{ Daily_importation_time_profile105 }} {{ Daily_importation_time_profile106 }} {{ Daily_importation_time_profile107 }} {{ Daily_importation_time_profile108 }} {{ Daily_importation_time_profile109 }} {{ Daily_importation_time_profile110 }} {{ Daily_importation_time_profile111 }} {{ Daily_importation_time_profile112 }} {{ Daily_importation_time_profile113 }} {{ Daily_importation_time_profile114 }} {{ Daily_importation_time_profile115 }} {{ Daily_importation_time_profile116 }} {{ Daily_importation_time_profile117 }} {{ Daily_importation_time_profile118 }} {{ Daily_importation_time_profile119 }} {{ Daily_importation_time_profile120 }} {{ Daily_importation_time_profile121 }} {{ Daily_importation_time_profile122 }} {{ Daily_importation_time_profile123 }} {{ Daily_importation_time_profile124 }} {{ Daily_importation_time_profile125 }} {{ Daily_importation_time_profile126 }} {{ Daily_importation_time_profile127 }} {{ Daily_importation_time_profile128 }} {{ Daily_importation_time_profile129 }} {{ Daily_importation_time_profile130 }} {{ Daily_importation_time_profile131 }} {{ Daily_importation_time_profile132 }} {{ Daily_importation_time_profile133 }} {{ Daily_importation_time_profile134 }} {{ Daily_importation_time_profile135 }} {{ Daily_importation_time_profile136 }} {{ Daily_importation_time_profile137 }} {{ Daily_importation_time_profile138 }} {{ Daily_importation_time_profile139 }} {{ Daily_importation_time_profile140 }} {{ Daily_importation_time_profile141 }} {{ Daily_importation_time_profile142 }} {{ Daily_importation_time_profile143 }} {{ Daily_importation_time_profile144 }} {{ Daily_importation_time_profile145 }} {{ Daily_importation_time_profile146 }} {{ Daily_importation_time_profile147 }} {{ Daily_importation_time_profile148 }} {{ Daily_importation_time_profile149 }} {{ Daily_importation_time_profile150 }} {{ Daily_importation_time_profile151 }} {{ Daily_importation_time_profile152 }} {{ Daily_importation_time_profile153 }} {{ Daily_importation_time_profile154 }} {{ Daily_importation_time_profile155 }} {{ Daily_importation_time_profile156 }} {{ Daily_importation_time_profile157 }} {{ Daily_importation_time_profile158 }} {{ Daily_importation_time_profile159 }} {{ Daily_importation_time_profile160 }} {{ Daily_importation_time_profile161 }} {{ Daily_importation_time_profile162 }} {{ Daily_importation_time_profile163 }} {{ Daily_importation_time_profile164 }} {{ Daily_importation_time_profile165 }} {{ Daily_importation_time_profile166 }} {{ Daily_importation_time_profile167 }} {{ Daily_importation_time_profile168 }} {{ Daily_importation_time_profile169 }} {{ Daily_importation_time_profile170 }} {{ Daily_importation_time_profile171 }} {{ Daily_importation_time_profile172 }} {{ Daily_importation_time_profile173 }} {{ Daily_importation_time_profile174 }} {{ Daily_importation_time_profile175 }} {{ Daily_importation_time_profile176 }} {{ Daily_importation_time_profile177 }} {{ Daily_importation_time_profile178 }} {{ Daily_importation_time_profile179 }} 
+0
+
+
+[Assume SI model]
+{{ Assume_SI_model }}
 
 [Reproduction number]
 {{ Reproduction_number }}
@@ -166,13 +114,27 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Include latent period]
 {{ Include_latent_period }}
 
-[Latent period]
+[Latent period]	
 {{ Latent_period }}
+
 (From Marc's estimates) - minus half a day to account for infectiousness pre symptom onset
 
 [Latent period inverse CDF]
 {{ Latent_period_inverse_CDF0 }} {{ Latent_period_inverse_CDF1 }} {{ Latent_period_inverse_CDF2 }} {{ Latent_period_inverse_CDF3 }} {{ Latent_period_inverse_CDF4 }} {{ Latent_period_inverse_CDF5 }} {{ Latent_period_inverse_CDF6 }} {{ Latent_period_inverse_CDF7 }} {{ Latent_period_inverse_CDF8 }} {{ Latent_period_inverse_CDF9 }} {{ Latent_period_inverse_CDF10 }} {{ Latent_period_inverse_CDF11 }} {{ Latent_period_inverse_CDF12 }} {{ Latent_period_inverse_CDF13 }} {{ Latent_period_inverse_CDF14 }} {{ Latent_period_inverse_CDF15 }} {{ Latent_period_inverse_CDF16 }} {{ Latent_period_inverse_CDF17 }} {{ Latent_period_inverse_CDF18 }} {{ Latent_period_inverse_CDF19 }} {{ Latent_period_inverse_CDF20 }} 
+
+
+
 (From Marc's estimates)
+
+0.337603919	0.531028655	0.605598307	0.663734057	0.714098988	0.760017037	0.803220894	0.844790662	0.885497063	0.925959562	0.966735451	1.008383094	1.05152112	1.096901152	1.145518376	1.19880817	1.25904732	1.330312414	1.421351091	1.55855824	2.120232776
+
+
+1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+(fixed latent period)
+
+0	0.084316056	0.179208436	0.287716206	0.414411663	0.566644354	0.757376134	0.806831536	0.859743301	0.916631096	0.978141381	1.04509234	1.118540666	1.199884333	1.291027502	1.394658862	1.514752269	1.645029341	1.802468475	2.001461849	2.272128403
+
+(Elveback)
 
 [Model time varying infectiousness]
 {{ Model_time_varying_infectiousness }}
@@ -180,11 +142,17 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Infectiousness profile]
 {{ Infectiousness_profile0 }} {{ Infectiousness_profile1 }} {{ Infectiousness_profile2 }} {{ Infectiousness_profile3 }} {{ Infectiousness_profile4 }} {{ Infectiousness_profile5 }} {{ Infectiousness_profile6 }} {{ Infectiousness_profile7 }} {{ Infectiousness_profile8 }} {{ Infectiousness_profile9 }} {{ Infectiousness_profile10 }} {{ Infectiousness_profile11 }} {{ Infectiousness_profile12 }} {{ Infectiousness_profile13 }} {{ Infectiousness_profile14 }} {{ Infectiousness_profile15 }} {{ Infectiousness_profile16 }} {{ Infectiousness_profile17 }} {{ Infectiousness_profile18 }} {{ Infectiousness_profile19 }} {{ Infectiousness_profile20 }} {{ Infectiousness_profile21 }} {{ Infectiousness_profile22 }} {{ Infectiousness_profile23 }} {{ Infectiousness_profile24 }} {{ Infectiousness_profile25 }} {{ Infectiousness_profile26 }} {{ Infectiousness_profile27 }} {{ Infectiousness_profile28 }} {{ Infectiousness_profile29 }} {{ Infectiousness_profile30 }} {{ Infectiousness_profile31 }} {{ Infectiousness_profile32 }} {{ Infectiousness_profile33 }} {{ Infectiousness_profile34 }} {{ Infectiousness_profile35 }} {{ Infectiousness_profile36 }} {{ Infectiousness_profile37 }} {{ Infectiousness_profile38 }} {{ Infectiousness_profile39 }} {{ Infectiousness_profile40 }} {{ Infectiousness_profile41 }} {{ Infectiousness_profile42 }} {{ Infectiousness_profile43 }} {{ Infectiousness_profile44 }} {{ Infectiousness_profile45 }} {{ Infectiousness_profile46 }} {{ Infectiousness_profile47 }} {{ Infectiousness_profile48 }} {{ Infectiousness_profile49 }} {{ Infectiousness_profile50 }} {{ Infectiousness_profile51 }} {{ Infectiousness_profile52 }} {{ Infectiousness_profile53 }} {{ Infectiousness_profile54 }} {{ Infectiousness_profile55 }} {{ Infectiousness_profile56 }} 
 
+
+
+10.66332076	4.541186908	2.687577454	1.827631772	1.340883681	1.033008677	0.823681092	0.673874701	0.562464626	0.47708646	0.410059783	0.356384398	0.312678622	0.276582011	0.246402478	0.220899078	0.199143584	0.18042958	0.164211194	0.150060852	0.137639543	0.126675513	0.11694875	0.108279517	0.100519754	0.093546572	0.087257254	0.081565386
+
+
 [Infectious period]
 {{ Infectious_period }}
 
-[Infectious period inverse CDF]
+[Infectious period inverse CDF]	
 {{ Infectious_period_inverse_CDF0 }} {{ Infectious_period_inverse_CDF1 }} {{ Infectious_period_inverse_CDF2 }} {{ Infectious_period_inverse_CDF3 }} {{ Infectious_period_inverse_CDF4 }} {{ Infectious_period_inverse_CDF5 }} {{ Infectious_period_inverse_CDF6 }} {{ Infectious_period_inverse_CDF7 }} {{ Infectious_period_inverse_CDF8 }} {{ Infectious_period_inverse_CDF9 }} {{ Infectious_period_inverse_CDF10 }} {{ Infectious_period_inverse_CDF11 }} {{ Infectious_period_inverse_CDF12 }} {{ Infectious_period_inverse_CDF13 }} {{ Infectious_period_inverse_CDF14 }} {{ Infectious_period_inverse_CDF15 }} {{ Infectious_period_inverse_CDF16 }} {{ Infectious_period_inverse_CDF17 }} {{ Infectious_period_inverse_CDF18 }} {{ Infectious_period_inverse_CDF19 }} {{ Infectious_period_inverse_CDF20 }} 
+
 (Cauchemez)
 
 [k of individual variation in infectiousness]
@@ -213,14 +181,15 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Trigger alert on deaths]
 {{ Trigger_alert_on_deaths }}
 
-[Number of deaths accummulated before alert]
-{{ Number_of_deaths_accummulated_before_alert }}
+#[Number of deaths accummulated before alert]
+#3
 
 [Number of days to accummulate cases/deaths before alert]
 {{ Number_of_days_to_accummulate_cases_deaths_before_alert }}
 
 [Day of year trigger is reached]
 {{ Day_of_year_trigger_is_reached }}
+
 
 [Alert trigger starts after interventions]
 {{ Alert_trigger_starts_after_interventions }}
@@ -240,14 +209,9 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Social distancing only once]
 {{ Social_distancing_only_once }}
 
+
 [Use ICU case triggers for interventions]
 {{ Use_ICU_case_triggers_for_interventions }}
-
-[Proportion of cases detected before outbreak alert]
-{{ Proportion_of_cases_detected_before_outbreak_alert }}
-
-[Number of detected cases needed before outbreak alert triggered]
-{{ Number_of_detected_cases_needed_before_outbreak_alert_triggered }}
 
 ====================================
 
@@ -262,6 +226,18 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 
 [Do one generation]
 {{ Do_one_generation }}
+
+[Output every realisation]
+{{ Output_every_realisation }}
+
+[Output bitmap]
+{{ Output_bitmap }}
+
+[Output infection tree]
+{{ Output_infection_tree }}
+
+[Only output non-extinct realisations]
+{{ Only_output_non_extinct_realisations }}
 
 [Bitmap scale]
 {{ Bitmap_scale }}
@@ -290,36 +266,37 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [Max number of infections]
 {{ Max_number_of_infections }}
 
+
 ===================================
 
-[Do Severity Analysis]
+[Do Severity Analysis]	
 {{ Do_Severity_Analysis }}
 
-[Mean_MildToRecovery]
+[Mean_MildToRecovery]	
 {{ Mean_MildToRecovery }}
-
-[Mean_ILIToRecovery]
+	
+[Mean_ILIToRecovery]	
 {{ Mean_ILIToRecovery }}
 
-[Mean_ILIToSARI]
+[Mean_ILIToSARI]	
 {{ Mean_ILIToSARI }}
 
 [Mean_SARIToRecovery]
 {{ Mean_SARIToRecovery }}
-
+	
 [Mean_SARIToDeath]
 {{ Mean_SARIToDeath }}
 
-[Mean_SARIToCritical]
+[Mean_SARIToCritical]	
 {{ Mean_SARIToCritical }}
-
-[Mean_CriticalToCritRecov]
+	
+[Mean_CriticalToCritRecov]	
 {{ Mean_CriticalToCritRecov }}
 
-[Mean_CriticalToDeath]
+[Mean_CriticalToDeath]	
 {{ Mean_CriticalToDeath }}
-
-[Mean_CritRecovToRecov]
+	
+[Mean_CritRecovToRecov]	
 {{ Mean_CritRecovToRecov }}
 
 [MeanTimeToTest]
@@ -358,106 +335,93 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 [CriticalToDeath_icdf]
 {% for value in mortality_curve %}{{ value }} {% endfor %}
 
+
 [CritRecovToRecov_icdf]
 {{ CritRecovToRecov_icdf0 }} {{ CritRecovToRecov_icdf1 }} {{ CritRecovToRecov_icdf2 }} {{ CritRecovToRecov_icdf3 }} {{ CritRecovToRecov_icdf4 }} {{ CritRecovToRecov_icdf5 }} {{ CritRecovToRecov_icdf6 }} {{ CritRecovToRecov_icdf7 }} {{ CritRecovToRecov_icdf8 }} {{ CritRecovToRecov_icdf9 }} {{ CritRecovToRecov_icdf10 }} {{ CritRecovToRecov_icdf11 }} {{ CritRecovToRecov_icdf12 }} {{ CritRecovToRecov_icdf13 }} {{ CritRecovToRecov_icdf14 }} {{ CritRecovToRecov_icdf15 }} {{ CritRecovToRecov_icdf16 }} {{ CritRecovToRecov_icdf17 }} {{ CritRecovToRecov_icdf18 }} {{ CritRecovToRecov_icdf19 }} {{ CritRecovToRecov_icdf20 }} 
+
+
 
 [Prop_Mild_ByAge]
 {{ Prop_Mild_ByAge0 }} {{ Prop_Mild_ByAge1 }} {{ Prop_Mild_ByAge2 }} {{ Prop_Mild_ByAge3 }} {{ Prop_Mild_ByAge4 }} {{ Prop_Mild_ByAge5 }} {{ Prop_Mild_ByAge6 }} {{ Prop_Mild_ByAge7 }} {{ Prop_Mild_ByAge8 }} {{ Prop_Mild_ByAge9 }} {{ Prop_Mild_ByAge10 }} {{ Prop_Mild_ByAge11 }} {{ Prop_Mild_ByAge12 }} {{ Prop_Mild_ByAge13 }} {{ Prop_Mild_ByAge14 }} {{ Prop_Mild_ByAge15 }} {{ Prop_Mild_ByAge16 }} 
 
+
 [Prop_ILI_ByAge]
 {{ Prop_ILI_ByAge0 }} {{ Prop_ILI_ByAge1 }} {{ Prop_ILI_ByAge2 }} {{ Prop_ILI_ByAge3 }} {{ Prop_ILI_ByAge4 }} {{ Prop_ILI_ByAge5 }} {{ Prop_ILI_ByAge6 }} {{ Prop_ILI_ByAge7 }} {{ Prop_ILI_ByAge8 }} {{ Prop_ILI_ByAge9 }} {{ Prop_ILI_ByAge10 }} {{ Prop_ILI_ByAge11 }} {{ Prop_ILI_ByAge12 }} {{ Prop_ILI_ByAge13 }} {{ Prop_ILI_ByAge14 }} {{ Prop_ILI_ByAge15 }} {{ Prop_ILI_ByAge16 }} 
+
 
 [Prop_SARI_ByAge]
 {{ Prop_SARI_ByAge0 }} {{ Prop_SARI_ByAge1 }} {{ Prop_SARI_ByAge2 }} {{ Prop_SARI_ByAge3 }} {{ Prop_SARI_ByAge4 }} {{ Prop_SARI_ByAge5 }} {{ Prop_SARI_ByAge6 }} {{ Prop_SARI_ByAge7 }} {{ Prop_SARI_ByAge8 }} {{ Prop_SARI_ByAge9 }} {{ Prop_SARI_ByAge10 }} {{ Prop_SARI_ByAge11 }} {{ Prop_SARI_ByAge12 }} {{ Prop_SARI_ByAge13 }} {{ Prop_SARI_ByAge14 }} {{ Prop_SARI_ByAge15 }} {{ Prop_SARI_ByAge16 }} 
 
+
 [Prop_Critical_ByAge]
 {{ Prop_Critical_ByAge0 }} {{ Prop_Critical_ByAge1 }} {{ Prop_Critical_ByAge2 }} {{ Prop_Critical_ByAge3 }} {{ Prop_Critical_ByAge4 }} {{ Prop_Critical_ByAge5 }} {{ Prop_Critical_ByAge6 }} {{ Prop_Critical_ByAge7 }} {{ Prop_Critical_ByAge8 }} {{ Prop_Critical_ByAge9 }} {{ Prop_Critical_ByAge10 }} {{ Prop_Critical_ByAge11 }} {{ Prop_Critical_ByAge12 }} {{ Prop_Critical_ByAge13 }} {{ Prop_Critical_ByAge14 }} {{ Prop_Critical_ByAge15 }} {{ Prop_Critical_ByAge16 }} 
+
 
 [CFR_Critical_ByAge]
 {{ CFR_Critical_ByAge0 }} {{ CFR_Critical_ByAge1 }} {{ CFR_Critical_ByAge2 }} {{ CFR_Critical_ByAge3 }} {{ CFR_Critical_ByAge4 }} {{ CFR_Critical_ByAge5 }} {{ CFR_Critical_ByAge6 }} {{ CFR_Critical_ByAge7 }} {{ CFR_Critical_ByAge8 }} {{ CFR_Critical_ByAge9 }} {{ CFR_Critical_ByAge10 }} {{ CFR_Critical_ByAge11 }} {{ CFR_Critical_ByAge12 }} {{ CFR_Critical_ByAge13 }} {{ CFR_Critical_ByAge14 }} {{ CFR_Critical_ByAge15 }} {{ CFR_Critical_ByAge16 }} 
 
+
 [CFR_SARI_ByAge]
 {{ CFR_SARI_ByAge0 }} {{ CFR_SARI_ByAge1 }} {{ CFR_SARI_ByAge2 }} {{ CFR_SARI_ByAge3 }} {{ CFR_SARI_ByAge4 }} {{ CFR_SARI_ByAge5 }} {{ CFR_SARI_ByAge6 }} {{ CFR_SARI_ByAge7 }} {{ CFR_SARI_ByAge8 }} {{ CFR_SARI_ByAge9 }} {{ CFR_SARI_ByAge10 }} {{ CFR_SARI_ByAge11 }} {{ CFR_SARI_ByAge12 }} {{ CFR_SARI_ByAge13 }} {{ CFR_SARI_ByAge14 }} {{ CFR_SARI_ByAge15 }} {{ CFR_SARI_ByAge16 }} 
 
-[CFR_ILI_ByAge]
-{{ CFR_ILI_ByAge0 }} {{ CFR_ILI_ByAge1 }} {{ CFR_ILI_ByAge2 }} {{ CFR_ILI_ByAge3 }} {{ CFR_ILI_ByAge4 }} {{ CFR_ILI_ByAge5 }} {{ CFR_ILI_ByAge6 }} {{ CFR_ILI_ByAge7 }} {{ CFR_ILI_ByAge8 }} {{ CFR_ILI_ByAge9 }} {{ CFR_ILI_ByAge10 }} {{ CFR_ILI_ByAge11 }} {{ CFR_ILI_ByAge12 }} {{ CFR_ILI_ByAge13 }} {{ CFR_ILI_ByAge14 }} {{ CFR_ILI_ByAge15 }} {{ CFR_ILI_ByAge16 }} 
-
-[Mean_ILIToDeath]
-{{ Mean_ILIToDeath }}
-
-[ILIToDeath_icdf]
-{{ ILIToDeath_icdf0 }} {{ ILIToDeath_icdf1 }} {{ ILIToDeath_icdf2 }} {{ ILIToDeath_icdf3 }} {{ ILIToDeath_icdf4 }} {{ ILIToDeath_icdf5 }} {{ ILIToDeath_icdf6 }} {{ ILIToDeath_icdf7 }} {{ ILIToDeath_icdf8 }} {{ ILIToDeath_icdf9 }} {{ ILIToDeath_icdf10 }} {{ ILIToDeath_icdf11 }} {{ ILIToDeath_icdf12 }} {{ ILIToDeath_icdf13 }} {{ ILIToDeath_icdf14 }} {{ ILIToDeath_icdf15 }} {{ ILIToDeath_icdf16 }} {{ ILIToDeath_icdf17 }} {{ ILIToDeath_icdf18 }} {{ ILIToDeath_icdf19 }} {{ ILIToDeath_icdf20 }} 
 
 
-[Mean child age gap]
-{{ Mean_child_age_gap }}
+==========================
+[Output every realisation]
+{{ Output_every_realisation }}
 
-[Min adult age]
-{{ Min_adult_age }}
+[Output bitmap]
+{{ Output_bitmap }}
 
-[Max MF partner age gap]
-{{ Max_MF_partner_age_gap }}
+[Output infection tree]
+{{ Output_infection_tree }}
 
-[Max FM partner age gap]
-{{ Max_FM_partner_age_gap }}
+[Only output non-extinct realisations]
+{{ Only_output_non_extinct_realisations }}
 
-[Min parent age gap]
-{{ Min_parent_age_gap }}
+[OutputAge]
+{{ OutputAge }}
 
-[Max parent age gap]
-{{ Max_parent_age_gap }}
+[OutputSeverityAdminUnit]
+{{ OutputSeverityAdminUnit }}
 
-[Max child age]
-{{ Max_child_age }}
+[OutputR0]
+{{ OutputR0 }}
 
-[One Child Two Pers Prob]
-{{ One_Child_Two_Pers_Prob }}
+[OutputControls]
+{{ OutputControls }}
 
-[Two Child Three Pers Prob]
-{{ Two_Child_Three_Pers_Prob }}
+[OutputCountry]
+{{ OutputCountry }}
 
-[One Pers House Prob Old]
-{{ One_Pers_House_Prob_Old }}
+[OutputAdUnitVar]
+{{ OutputAdUnitVar }}
 
-[Two Pers House Prob Old]
-{{ Two_Pers_House_Prob_Old }}
+[OutputHousehold]
+{{ OutputHousehold }}
 
-[One Pers House Prob Young]
-{{ One_Pers_House_Prob_Young }}
+[OutputInfType]
+{{ OutputInfType }}
 
-[Two Pers House Prob Young]
-{{ Two_Pers_House_Prob_Young }}
 
-[One Child Prob Youngest Child Under Five]
-{{ One_Child_Prob_Youngest_Child_Under_Five }}
+[OutputNonSeverity]
+{{ OutputNonSeverity }}
 
-[Two Children Prob Youngest Under Five]
-{{ Two_Children_Prob_Youngest_Under_Five }}
 
-[Prob Youngest Child Under Five]
-{{ Prob_Youngest_Child_Under_Five }}
+[OutputNonSummaryResults]
+{{ OutputNonSummaryResults }}
 
-[Zero Child Three Pers Prob]
-{{ Zero_Child_Three_Pers_Prob }}
+[Output incidence by administrative unit]
+{{ Output_incidence_by_administrative_unit }}
 
-[One Child Four Pers Prob]
-{{ One_Child_Four_Pers_Prob }}
+[Digital contact tracing trigger incidence per cell]
+{{ Digital_contact_tracing_trigger_incidence_per_cell }}
 
-[Young And Single Slope]
-{{ Young_And_Single_Slope }}
+[Case isolation trigger incidence per cell]
+{{ Case_isolation_trigger_incidence_per_cell }}
 
-[Young And Single]
-{{ Young_And_Single }}
+[Household quarantine trigger incidence per cell]
+{{ Household_quarantine_trigger_incidence_per_cell }}
 
-[No Child Pers Age]
-{{ No_Child_Pers_Age }}
 
-[Old Pers Age]
-{{ Old_Pers_Age }}
-
-[Three Child Five Pers Prob]
-{{ Three_Child_Five_Pers_Prob }}
-
-[Older Gen Gap]
-{{ Older_Gen_Gap }}
 
