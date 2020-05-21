@@ -124,7 +124,7 @@
 364.0
 
 [Relative household contact rate after quarantine]
-1.5774596669241483
+1.4422649730810373
 
 [Residual place contacts after household quarantine by place type]
 0.25 0.25 0.25 0.25 
@@ -133,7 +133,7 @@
 0.25
 
 [Household level compliance with quarantine]
-0.35071574942066636
+0.6549038105676659
 
 [Individual level compliance with quarantine]
 1.0

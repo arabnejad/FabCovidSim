@@ -67,7 +67,7 @@ vary = {
 #growth = use a nested quadrature rule (not required)
 #midpoint_level1 = use a single collocation point in the 1st iteration (not required)
 #dimension_adaptive = use a dimension adaptive sampler (required)
-sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=2,
+sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
                                 quadrature_rule="G")
 
 campaign.set_sampler(sampler)
@@ -79,4 +79,4 @@ sampler.save_state("covid_sampler_state.pickle")
 
 #run the UQ ensemble
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
-                    machine="eagle_vecma")
+                    machine="eagle_vecma", PilotJob=True)

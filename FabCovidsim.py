@@ -77,8 +77,10 @@ def CovidSim_ensemble(config,
 
 @task
 def run_adaptive_easyvvuq(config, 
-                                campaign_dir, 
-                                script = 'CovidSim', skip=0, ** args):
+                          campaign_dir, 
+                          script = 'CovidSim',
+                          skip=0, 
+                          ** args):
     # copy generated run folders to SWEEP directory
     # clean SWEEP, this part will be added to FabSim3.campaign2ensemble
     path_to_config = find_config_file_path(config)
@@ -94,7 +96,9 @@ def run_adaptive_easyvvuq(config,
     CovidSim_ensemble(config, script, **args)
     
 @task
-def get_adaptive_easyvvuq(config, campaign_dir, number_of_samples, **args):
+def get_adaptive_easyvvuq(config,
+                          campaign_dir,
+                          number_of_samples, **args):
     """
     Fetches sample output from host, copies results to adaptive EasyVVUQ work directory
     """
@@ -105,7 +109,10 @@ def get_adaptive_easyvvuq(config, campaign_dir, number_of_samples, **args):
     found = False
     dirs = os.listdir(env.local_results)
     for dir_i in dirs:
-        if config in dir_i:
+        #We are assuming here that the name of the directory with the runs dirs
+        #STARTS with the config name. e.g. <config_name>_eagle_vecma_28 and
+        #not PJ_header_<config_name>_eagle_vecma_28
+        if config == dir_i[0:len(config)]:
             found = True
             break
 

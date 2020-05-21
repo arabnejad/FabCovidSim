@@ -29,12 +29,13 @@ def fabsim(command, arguments, machine = 'localhost'):
 def fetch_results(machine='localhost'):
     fabsim("fetch_results", "", machine)    
 
-def run_uq_ensemble(config, campaign_dir, script, machine='localhost', skip = 0, **args):
+def run_uq_ensemble(config, campaign_dir, script, machine='localhost', skip = 0,
+                    PilotJob = False, **args):
     """
     Launches a UQ ensemble.
     """
     # sim_ID = campaign_dir.split('/')[-1]
-    arguments = "{},campaign_dir={},script={},skip={}".format(config, campaign_dir, script, skip)
+    arguments = "{},campaign_dir={},script={},skip={},PilotJob={}".format(config, campaign_dir, script, skip, PilotJob)
     fabsim("run_adaptive_easyvvuq", arguments, machine=machine)
     
 def get_uq_samples(config, campaign_dir, number_of_samples, machine = 'localhost'):
