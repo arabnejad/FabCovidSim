@@ -286,6 +286,16 @@
             "info": {
                 "num_collated": 0
             }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
         }
     ]
 }
