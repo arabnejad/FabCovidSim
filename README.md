@@ -122,6 +122,7 @@ sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
 
 Here:
 
+* `polynomial_order=1`: do not change, will be adaptively increased for influential parameters.
 * `quadrature_rule="C":`selects the Clenshaw Curtis quadrature rule. This not required, although it is common.
 * `sparse = True`: selects a sparse grid. This is required.
 * `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
