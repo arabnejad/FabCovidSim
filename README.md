@@ -102,3 +102,20 @@ To retrieve the results from the remote machine, the following is executed in `s
 fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
                    machine='eagle_vecma')
 ```
+
+## Running a dimension-adaptive EasyVVUQ - CovidSim campaign via Python
+
+The Python scripts for a dimension-adaptive sampling plan are located in `adaptive_covid_easyvvuq/`. The first two are almost the same as for a standard EasyVVUQ campaign
+
+1. `adaptive_covid_easyvvuq/covid_init_SC.py`: a standard EasyVVUQ campaign up to and including job submission.
+2. `adaptive_covid_easyvvuq/covid_analyse_SC.py`: job retrieval and post processing.
+
+The main difference is that in `covid_init_SC.py` the sampler must be chosen as
+
+```python
+sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
+                                quadrature_rule="C",
+                                sparse=True, growth=True,
+                                midpoint_level1=True,
+                                dimension_adaptive=True)
+```
