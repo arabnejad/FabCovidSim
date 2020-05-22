@@ -95,4 +95,10 @@ import fabsim3_cmd_api as fab
 fab.run_uq_ensemble(config, campaign.campaign_dir, script="CovidSim",
                     machine="eagle_vecma", PilotJob=True)
 ```
-Here, `config` is the name of the config file directory that is used for the code, which are located in `config_files/`. Furthermore `script="Covid_Sim"` refers to `/templates/CovidSim`, which contains the instruction to execute a single job.
+Here, `config` is the name of the config file directory that is used for the code, which are located in `config_files/`. Furthermore `script="CovidSim"` refers to `/templates/CovidSim`, which contains the instructions to execute a single job.
+
+To retrieve the results from the remote machine, the following is executed in `standard_covid_easyvvuq/covid_analyse_SC.py`:
+``` python
+fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
+                   machine='eagle_vecma')
+```
