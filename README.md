@@ -80,11 +80,11 @@ eagle_vecma:
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,PilotJob=True`
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,replicas=5`
 
-## Running a standard EasyVVUQ - CovidSim via Python
+## Running a standard EasyVVUQ - CovidSim campaign via Python
 
 This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By 'standard' we mean non-dimension adaptive, where each input parameter is sampled equally. There are two Python scripts that need to be executed:
 
-1. `standard_covid_easyvvuq/covid_init_SC.py`: A standard EasyVVUQ campaign up to and including job submission.
+1. `standard_covid_easyvvuq/covid_init_SC.py`: a standard EasyVVUQ campaign up to and including job submission.
 2. `standard_covid_easyvvuq/covid_analyse_SC.py`: job retrieval and post processing.
 
 The `FabCovidSim` plugin is called from within `standard_covid_easyvvuq/covid_init_SC.py` via
