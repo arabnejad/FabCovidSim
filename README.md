@@ -82,6 +82,8 @@ eagle_vecma:
 
 ## Running a standard EasyVVUQ - CovidSim campaign via Python
 
+NOTE: As is stands now, everything below needs EasyVVUQ functionality which is not yet present in any branch except `sparse_grid_work`, so check out this branch first.
+
 This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By 'standard' we mean non-dimension adaptive, where each input parameter is sampled equally. There are two Python scripts that need to be executed:
 
 1. `standard_covid_easyvvuq/covid_init_SC.py`: a standard EasyVVUQ campaign up to and including job submission.
@@ -93,4 +95,4 @@ import fabsim3_cmd_api as fab
 fab.run_uq_ensemble(config, campaign.campaign_dir, script="CovidSim",
                     machine="eagle_vecma", PilotJob=True)
 ```
-Here, `config` is the name of the config file directory that is used for the code, which are located in `config_files/`.
+Here, `config` is the name of the config file directory that is used for the code, which are located in `config_files/`. Furthermore `script="Covid_Sim"` refers to `/templates/CovidSim`, which contains the instruction to execute a single job.
