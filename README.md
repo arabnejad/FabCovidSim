@@ -90,7 +90,7 @@ This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. 
 The `FabCovidSim` plugin is called from within `standard_covid_easyvvuq/covid_init_SC.py` via
 ``` python
 import fabsim3_cmd_api as fab
-fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
+fab.run_uq_ensemble(config, campaign.campaign_dir, script="CovidSim",
                     machine="eagle_vecma", PilotJob=True)
 ```
-Here, `config` is the name of the config file directory that is used for the code.
+Here, `config` is the name of the config file directory that is used for the code, which are located in `config_files/`.
