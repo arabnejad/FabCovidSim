@@ -102,8 +102,16 @@ if __name__ == "__main__":
 
     args = parse_args()
     
-    vary = ["Household_level_compliance_with_quarantine",
-            "Relative_household_contact_rate_after_quarantine"]
+    vary = ["Relative_household_contact_rate_after_closure",
+        "Relative_spatial_contact_rate_after_closure",
+        "Relative_household_contact_rate_after_quarantine",
+        "Residual_spatial_contacts_after_household_quarantine",
+        "Household_level_compliance_with_quarantine",
+        "Individual_level_compliance_with_quarantine",
+        "Proportion_of_detected_cases_isolated",
+        "Residual_contacts_after_case_isolation",
+        "Relative_household_contact_rate_given_social_distancing",
+        "Relative_spatial_contact_rate_given_social_distancing"]
 
     d = len(vary)
     a = np.ones(d)

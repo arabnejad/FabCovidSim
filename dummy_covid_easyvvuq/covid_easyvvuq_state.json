@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////tmp/covid1icya1wc/campaign.db",
+    "db_location": "sqlite:////tmp/covida1ri_geu/campaign.db",
     "db_type": "sql",
     "active_app": "covid_p_PC7_CI_HQ_SD",
     "campaign_name": "covid",
-    "campaign_dir": "covid1icya1wc",
+    "campaign_dir": "covida1ri_geu",
     "log": [
         {
             "element": {
@@ -23,7 +23,7 @@
                 "category": "sampling"
             },
             "info": {
-                "num_added": 4,
+                "num_added": 20,
                 "replicas": 1
             }
         },
@@ -34,7 +34,7 @@
                 "category": "collation"
             },
             "info": {
-                "num_collated": 4
+                "num_collated": 20
             }
         },
         {
@@ -56,6 +56,111 @@
             },
             "info": {
                 "num_collated": 2
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 6,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 6
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 8,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 8
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 10,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 10
             }
         },
         {

@@ -26,17 +26,14 @@ params_p_PC7_CI_HQ_SD = json.load(open(home + '/../templates/params_p_PC7_CI_HQ_
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
 
-"""
-TODO: TEST IF template MUST BE REMOVED BELOW
-"""
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(         
-        template_fname=home + '/../templates/template_p_PC7_CI_HQ_SD.txt',
+        template_fname=home + '/../templates/p_PC7_CI_HQ_SD.txt',
         delimiter='$',
-        target_filename='param_files/template_p_PC7_CI_HQ_SD.txt'),
+        target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/template_preUK_R0=2.0.txt',
+        template_fname=home + '/../templates/preUK_R0=2.0.txt',
         delimiter='$',
         target_filename='param_files/preUK_R0=2.0.txt')
 )
@@ -59,8 +56,16 @@ campaign.set_app("covid_p_PC7_CI_HQ_SD")
 
 #parameters to vary
 vary = {
-    "Household_level_compliance_with_quarantine": cp.Uniform(0.3, 0.75),
-    "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.4, 1.6),
+    "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
+    "Relative_spatial_contact_rate_after_closure": cp.Uniform(1.25*0.8, 1.25*1.2),
+    "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.5*0.8, 1.5*1.2),
+    "Residual_spatial_contacts_after_household_quarantine": cp.Uniform(0.25*0.8, 0.25*1.2),
+    "Household_level_compliance_with_quarantine": cp.Uniform(0.5, 0.9),
+    "Individual_level_compliance_with_quarantine": cp.Uniform(0.9, 1.0),
+    "Proportion_of_detected_cases_isolated":cp.Uniform(0.85, 0.95),
+    "Residual_contacts_after_case_isolation":cp.Uniform(0.25*0.8, 0.25*1.2),
+    "Relative_household_contact_rate_given_social_distancing":cp.Uniform(1.1, 1.25*1.2),
+    "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.05, 0.15)
 }
 
 #=================================
@@ -85,4 +90,4 @@ sampler.save_state("covid_sampler_state.pickle")
 
 #run the UQ ensemble
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
-                    machine="eagle_vecma")
+                    machine="eagle_vecma", PilotJob = False)

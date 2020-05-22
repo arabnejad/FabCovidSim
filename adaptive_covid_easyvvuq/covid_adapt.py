@@ -11,11 +11,12 @@ The look-ahead step and the adaptation step can be executed multiple times:
 look ahead, adapt, look ahead, adapt, etc
 ==============================================================================
 """
-
+       
 import easyvvuq as uq
 import os
 import fabsim3_cmd_api as fab
 import matplotlib.pyplot as plt
+import numpy as np
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
@@ -51,6 +52,17 @@ analysis.save_state("covid_analysis_state.pickle")
 #apply analysis
 campaign.apply_analysis(analysis)
 results = campaign.get_last_analysis()
-print(results['statistical_moments'])
-analysis.plot_grid()
-plt.show()
+
+#plot mean +/- std dev
+fig = plt.figure()
+ax = fig.add_subplot(111, xlabel="days", ylabel=output_columns[0])
+mean = results["statistical_moments"][output_columns[0]]["mean"]
+std = results["statistical_moments"][output_columns[0]]["std"]
+ax.plot(mean)
+ax.plot(mean + std, '--r')
+ax.plot(mean - std, '--r')
+plt.tight_layout()
+
+#plot max quad order per dimension. Gives an idea of which
+#variables are important
+analysis.adaptation_histogram()

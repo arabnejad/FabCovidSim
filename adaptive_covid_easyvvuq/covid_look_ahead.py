@@ -50,4 +50,4 @@ sampler.save_state("covid_sampler_state.pickle")
 #skip (int) = the number of previous samples: required to avoid recomputing
 #already computed samples from a previous iteration
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
-                    machine="eagle_vecma", skip=skip)
+                    machine="eagle_vecma", skip=skip, PilotJob=True)
