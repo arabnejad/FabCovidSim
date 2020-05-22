@@ -107,8 +107,8 @@ fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
 
 The Python scripts for a dimension-adaptive sampling plan are located in `adaptive_covid_easyvvuq/`. The first two are almost the same as for a standard EasyVVUQ campaign
 
-1. `adaptive_covid_easyvvuq/covid_init_SC.py`: a standard EasyVVUQ campaign up to and including job submission.
-2. `adaptive_covid_easyvvuq/covid_analyse_SC.py`: job retrieval and post processing.
+1. `adaptive_covid_easyvvuq/covid_init.py`: a standard EasyVVUQ campaign up to and including job submission.
+2. `adaptive_covid_easyvvuq/covid_analyse.py`: job retrieval and post processing.
 
 The main difference is that in `covid_init_SC.py` the sampler must be chosen as
 
