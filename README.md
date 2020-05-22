@@ -3,7 +3,7 @@
 
 
 # FabCovidsim
-This is a FabSim3 plugin for Covid-19 simulation
+This is a FabSim3 /EasyVVUQ plugin for Covid-19 simulation
 
 
 ## Dependencies:
@@ -55,7 +55,7 @@ eagle_vecma:
 ```    
    <br/> _NOTE: you can changes the values of these attributes, but do not change the modules load list._
   
-## Testing
+## Job submission via command line
 1. To run a single job, simply type:
   >``` sh
   > fab <qcg/eagle_vecma> CovidSim:UK_sample[,memory=MemorySize][,label=your_lable]
@@ -80,4 +80,17 @@ eagle_vecma:
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,PilotJob=True`
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,replicas=5`
 
+## Running a standard EasyVVUQ - CovidSim via Python
 
+This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By 'standard' we mean non-dimension adaptive, where each input parameter is sampled equally. There are two Python scripts that need to be executed:
+
+1. `standard_covid_easyvvuq/covid_init_SC.py`: A standard EasyVVUQ campaign up to and including job submission.
+2. `standard_covid_easyvvuq/covid_analyse_SC.py`: job retrieval and post processing.
+
+The `FabCovidSim` plugin is called from within `standard_covid_easyvvuq/covid_init_SC.py` via
+``` python
+import fabsim3_cmd_api as fab
+fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
+                    machine="eagle_vecma", PilotJob=True)
+```
+Here, `config` is the name of the config file directory that is used for the code.
