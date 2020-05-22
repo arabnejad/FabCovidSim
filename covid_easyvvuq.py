@@ -74,9 +74,6 @@ class CustomEncoder(uq.encoders.JinjaEncoder, encoder_name='CustomEncoder'):
 
         super().encode(params, target_dir, fixtures)
 
-
-
-
 class custom_redirection(object):
 
     def __init__(self, *files):
@@ -113,17 +110,20 @@ def init_covid_campaign():
     # Create an encoder and decoder
     directory_tree = {'param_files': None}
 
-    multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
+    multiencoder = uq.encoders.MultiEncoder(
         uq.encoders.DirectoryBuilder(tree=directory_tree),
+<<<<<<< HEAD
         uq.encoders.GenericEncoder(
             template_fname=get_plugin_path(
                 "FabCovidsim") + '/templates/template_p_PC7_CI_HQ_SD.txt',
             delimiter='$',
             target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
         uq.encoders.GenericEncoder(
+=======
+        CustomEncoder(
+>>>>>>> 0901fa84a719d6a1a6d01add732eb0863bdbd053
             template_fname=get_plugin_path(
                 "FabCovidsim") + '/templates/template_preUK_R0=2.0.txt',
-            delimiter='$',
             target_filename='param_files/preUK_R0=2.0.txt')
     )
 
@@ -133,14 +133,14 @@ def init_covid_campaign():
     collater = uq.collate.AggregateSamples(average=False)
 
     # Add the app
-    my_campaign.add_app(name="covid_p_PC7_CI_HQ_SD",
+    my_campaign.add_app(name="covid",
                         params=params,
-                        encoder=multiencoder_p_PC7_CI_HQ_SD,
+                        encoder=multiencoder,
                         collater=collater,
                         decoder=decoder)
     # Set the active app to be cannonsim (this is redundant when only one app
     # has been added)
-    my_campaign.set_app("covid_p_PC7_CI_HQ_SD")
+    my_campaign.set_app("covid")
 
     # Create a collation element for this campaign
     vary = {
