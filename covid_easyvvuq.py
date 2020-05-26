@@ -112,16 +112,7 @@ def init_covid_campaign():
 
     multiencoder = uq.encoders.MultiEncoder(
         uq.encoders.DirectoryBuilder(tree=directory_tree),
-<<<<<<< HEAD
-        uq.encoders.GenericEncoder(
-            template_fname=get_plugin_path(
-                "FabCovidsim") + '/templates/template_p_PC7_CI_HQ_SD.txt',
-            delimiter='$',
-            target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
-        uq.encoders.GenericEncoder(
-=======
         CustomEncoder(
->>>>>>> 0901fa84a719d6a1a6d01add732eb0863bdbd053
             template_fname=get_plugin_path(
                 "FabCovidsim") + '/templates/template_preUK_R0=2.0.txt',
             target_filename='param_files/preUK_R0=2.0.txt')
@@ -145,11 +136,11 @@ def init_covid_campaign():
     # Create a collation element for this campaign
     vary = {
         "Symptomatic_infectiousness_relative_to_asymptomatic": cp.Uniform(1.0, 2.5),
-        "p_symptomatic": cp.Uniform(0.1, 0.9),
-        "Latent_period": cp.Uniform(2.0, 16.0), # days
-        "mortality_factor": cp.Uniform(0.5, 1.5),
+        "p_symptomatic": cp.Uniform(0.5, 0.9),
+        "Latent_period": cp.Uniform(3.0, 7.0), # days
+        "mortality_factor": cp.Uniform(0.8, 1.2),
     }
-    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1)
+    my_sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=3)
 
     my_campaign.set_sampler(my_sampler)
     my_campaign.draw_samples()
