@@ -8,7 +8,7 @@
     "type": "integer"
   },
   "Place_closure_start_time": {
-    "default": 7.0,
+    "default": 0.0,
     "type": "float"
   },
   "Place_closure_second_start_time": {
@@ -620,14 +620,6 @@
     "type": "float"
   },
   "Relative_place_contact_rate_given_social_distancing_by_place_type1": {
-    "default": 1.0,
-    "type": "float"
-  },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type2": {
-    "default": 0.5,
-    "type": "float"
-  },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type3": {
     "default": 0.5,
     "type": "float"
   },

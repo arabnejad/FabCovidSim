@@ -7,7 +7,7 @@
 ======== PLACE CLOSURE PARAMETERS
 
 [Place closure start time]
-7
+0
 
 [Place closure second start time]
 100000
