@@ -230,3 +230,4 @@ and
 ```python
 l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.5]]
 ```
+Notice that this makes a "cross" in the input space. A standard EasyVVUQ campaign always has 1 `l_norm`, such as for instance `[2,2]` leads to a full "square" of points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`.
