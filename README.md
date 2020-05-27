@@ -154,12 +154,18 @@ Here:
 * `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. Keep this fixed for now, but this might change later. Perhaps we could start the dimenion-adaptivity from an existing sampling plan.
 * `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
 
-The other difference with respect to a standard EasyVVUQ campaign, is the need to save the complete state of the sampler and analysis class. Right now EasyVVUQ does not do this, it only saves part of the sampler to the database. As a temporary hacky solution, we can now save their state to a `pickle` file via:
+The other difference with respect to a standard EasyVVUQ campaign, is the need to save the complete state of the sampler and analysis class. In an adaptive setting we need information from the previous iteration to determine where to go next. Right now EasyVVUQ does not do this, it only saves part of the sampler to the database. As a temporary hacky solution, we can now save their state to a `pickle` file via:
 
 ```python
 sampler.save_state("states/covid_sampler_state.pickle")
 analysis.save_state("states/covid_analysis_state.pickle")
 ```
 
+To recap, just execute `dummy_init.py` once, followed by `dummy_analyse.py`, which is also executed once. The latter retrieves the samples and stores the analysis object. 
 
+Next, the following 2 files are executed, multiple times and one after the other:
 
+1. `dummy_covid_easyvvuq/dummy_look_ahead.py`: Takes the current configuration of points, computes so-called adimissble
+points in the `look_forward` subroutine. These points are used in the following adaptation step to decide along which dimension to place more samples.
+2. `dummy_covid_easyvvuq/dummy_adapt.py`: Takes the admissible points computed in the `look_ahead` step to decide along 
+which dimension to place more samples.
