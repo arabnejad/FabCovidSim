@@ -230,4 +230,34 @@ and
 ```python
 l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.5]]
 ```
-Notice that this makes a "cross" in the input space. A standard EasyVVUQ campaign always has 1 `l_norm`, such as for instance `[2,2]` leads to a full "square" of points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`.
+Notice that this makes a "cross" of 5 points in the input space. A standard EasyVVUQ campaign always has a single `l_norm`, such as for instance `[2,2]`, which leads to a full "square" of 9 points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`. Sparse grids on the other hand, build the grid from the bottom up, using a linear combination of `l_norm` multi indices, which can lead to more sparse sampling plans. 
+
+The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are sampled using `fab.run_uq_ensemble`.
+
+Then, `dummy_adapt.py` is executed:
+```python
+state_file = 'states/covid_easyvvuq_state.json'
+campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
+print('========================================================')
+print('Reloaded campaign', campaign.campaign_dir.split('/')[-1])
+print('========================================================')
+sampler = campaign.get_active_sampler()
+sampler.load_state("states/covid_sampler_state.pickle")
+campaign.set_sampler(sampler)
+analysis = uq.analysis.SCAnalysis(sampler=sampler, qoi_cols=output_columns)
+analysis.load_state("states/covid_analysis_state.pickle")
+
+fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
+                   machine='localhost')
+campaign.collate()
+
+#compute the error at all admissible points, select direction with
+#highest error and add that direction to the grid
+data_frame = campaign.get_collation_result()
+analysis.adapt_dimension(output_columns[0], data_frame)
+
+#save everything
+campaign.save_state("states/covid_easyvvuq_state.json")
+sampler.save_state("states/covid_sampler_state.pickle")
+analysis.save_state("states/covid_analysis_state.pickle")
+```
