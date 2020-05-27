@@ -276,7 +276,38 @@ for xi in admissible_idx:
 The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
 
 **Note**: if you want to do post processing, do it in `dummy_adapt.py`.
-**Note 2**: the Sobol indices may become inaccurate. I think this is due to teh fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
 
+**Note 2**: the Sobol indices may become inaccurate. I think this is due to imbalance in sampling density, i.e. the fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
 
+To extract sensitivity information, we can just look at which multi indices, and by extension which parameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). This gives
 
+No refinement yet (after `dummy_init.py` and `dummy_analyse.py`)
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt0.png)
+
+First refinement step
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt1.png)
+
+Second refinement step
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt2.png)
+
+Third refinement step
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt3.png)
+
+Fourth refinement step
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt4.png)
+
+Remember that the Dummy model wa created such that the order of importance was the same as the order of parameters in the `vary` dict. The figures above show that the dimension adaptive samples does pick up on this. Note however that from the 3rd to the 4th refinement, there seems to be no change. However, if we examine `analysis.l_norm`:
+
+```python
+array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
+       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+       [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [2, 2, 1, 1, 1, 1, 1, 1, 1, 1]])
+```
+we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index.
