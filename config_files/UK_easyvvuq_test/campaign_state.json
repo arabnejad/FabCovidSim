@@ -1,0 +1,20 @@
+{
+    "db_location": "sqlite:////tmp/covid-sim7xfq9lzf/campaign.db",
+    "db_type": "sql",
+    "active_app": "covid_PC_CI_HQ_SD",
+    "campaign_name": "covid-sim",
+    "campaign_dir": "covid-sim7xfq9lzf",
+    "log": [
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 16,
+                "replicas": 1
+            }
+        }
+    ]
+}
