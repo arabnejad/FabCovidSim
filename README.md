@@ -263,7 +263,7 @@ sampler.save_state("states/covid_sampler_state.pickle")
 analysis.save_state("states/covid_analysis_state.pickle")
 ```
 
-**In a nutshell, this 1) Loads everything (campaign, sampler, analysis); 2) retrieves the new samples from the remote; 3) call `analysis.adapt_dimension` 4) stores everything.**
+**In a nutshell, this 1) loads everything (campaign, sampler, analysis); 2) retrieves the new samples from the remote; 3) call `analysis.adapt_dimension` 4) stores everything.**
 
 The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. In code this reads as
 ```python
@@ -276,3 +276,7 @@ for xi in admissible_idx:
 The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
 
 **Note**: if you want to do post processing, do it in `dummy_adapt.py`.
+**Note 2**: the Sobol indices may become inaccurate. I think this is due to teh fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
+
+
+
