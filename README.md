@@ -312,9 +312,9 @@ Remember that the Dummy model was created such that the order of importance was 
 
 ```python
 array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
-       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
        [2, 2, 1, 1, 1, 1, 1, 1, 1, 1]])
 ```
 we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index. Note that this means that the algorithmn is not necessarily a 'one-at-a-time' refinement, and that multiple inputs can be refined during the same iteration. Visualizing higher-order refinements is a bit tricky though, suggestions are welcome.
