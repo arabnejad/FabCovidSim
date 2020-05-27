@@ -151,6 +151,6 @@ Here:
 * `quadrature_rule="C":`selects the Clenshaw Curtis quadrature rule. This not required, although it is common.
 * `sparse = True`: selects a sparse grid. This is required.
 * `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
-* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. keep this fixed for now, but might change later.
+* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. keep this fixed for now, but this might change later. Perhaps we could start the dimenion-adaptivity from an existing sampling plan.
 * `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
 
