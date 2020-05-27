@@ -168,7 +168,7 @@ Next, the following 2 files are executed, multiple times and one after the other
 1. `dummy_covid_easyvvuq/dummy_look_ahead.py`: Takes the current configuration of points, computes so-called adimissble
 points in the `look_forward` subroutine. These points are used in the following adaptation step to decide along which dimension to place more samples.
 2. `dummy_covid_easyvvuq/dummy_adapt.py`: Takes the admissible points computed in the `look_ahead` step to decide along 
-which dimension to place more samples. Update the configuration of points, and return to step 2.
+which dimension to place more samples. Update the configuration of points, and return to `look_ahead`step.
 
 The code for the `look_ahead` step is given by:
 ```python
