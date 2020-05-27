@@ -263,4 +263,12 @@ sampler.save_state("states/covid_sampler_state.pickle")
 analysis.save_state("states/covid_analysis_state.pickle")
 ```
 
-**Basically this 1) Loads everything (campaign, sampler, analysis); 2) retrieves the new samples from the remote; 3) call `analysis.adapt_dimension` 4) stores everything.**
+**In a nutshell, this 1) Loads everything (campaign, sampler, analysis); 2) retrieves the new samples from the remote; 3) call `analysis.adapt_dimension` 4) stores everything.**
+
+The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. In code this reads as
+```python
+                #find the location of the current xi in the global grid
+                idx = np.where((xi == self.sampler.xi_d).all(axis=1))[0][0]
+                #hierarchical surplus error at xi
+                hier_surplus = samples[idx] - self.surrogate(qoi, xi)
+```
