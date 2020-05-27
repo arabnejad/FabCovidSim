@@ -82,7 +82,7 @@ eagle_vecma:
 
 ## Running a standard EasyVVUQ - CovidSim campaign via Python
 
-NOTE: As is stands now, everything below needs EasyVVUQ functionality which is not yet present in any branch except `sparse_grid_work`, so check out this branch first.
+NOTE: As is stands now, everything below needs EasyVVUQ functionality present in the `dev` branch, so check out this branch first.
 
 This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By 'standard' we mean non-dimension adaptive, where each input parameter is sampled equally. There are two Python scripts that need to be executed:
 
@@ -105,12 +105,38 @@ fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
 
 ## Running a dimension-adaptive EasyVVUQ - CovidSim campaign via Python
 
-The Python scripts for a dimension-adaptive sampling plan are located in `adaptive_covid_easyvvuq/`. The first two are almost the same as for a standard EasyVVUQ campaign
+The Python scripts for a dimension-adaptive sampling plan are located in `adaptive_covid_easyvvuq/` and `dummy_covid_easyvuq`. The former will run CovidSim, the latter will take the same input files but instead of calling CovidSim, it'll run a simple analytic model. The tutorial is demonstrated on the dummy model, which you can just quickly run on your localhost to get a feel for the dimension adaptive sampler. To run the dummy model, add the following line to `machines_user.yml`:
 
-1. `adaptive_covid_easyvvuq/covid_init.py`: a standard EasyVVUQ campaign up to and including job submission.
-2. `adaptive_covid_easyvvuq/covid_analyse.py`: job retrieval and post processing.
+```
+localhost:
+  covid_dummy_exec: "<your fab home dir>/plugins/FabCovidsim/config_files/dummy_covid/run_sample.py"
+```
 
-The main difference is that in `covid_init_SC.py` the sampler must be chosen as
+The dummy model varies:
+```
+#parameters to vary
+vary = {
+    "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
+    "Relative_spatial_contact_rate_after_closure": cp.Uniform(1.25*0.8, 1.25*1.2),
+    "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.5*0.8, 1.5*1.2),
+    "Residual_spatial_contacts_after_household_quarantine": cp.Uniform(0.25*0.8, 0.25*1.2),
+    "Household_level_compliance_with_quarantine": cp.Uniform(0.5, 0.9),
+    "Individual_level_compliance_with_quarantine": cp.Uniform(0.9, 1.0),
+    "Proportion_of_detected_cases_isolated":cp.Uniform(0.85, 0.95),
+    "Residual_contacts_after_case_isolation":cp.Uniform(0.25*0.8, 0.25*1.2),
+    "Relative_household_contact_rate_given_social_distancing":cp.Uniform(1.1, 1.25*1.2),
+    "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.05, 0.15)
+}
+```
+
+These same parameters are hard coded in the analytic dummy model, so if you select different ones, remember to also change `run_sample.py`. In any case it doesn't matter much, since the analytic model is set up in such a way that the first parameter is the most important, then the second, then the third etc. If working properly, the dimension-adaptive sampler should pick up on this sensitivity, and place more samples along the first couple of directions, while ignoring the last parameters after the initial samples.
+
+To place these initial samples, execute the first files which are almost the same as for a standard EasyVVUQ campaign:
+
+1. `dummy_covid_easyvvuq/dummy_init.py`: an almost standard EasyVVUQ campaign up to and including job submission.
+2. `dummy_covid_easyvvuq/dummy_analyse.py`: job retrieval and post processing.
+
+The main difference is that in `dummy_init.py` the sampler must be chosen as
 
 ```python
 sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
@@ -119,7 +145,6 @@ sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
                                 midpoint_level1=True,
                                 dimension_adaptive=True)
 ```
-
 Here:
 
 * `polynomial_order=1`: do not change, will be adaptively increased for influential parameters.
