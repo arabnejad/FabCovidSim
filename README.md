@@ -276,7 +276,13 @@ for xi in admissible_idx:
 The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
 
 **Note**: if you want to do post processing, do it in `dummy_adapt.py`.
-**Note 2**: the Sobol indices may become inaccurate. I think this is due to teh fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
+
+**Note 2**: the Sobol indices may become inaccurate. I think this is due to imbalance in sampling density, i.e. the fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
+
+To extract sensitivity information, we can just look at which multi indices, and by extension whichparameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). This gives
+
+
+
 
 
 
