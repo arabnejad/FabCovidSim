@@ -285,7 +285,8 @@ The surplus is therefore used as a local error estimator, and the multi index in
 
 **Note 2**: the Sobol indices may become inaccurate. I think this is due to imbalance in sampling density, i.e. the fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
 
-To extract sensitivity information, we can just look at which multi indices, and by extension which parameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). This gives
+To extract sensitivity information, we can just look at which multi indices, and by extension which parameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). Since we've set `polynomial_order=1` and `midpoint_level1 = True`
+in the Sampler creation (`dummy_init.py`), all points start with a maxquad order of 1:
 
 No refinement yet (after `dummy_init.py` and `dummy_analyse.py`)
 
