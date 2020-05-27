@@ -205,3 +205,5 @@ fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',
                     machine="localhost", skip=skip)
 ```
 Basically, all this does is 1) load everything (campaign, sampler, analysis); 2) call `sampler.look_ahead`; 3) store everything again; 4) run ensemble.
+
+Some parameters need a bit more explaining. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. This is required because `fab.run_uq_ensemble` calls the `campaign2ensemble` function of Fabsim. This copies the EasyVVUQ runs from `campaign.campaign_dir` to the Fabsim config directory, `<your fabsim home dir>/plugins/FabCovidsim/config_files/dummy_covid/SWEEP`
