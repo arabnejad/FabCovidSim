@@ -212,4 +212,21 @@ The main function call here is `sampler.look_ahead(analysis.l_norm)`. First, `l_
 ``` python
 l_norm = array([[1, 1]])
 ```
-means we have 2 input parameters, both of which have a 1D quadrature rule of order 1. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 1. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`.
+means we have 2 input parameters, both of which have a 1D quadrature rule of order 1. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 1. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`. If on the other hand we have
+``` python
+l_norm = array([[1, 1],
+                [1, 2],
+                [2, 1]])
+```
+we are building a grid using a linear combination of 3 tensor products. If our 1D quadrature rule generates `x = [0.0, 0.5, 1.0]` for order 2, our grid consistis of the points:
+```python 
+l_norm = [1, 1]  ==> [0.5] x [0.5] = [[0.5, 0.5]]
+```
+and
+```python
+l_norm = [1, 2]  ==> [0.5] x [0.0, 0.5, 1.0] = [[0.5, 0.0], [0.5, 0.5], [0.5, 1.0]]
+```
+and
+```python
+l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.5]]
+```
