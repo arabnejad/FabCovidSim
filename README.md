@@ -267,8 +267,12 @@ analysis.save_state("states/covid_analysis_state.pickle")
 
 The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. In code this reads as
 ```python
-                #find the location of the current xi in the global grid
-                idx = np.where((xi == self.sampler.xi_d).all(axis=1))[0][0]
-                #hierarchical surplus error at xi
-                hier_surplus = samples[idx] - self.surrogate(qoi, xi)
+for xi in admissible_idx:
+  #find the location of the current xi in the global grid
+  idx = np.where((xi == self.sampler.xi_d).all(axis=1))[0][0]
+  #hierarchical surplus error at xi
+  hier_surplus = samples[idx] - self.surrogate(qoi, xi)
 ```
+The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
+
+**Note**: if you want to do post processing, do it in `dummy_adapt.py`.
