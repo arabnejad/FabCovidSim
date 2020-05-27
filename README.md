@@ -300,3 +300,14 @@ Third refinement step
 Fourth refinement step
 
 ![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt4.png)
+
+Remember that the Dummy model wa created such that the order of importance was the same as the order of parameters in the `vary` dict. The figures above show that the dimension adaptive samples does pick up on this. Note however that from the 3rd to the 4th refinement, there seems to be no change. However, if we examine `analysis.l_norm`:
+
+```python
+array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
+       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+       [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [2, 2, 1, 1, 1, 1, 1, 1, 1, 1]])
+```
+we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index.
