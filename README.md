@@ -204,7 +204,7 @@ sampler.save_state("states/covid_sampler_state.pickle")
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',
                     machine="localhost", skip=skip)
 ```
-Basically, all this does is 1) load everything (campaign, sampler, analysis); 2) call `sampler.look_ahead`; 3) store everything again; 4) run ensemble.
+**Basically, all this does is 1) load everything (campaign, sampler, analysis); 2) call `sampler.look_ahead`; 3) store everything again; 4) run ensemble.**
 
 Some parameters need a bit more explaining. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. This is required because `fab.run_uq_ensemble` calls the `campaign2ensemble` function of Fabsim. This copies the EasyVVUQ runs from `campaign.campaign_dir` to the Fabsim config sweep directory, `<your fabsim home dir>/plugins/FabCovidsim/config_files/dummy_covid/SWEEP`. All runs in this directory will be executed. Without modification, we would therefore be executing old runs from the 2nd time we execute `dummy_look_ahead.py` onward. By setting `skip=sampler.count`, we first delete all run directies `SWEEP/Run_X` for `X <= skip`, before we run the ensemble, therefore only executing new samples. If there's a better way of doing so let me know.
 
@@ -234,7 +234,8 @@ Notice that this makes a "cross" of 5 points in the input space. A standard Easy
 
 The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are sampled using `fab.run_uq_ensemble`.
 
-Then, `dummy_adapt.py` is executed:
+Then, `dummy_adapt.py` is executed, and its main task is to select one of the candidate multi indices in `sampler.admissible_idx`, which will be added to `analysis.l_norm`. The main script looks like:
+
 ```python
 state_file = 'states/covid_easyvvuq_state.json'
 campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
@@ -261,3 +262,5 @@ campaign.save_state("states/covid_easyvvuq_state.json")
 sampler.save_state("states/covid_sampler_state.pickle")
 analysis.save_state("states/covid_analysis_state.pickle")
 ```
+
+**Basically this 1) Loads everything (campaign, sampler, analysis); 2) retrieves the new samples from the remote; 3) call `analysis.adapt_dimension` 4) stores everything.**
