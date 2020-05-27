@@ -210,5 +210,6 @@ Some parameters need a bit more explaining. The `skip` parameter is used to prev
 
 The main function call here is `sampler.look_ahead(analysis.l_norm)`. First, `l_norm` is a set of multi indices, denoting the order of the 1D quadrature (and therefore the number of points) used per input parameter. For instance:
 ``` python
-l_norm = array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+l_norm = array([[1, 1]])
 ```
+means we have 2 input parameters, both of which have a 1D quadrature rule of order 1. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 1. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`.
