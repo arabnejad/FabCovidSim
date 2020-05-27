@@ -15,8 +15,6 @@ look ahead, adapt, look ahead, adapt, etc
 import matplotlib.pyplot as plt
 import easyvvuq as uq
 import os
-# import tkinter as tk
-# from tkinter import filedialog
 import fabsim3_cmd_api as fab
 
 home = os.path.abspath(os.path.dirname(__file__))
@@ -24,13 +22,6 @@ output_columns = ["cumDeath"]
 work_dir = '/tmp'
 config = 'dummy_covid'
 
-# #load a Campaign state
-# root = tk.Tk()
-# root.withdraw()
-# state_file = tk.filedialog.askopenfilename(title="Load Campaign state", 
-#                                filetypes=(('json files', '*.json'), 
-#                                           ('All files', '*.*')))
-# ID = state_file.split('.json')[0][-1]
 state_file = 'states/covid_easyvvuq_state.json'
 campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
 print('========================================================')
