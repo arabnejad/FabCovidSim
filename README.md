@@ -172,6 +172,7 @@ which dimension to place more samples. Update the configuration of points, and r
 
 The code for the `look_ahead` step is given by:
 ```python
+#load campaign, sampler and analysis object
 state_file = 'states/covid_easyvvuq_state.json'
 campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
 print('========================================================')
@@ -203,3 +204,4 @@ sampler.save_state("states/covid_sampler_state.pickle")
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',
                     machine="localhost", skip=skip)
 ```
+Basically, all this does is 1) load everything (campaign, sampler, analysis); 2) call `sampler.look_ahead`; 3) store everything again; 4) run ensemble.
