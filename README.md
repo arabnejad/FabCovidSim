@@ -131,7 +131,7 @@ vary = {
 
 These same parameters are hard coded in the analytic dummy model, so if you select different ones, remember to also change `run_sample.py`. In any case it doesn't matter much, since the analytic model is set up in such a way that the first parameter is the most important, then the second, then the third etc. If working properly, the dimension-adaptive sampler should pick up on this sensitivity, and place more samples along the first couple of directions, while ignoring the last parameters after the initial samples.
 
-To place these initial samples, execute the first files which are almost the same as for a standard EasyVVUQ campaign:
+To place these initial samples, execute the first two files, which are almost the same as for a standard EasyVVUQ campaign:
 
 1. `dummy_covid_easyvvuq/dummy_init.py`: an almost standard EasyVVUQ campaign up to and including job submission.
 2. `dummy_covid_easyvvuq/dummy_analyse.py`: job retrieval and post processing.
@@ -147,10 +147,10 @@ sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
 ```
 Here:
 
-* `polynomial_order=1`: do not change, will be adaptively increased for influential parameters.
+* `polynomial_order=1`: do not change, will be adaptively increased for influential parameters. (Technically, it'll change the quadrature order for different (combinations of) parameters)
 * `quadrature_rule="C":`selects the Clenshaw Curtis quadrature rule. This not required, although it is common.
 * `sparse = True`: selects a sparse grid. This is required.
 * `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
-* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample.
-* `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler).
+* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. keep this fixed for now, but might change later.
+* `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
 
