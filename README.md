@@ -279,7 +279,7 @@ for xi in admissible_idx:
   #hierarchical surplus error at xi
   hier_surplus = samples[idx] - self.surrogate(qoi, xi)
 ```
-The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
+The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. This goes round and round until you are happy with the result or until you run out of computational budget. None of this is automated (yet). 
 
 **Note**: if you want to do post processing, do it in `dummy_adapt.py`.
 
