@@ -60,13 +60,6 @@ vary = {
     "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.4, 1.6),
 }
 
-#=================================
-#create dimension-adaptive sampler
-#=================================
-#sparse = use a sparse grid (required)
-#growth = use a nested quadrature rule (not required)
-#midpoint_level1 = use a single collocation point in the 1st iteration (not required)
-#dimension_adaptive = use a dimension adaptive sampler (required)
 sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
                                 quadrature_rule="G")
 
@@ -75,7 +68,7 @@ campaign.draw_samples()
 campaign.populate_runs_dir()
 
 campaign.save_state("covid_easyvvuq_state.json")
-sampler.save_state("covid_sampler_state.pickle")
+# sampler.save_state("covid_sampler_state.pickle")
 
 #run the UQ ensemble
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',

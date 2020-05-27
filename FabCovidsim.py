@@ -5,7 +5,7 @@
 #
 # This file contains FabSim definitions specific to FabCovid19.
 #
-# authors: Hamid Arabnejad, Derek Groen
+# authors: Hamid Arabnejad, Derek Groen, Wouter Edeling
 
 from base.fab import *
 import shutil

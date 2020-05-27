@@ -113,6 +113,7 @@ if __name__ == "__main__":
         "Relative_household_contact_rate_given_social_distancing",
         "Relative_spatial_contact_rate_given_social_distancing"]
 
+
     d = len(vary)
     a = np.ones(d)
     for i in range(1, d):

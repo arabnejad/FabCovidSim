@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covidq5c7cz41/campaign.db",
+    "db_location": "sqlite:////tmp/covidgcraxz2f/campaign.db",
     "db_type": "sql",
     "active_app": "covid_p_PC7_CI_HQ_SD",
     "campaign_name": "covid",
-    "campaign_dir": "covidq5c7cz41",
+    "campaign_dir": "covidgcraxz2f",
     "log": [
         {
             "element": {
@@ -12,7 +12,7 @@
                 "category": "sampling"
             },
             "info": {
-                "num_added": 4,
+                "num_added": 1,
                 "replicas": 1
             }
         }

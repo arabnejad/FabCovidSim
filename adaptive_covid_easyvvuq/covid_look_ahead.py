@@ -47,7 +47,7 @@ campaign.save_state("covid_easyvvuq_state.json")
 sampler.save_state("covid_sampler_state.pickle")
 
 #run the UQ ensemble at the admissible forward points
-#skip (int) = the number of previous samples: required to avoid recomputing
-#already computed samples from a previous iteration
+# skip (int) = the number of previous samples: required to avoid recomputing
+# already computed samples from a previous iteration
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
-                    machine="eagle_vecma", skip=skip, PilotJob=True)
+                    machine="eagle_vecma", skip=skip, PilotJob=False)

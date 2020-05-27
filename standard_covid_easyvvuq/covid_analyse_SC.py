@@ -22,7 +22,7 @@ print('========================================================')
 print('Reloaded campaign', campaign.campaign_dir.split('/')[-1])
 print('========================================================')
 sampler = campaign.get_active_sampler()
-sampler.load_state("covid_sampler_state.pickle")
+# sampler.load_state("covid_sampler_state.pickle")
 campaign.set_sampler(sampler)
 
 #run the UQ ensemble
@@ -38,13 +38,7 @@ analysis = uq.analysis.SCAnalysis(
 
 campaign.apply_analysis(analysis)
 
-#this is a temporary subroutine which saves the entire state of
-#the analysis in a pickle file. The proper place for this is the database
-analysis.save_state("covid_analysis_state.pickle")
-
 results = campaign.get_last_analysis()
-
-samples = analysis.get_sample_array("cumDeath")
 
 fig = plt.figure()
 ax = fig.add_subplot(111, xlabel="days", ylabel=output_columns[0])

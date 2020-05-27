@@ -82,11 +82,14 @@ sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
                                 dimension_adaptive=True)
 
 campaign.set_sampler(sampler)
+
 campaign.draw_samples()
 campaign.populate_runs_dir()
 
-campaign.save_state("covid_easyvvuq_state.json")
-sampler.save_state("covid_sampler_state.pickle")
+if not os.path.exists('states'):
+    os.makedirs('states')
+campaign.save_state("states/covid_easyvvuq_state.json")
+sampler.save_state("states/covid_sampler_state.pickle")
 
 #run the UQ ensemble
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',

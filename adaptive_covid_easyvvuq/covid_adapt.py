@@ -18,7 +18,7 @@ import fabsim3_cmd_api as fab
 import matplotlib.pyplot as plt
 import numpy as np
 
-home = os.path.abspath(os.path.dirname(__file__))
+# home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
 config = 'UK_easyvvuq_test'
@@ -66,3 +66,43 @@ plt.tight_layout()
 #plot max quad order per dimension. Gives an idea of which
 #variables are important
 analysis.adaptation_histogram()
+
+#####################################
+# Plot the random surrogate samples #
+#####################################
+
+fig = plt.figure(figsize=[12, 4])
+ax = fig.add_subplot(131, xlabel='days', ylabel=output_columns[0],
+                     title='Surrogate samples')
+ax.plot(analysis.get_sample_array(output_columns[0]).T, 'ro', alpha = 0.5)
+
+#generate n_mc samples from the input distributions
+n_mc = 20
+xi_mc = np.zeros([n_mc,sampler.xi_d.shape[1]])
+idx = 0
+for dist in sampler.vary.get_values():
+    xi_mc[:, idx] = dist.sample(n_mc)
+    idx += 1
+xi_mc = sampler.xi_d
+n_mc = sampler.xi_d.shape[0]
+    
+# evaluate the surrogate at these values
+print('Evaluating surrogate model', n_mc, 'times')
+for i in range(n_mc):
+    ax.plot(analysis.surrogate(output_columns[0], xi_mc[i]), 'g')
+print('done')
+
+##################################
+# Plot first-order Sobol indices #
+##################################
+
+ax = fig.add_subplot(132, title=r'First-order Sobols indices',
+                      xlabel="days", ylabel=output_columns[0])
+sobols_first = results["sobols_first"][output_columns[0]]
+for param in sobols_first.keys():
+    ax.plot(sobols_first[param], label=param)
+leg = ax.legend(loc=0, fontsize=8)
+leg.set_draggable(True)
+plt.tight_layout()
+
+plt.show()

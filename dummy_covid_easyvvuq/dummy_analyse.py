@@ -9,19 +9,27 @@ Execute once.
 import easyvvuq as uq
 import os
 import fabsim3_cmd_api as fab
+# import tkinter as tk
+# from tkinter import filedialog
 
-home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/tmp'
 config = 'dummy_covid'
 
-campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
-                       work_dir=work_dir)
+# #load a Campaign state
+# root = tk.Tk()
+# root.withdraw()
+# state_file = tk.filedialog.askopenfilename(title="Load Campaign state", 
+#                                filetypes=(('json files', '*.json'), 
+#                                           ('All files', '*.*')))
+# ID = state_file.split('.json')[0][-1]
+state_file = 'states/covid_easyvvuq_state.json'
+campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
 print('========================================================')
 print('Reloaded campaign', campaign.campaign_dir.split('/')[-1])
 print('========================================================')
 sampler = campaign.get_active_sampler()
-sampler.load_state("covid_sampler_state.pickle")
+sampler.load_state("states/covid_sampler_state.pickle")
 campaign.set_sampler(sampler)
 
 #run the UQ ensemble
@@ -39,4 +47,4 @@ campaign.apply_analysis(analysis)
 
 #this is a temporary subroutine which saves the entire state of
 #the analysis in a pickle file. The proper place for this is the database
-analysis.save_state("covid_analysis_state.pickle")
+analysis.save_state("states/covid_analysis_state.pickle")

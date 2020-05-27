@@ -13,6 +13,8 @@ look ahead, adapt, look ahead, adapt, etc
 
 import easyvvuq as uq
 import os
+# import tkinter as tk
+# from tkinter import filedialog
 import fabsim3_cmd_api as fab
 
 home = os.path.abspath(os.path.dirname(__file__))
@@ -20,17 +22,23 @@ output_columns = ["cumDeath"]
 work_dir = '/tmp'
 config = 'dummy_covid'
 
-#reload Campaign, sampler, analysis
-campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
-                       work_dir=work_dir)
+# #load a Campaign state
+# root = tk.Tk()
+# root.withdraw()
+# state_file = tk.filedialog.askopenfilename(title="Load Campaign state", 
+#                                filetypes=(('json files', '*.json'), 
+#                                           ('All files', '*.*')))
+# ID = state_file.split('.json')[0][-1]
+state_file = 'states/covid_easyvvuq_state.json'
+campaign = uq.Campaign(state_file=state_file, work_dir=work_dir)
 print('========================================================')
 print('Reloaded campaign', campaign.campaign_dir.split('/')[-1])
 print('========================================================')
 sampler = campaign.get_active_sampler()
-sampler.load_state("covid_sampler_state.pickle")
+sampler.load_state("states/covid_sampler_state.pickle")
 campaign.set_sampler(sampler)
 analysis = uq.analysis.SCAnalysis(sampler=sampler, qoi_cols=output_columns)
-analysis.load_state("covid_analysis_state.pickle")
+analysis.load_state("states/covid_analysis_state.pickle")
 
 #required parameter in the case of a Fabsim run
 skip = sampler.count
@@ -43,8 +51,8 @@ campaign.draw_samples()
 campaign.populate_runs_dir()
 
 #save campaign and sampler
-campaign.save_state("covid_easyvvuq_state.json")
-sampler.save_state("covid_sampler_state.pickle")
+campaign.save_state("states/covid_easyvvuq_state.json")
+sampler.save_state("states/covid_sampler_state.pickle")
 
 #run the UQ ensemble at the admissible forward points
 #skip (int) = the number of previous samples: required to avoid recomputing
