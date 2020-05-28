@@ -151,7 +151,7 @@ Here:
 * `quadrature_rule="C":`selects the Clenshaw Curtis quadrature rule. This not required, although it is common.
 * `sparse = True`: selects a sparse grid. This is required.
 * `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
-* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. Keep this fixed for now, but this might change later. Perhaps we could start the dimenion-adaptivity from an existing sampling plan.
+* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. Keep this fixed for now, but this might change later. Perhaps we could start the dimension-adaptivity from an existing sampling plan.
 * `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
 
 The other difference with respect to a standard EasyVVUQ campaign, is the need to save the complete state of the sampler and analysis class. In an adaptive setting we need information from the previous iteration to determine where to go next. Right now EasyVVUQ does not do this, it only saves part of the sampler to the database. As a temporary hacky solution, we can now save their state to a `pickle` file via:
@@ -206,7 +206,13 @@ fab.run_uq_ensemble(config, campaign.campaign_dir, script='Dummy_CovidSim',
 ```
 **Basically, all this does is 1) load everything (campaign, sampler, analysis); 2) call `sampler.look_ahead`; 3) store everything again; 4) run ensemble.**
 
-Some parameters need a bit more explaining. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. This is required because `fab.run_uq_ensemble` calls the `campaign2ensemble` function of Fabsim. This copies the EasyVVUQ runs from `campaign.campaign_dir` to the Fabsim config sweep directory, `<your fabsim home dir>/plugins/FabCovidsim/config_files/dummy_covid/SWEEP`. All runs in this directory will be executed. Without modification, we would therefore be executing old runs from the 2nd time we execute `dummy_look_ahead.py` onward. By setting `skip=sampler.count`, we first delete all run directies `SWEEP/Run_X` for `X <= skip`, before we run the ensemble, therefore only executing new samples. If there's a better way of doing so let me know.
+Some parameters need a bit more explaining. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. This is required because `fab.run_uq_ensemble` calls the `campaign2ensemble` function of Fabsim. This copies the EasyVVUQ runs from `campaign.campaign_dir` to the Fabsim config sweep directory: 
+
+```python
+<your fabsim home dir>/plugins/FabCovidsim/config_files/dummy_covid/SWEEP
+```
+
+All runs in this directory will be executed. Without modification, we would therefore be executing old runs from the 2nd time we execute `dummy_look_ahead.py` onward. By setting `skip=sampler.count`, we first delete all run directories `SWEEP/Run_X` for `X <= skip` before we run the ensemble, therefore only executing new samples. If there's a better way of doing so let me know.
 
 The main function call here is `sampler.look_ahead(analysis.l_norm)`. First, `l_norm` is a set of multi indices, denoting the order of the 1D quadrature (and therefore the number of points) used per input parameter. For instance:
 ``` python
@@ -230,7 +236,7 @@ and
 ```python
 l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.5]]
 ```
-Notice that this makes a "cross" of 5 points in the input space. A standard EasyVVUQ campaign always has a single `l_norm`, such as for instance `[2,2]`, which leads to a full "square" of 9 points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`. Sparse grids on the other hand, build the grid from the bottom up, using a linear combination of `l_norm` multi indices, which can lead to more sparse sampling plans. 
+Notice that this makes a "cross" of 5 (unique) points in the input space. A standard EasyVVUQ campaign always has a single `l_norm`, such as for instance `[2,2]`, which leads to a full "square" of 9 points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`. Sparse grids on the other hand, build the grid from the bottom up, using a linear combination of `l_norm` multi indices, which can lead to more sparse sampling plans. 
 
 The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are sampled using `fab.run_uq_ensemble`.
 
@@ -273,13 +279,14 @@ for xi in admissible_idx:
   #hierarchical surplus error at xi
   hier_surplus = samples[idx] - self.surrogate(qoi, xi)
 ```
-The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. 
+The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. This goes round and round until you are happy with the result or until you run out of computational budget. None of this is automated (yet). 
 
 **Note**: if you want to do post processing, do it in `dummy_adapt.py`.
 
 **Note 2**: the Sobol indices may become inaccurate. I think this is due to imbalance in sampling density, i.e. the fact that certain dimensions get very little samples, while other get a lot. I might be able to fix this by interpolation, but this is on the todo list. In the mean time, there is another means of retrieving sensitivity information, see below.
 
-To extract sensitivity information, we can just look at which multi indices, and by extension which parameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). This gives
+To extract sensitivity information, we can just look at which multi indices, and by extension which parameters, get selected for refinement. By calling `analysis.adaptation_histogram()` we simply plot a histogram of the maximum quadrature order per parameter (the max of `analysis.l_norm` per column). Since we've set `polynomial_order=1` and `midpoint_level1 = True`
+in the Sampler creation (`dummy_init.py`), all inputs start with a max quad order of 1:
 
 No refinement yet (after `dummy_init.py` and `dummy_analyse.py`)
 
@@ -301,13 +308,15 @@ Fourth refinement step
 
 ![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/adapt4.png)
 
-Remember that the Dummy model wa created such that the order of importance was the same as the order of parameters in the `vary` dict. The figures above show that the dimension adaptive samples does pick up on this. Note however that from the 3rd to the 4th refinement, there seems to be no change. However, if we examine `analysis.l_norm`:
+Remember that the Dummy model was created such that the order of importance was the same as the order of parameters in the `vary` dict. The figures above show that the dimension adaptive samples does pick up on this. Note however that from the 3rd to the 4th refinement, there seems to be no change. However, if we examine `analysis.l_norm`:
 
 ```python
 array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
-       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
        [2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 2, 1, 1, 1, 1, 1, 1, 1, 1],
+       [1, 1, 2, 1, 1, 1, 1, 1, 1, 1],
        [2, 2, 1, 1, 1, 1, 1, 1, 1, 1]])
 ```
-we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index.
+we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index. Note that this means that the algorithmn is not necessarily a 'one-at-a-time' refinement, and that multiple inputs can be refined during the same iteration. Visualizing higher-order refinements is a bit tricky though, suggestions are welcome.
+
+**Also**: currenlty it selects one of the adimissible multi indices every iteration, which can result in small ensembles. Perhaps we should build in the option of selecting a user-specified number of indices each iteration.
