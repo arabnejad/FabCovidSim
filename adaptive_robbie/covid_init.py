@@ -21,20 +21,19 @@ config = 'UK_easyvvuq_test'
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params_p_PC7_CI_HQ_SD = json.load(open(home + '/../templates/params_p_PC7_CI_HQ_SD.json'))
+params = json.load(open(home + '/../templates/params.json'))
+
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
 
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
-    uq.encoders.GenericEncoder(         
-        template_fname=home + '/../templates/p_PC7_CI_HQ_SD.txt',
-        delimiter='$',
+    CustomEncoder(
+        template_fname=home + '/../templates/template_jinja_p_PC7_CI_HQ_SD.txt',
         target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
-    uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/preUK_R0=2.0.txt',
-        delimiter='$',
+    CustomEncoder(
+        template_fname=home + '/../templates/template_jinja_preUK_R0=2.0.txt',
         target_filename='param_files/preUK_R0=2.0.txt')
 )
 
@@ -56,16 +55,20 @@ campaign.set_app("covid_p_PC7_CI_HQ_SD")
 
 #parameters to vary
 vary = {
-    "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
-    "Relative_spatial_contact_rate_after_closure": cp.Uniform(1.25*0.8, 1.25*1.2),
-    "Relative_household_contact_rate_after_quarantine": cp.Uniform(1.5*0.8, 1.5*1.2),
-    "Residual_spatial_contacts_after_household_quarantine": cp.Uniform(0.25*0.8, 0.25*1.2),
-    "Household_level_compliance_with_quarantine": cp.Uniform(0.5, 0.9),
-    "Individual_level_compliance_with_quarantine": cp.Uniform(0.9, 1.0),
-    "Proportion_of_detected_cases_isolated":cp.Uniform(0.85, 0.95),
-    "Residual_contacts_after_case_isolation":cp.Uniform(0.25*0.8, 0.25*1.2),
-    "Relative_household_contact_rate_given_social_distancing":cp.Uniform(1.1, 1.25*1.2),
-    "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.05, 0.15)
+        "Symptomatic_infectiousness_relative_to_asymptomatic": cp.Uniform(1,2.5),
+        "Proportion_symptomatic": cp.Uniform(0.4,0.8),
+        "Latent_period": cp.Uniform(3,7),
+        "Mortality_factor": cp.Uniform(0.8,1.2),
+        "Reproduction_number": cp.Uniform(2,3),
+        "Infectious_period": cp.Uniform(11.5, 15.6),
+        "Household_attack_rate": cp.Uniform(0.1, 0.19),
+        "Household_transmission_denominator_power": cp.Uniform(0.7, 0.9),
+        "Delay_from_end_of_latent_period_to_start_of_symptoms": cp.Uniform(0, 1.5),
+        "Relative_transmission_rates_for_place_types0": cp.Uniform(0.08, 0.15),
+        "Relative_transmission_rates_for_place_types1": cp.Uniform(0.08, 0.15),
+        "Relative_transmission_rates_for_place_types2": cp.Uniform(0.05, 0.1),
+        "Relative_transmission_rates_for_place_types3": cp.Uniform(0.05, 0.07),
+        "Relative_spatial_contact_rates_by_age_power": cp.Uniform(0.25, 4)
 }
 
 #=================================

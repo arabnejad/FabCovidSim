@@ -1,313 +1,312 @@
 [Include intervention delays by admin unit]
-$Include_intervention_delays_by_admin_unit
+0
 
 [Vary efficacies over time]
-$Vary_efficacies_over_time
+0
 
 ======== PLACE CLOSURE PARAMETERS
 
 [Place closure start time]
-$Place_closure_start_time
+7
 
 [Place closure second start time]
-$Place_closure_second_start_time
+100000
 
 [Delay to place closure by admin unit]
-$Delay_to_place_closure_by_admin_unit0 $Delay_to_place_closure_by_admin_unit1 $Delay_to_place_closure_by_admin_unit2 
+1	1	1
 
 [Duration of place closure by admin unit]
-$Duration_of_place_closure_by_admin_unit0 $Duration_of_place_closure_by_admin_unit1 $Duration_of_place_closure_by_admin_unit2 
+364	364	364
 
 [Place closure in administrative units rather than rings]
-$Place_closure_in_administrative_units_rather_than_rings
+0
 
 [Administrative unit divisor for place closure]
-$Administrative_unit_divisor_for_place_closure
+1
 
 [Place types to close for admin unit closure (0/1 array)]
-$Place_types_to_close_for_admin_unit_closure__0_1_array_0 $Place_types_to_close_for_admin_unit_closure__0_1_array_1 $Place_types_to_close_for_admin_unit_closure__0_1_array_2 $Place_types_to_close_for_admin_unit_closure__0_1_array_3 
+1	1	1	0
 
 [Cumulative proportion of place members needing to become sick for admin unit closure]
-$Cumulative_proportion_of_place_members_needing_to_become_sick_for_admin_unit_closure
+1
 
 [Proportion of places in admin unit needing to pass threshold for place closure]
-$Proportion_of_places_in_admin_unit_needing_to_pass_threshold_for_place_closure
+1
 
 [Delay to start place closure]
-$Delay_to_start_place_closure
+1
 
 [Duration of place closure]
-$Duration_of_place_closure
+364
 
 [Proportion of places remaining open after closure by place type]
-$Proportion_of_places_remaining_open_after_closure_by_place_type0 $Proportion_of_places_remaining_open_after_closure_by_place_type1 $Proportion_of_places_remaining_open_after_closure_by_place_type2 $Proportion_of_places_remaining_open_after_closure_by_place_type3 
+0	0	0.25	1
 
 [Relative household contact rate after closure]
-$Relative_household_contact_rate_after_closure
+1.5
 
 [Relative spatial contact rate after closure]
-$Relative_spatial_contact_rate_after_closure
+1.25
 
 [Minimum radius for place closure]
-$Minimum_radius_for_place_closure
+1
 
 [Place closure incidence threshold]
-$Place_closure_incidence_threshold
- ^^ needs to be 0 for global triggers	
+0
+ ^^ needs to be 0 for global triggers
 
 [Place closure fractional incidence threshold]
-$Place_closure_fractional_incidence_threshold
- ^^ needs to be 0 for global triggers or if abs incidence threshold used	
+0
+^^ needs to be 0 for global triggers or if abs incidence threshold used
 
 [Trigger incidence per cell for place closure]
-$Trigger_incidence_per_cell_for_place_closure
-*** ^^^ change this for global too ***	
+0
+*** ^^^ change this for global too ***
 
 [Number of change times for levels of place closure]
-$Number_of_change_times_for_levels_of_place_closure
+4
 
-//// Note: numbers here must match "Number of change times for levels of place closure"; that any times listed here that are before "Place closure start time" and after "Duration of place closure" are irrelevant. 
+//// Note: numbers here must match "Number of change times for levels of place closure"; that any times listed here that are before "Place closure start time" and after "Duration of place closure" are irrelevant.
 [Change times for levels of place closure]
-$Change_times_for_levels_of_place_closure0 $Change_times_for_levels_of_place_closure1 $Change_times_for_levels_of_place_closure2 $Change_times_for_levels_of_place_closure3 
+0 50 100 150
 
 //// Example below gives schools closing, then opening etc.
 [Proportion of places remaining open after closure by place type over time]
-$Proportion_of_places_remaining_open_after_closure_by_place_type_over_time0 $Proportion_of_places_remaining_open_after_closure_by_place_type_over_time1 $Proportion_of_places_remaining_open_after_closure_by_place_type_over_time2 $Proportion_of_places_remaining_open_after_closure_by_place_type_over_time3 
+0	0	0.25	1
 1	1	0.25	1
 0	0	0.25	1
 1	1	0.25	1
 
 [Relative household contact rates over time after place closure]
-$Relative_household_contact_rates_over_time_after_place_closure0 $Relative_household_contact_rates_over_time_after_place_closure1 $Relative_household_contact_rates_over_time_after_place_closure2 $Relative_household_contact_rates_over_time_after_place_closure3 
+1.5 1.5 1.5 1.5
 
 [Relative spatial contact rates over time after place closure]
-$Relative_spatial_contact_rates_over_time_after_place_closure0 $Relative_spatial_contact_rates_over_time_after_place_closure1 $Relative_spatial_contact_rates_over_time_after_place_closure2 $Relative_spatial_contact_rates_over_time_after_place_closure3 
+1.25 1.25 1.25 1.25
 
 [Place closure incidence threshold over time]
-$Place_closure_incidence_threshold_over_time0 $Place_closure_incidence_threshold_over_time1 $Place_closure_incidence_threshold_over_time2 $Place_closure_incidence_threshold_over_time3 
-^^ needs to be 0 for global triggers	
+0 0 0 0
+^^ needs to be 0 for global triggers
 
 [Place closure fractional incidence threshold over time]
-$Place_closure_fractional_incidence_threshold_over_time0 $Place_closure_fractional_incidence_threshold_over_time1 $Place_closure_fractional_incidence_threshold_over_time2 $Place_closure_fractional_incidence_threshold_over_time3 
-^^ needs to be 0 for global triggers or if abs incidence threshold used	
+0 0 0 0
+^^ needs to be 0 for global triggers or if abs incidence threshold used
 
 [Trigger incidence per cell for place closure over time]
-$Trigger_incidence_per_cell_for_place_closure_over_time0 $Trigger_incidence_per_cell_for_place_closure_over_time1 $Trigger_incidence_per_cell_for_place_closure_over_time2 $Trigger_incidence_per_cell_for_place_closure_over_time3 
-*** ^^^ change these for global too ***	
+0 0 0 0 
+*** ^^^ change these for global too ***
 
 //// Note: closure durations longer than interval between change times will be truncated
 [Duration of place closure over time]
-$Duration_of_place_closure_over_time0 $Duration_of_place_closure_over_time1 $Duration_of_place_closure_over_time2 $Duration_of_place_closure_over_time3 
+50 50 50 50  
 
 
 ==================================	HOUSEHOLD QUARANTINE PARAMETERS
 
 [Household quarantine start time]
-$Household_quarantine_start_time
+6
 
 [Delay to start household quarantine]
-$Delay_to_start_household_quarantine
+1
 
 [Delay to household quarantine by admin unit]
-$Delay_to_household_quarantine_by_admin_unit0 $Delay_to_household_quarantine_by_admin_unit1 $Delay_to_household_quarantine_by_admin_unit2 
+1	1	1
 
 [Duration of household quarantine by admin unit]
-$Duration_of_household_quarantine_by_admin_unit0 $Duration_of_household_quarantine_by_admin_unit1 $Duration_of_household_quarantine_by_admin_unit2 
+364	364	364
 
 [Household quarantine trigger incidence per cell]
-$Household_quarantine_trigger_incidence_per_cell
+0
 
 [Length of time households are quarantined]
-$Length_of_time_households_are_quarantined
+14
 
 [Duration of household quarantine policy]
-$Duration_of_household_quarantine_policy
+364
 
 [Relative household contact rate after quarantine]
-$Relative_household_contact_rate_after_quarantine
+1.5
 
 [Residual place contacts after household quarantine by place type]
-$Residual_place_contacts_after_household_quarantine_by_place_type0 $Residual_place_contacts_after_household_quarantine_by_place_type1 $Residual_place_contacts_after_household_quarantine_by_place_type2 $Residual_place_contacts_after_household_quarantine_by_place_type3 
+0.25	0.25	0.25	0.25
 
 [Residual spatial contacts after household quarantine]
-$Residual_spatial_contacts_after_household_quarantine
+0.25
 
 [Household level compliance with quarantine]
-$Household_level_compliance_with_quarantine
+0.75
 
 [Individual level compliance with quarantine]
-$Individual_level_compliance_with_quarantine
+1.0
 
 [Number of change times for levels of household quarantine]
-$Number_of_change_times_for_levels_of_household_quarantine
+3
 
-//// Note: numbers here must match "Number of change times for levels of household quarantine"; that any times listed here that are before "Household quarantine start time" and after "Duration of household quarantine policy" are irrelevant. 
+//// Note: numbers here must match "Number of change times for levels of household quarantine"; that any times listed here that are before "Household quarantine start time" and after "Duration of household quarantine policy" are irrelevant.
 [Change times for levels of household quarantine]
-$Change_times_for_levels_of_household_quarantine0 $Change_times_for_levels_of_household_quarantine1 $Change_times_for_levels_of_household_quarantine2 
+0 31 121
 
 [Relative household contact rates over time after quarantine]
-$Relative_household_contact_rates_over_time_after_quarantine0 $Relative_household_contact_rates_over_time_after_quarantine1 $Relative_household_contact_rates_over_time_after_quarantine2 
+1.5 1.5 1.5
 
 [Residual place contacts over time after household quarantine by place type]
-$Residual_place_contacts_over_time_after_household_quarantine_by_place_type0 $Residual_place_contacts_over_time_after_household_quarantine_by_place_type1 $Residual_place_contacts_over_time_after_household_quarantine_by_place_type2 $Residual_place_contacts_over_time_after_household_quarantine_by_place_type3 
+0.25	0.25	0.25	0.25
 0.25	0.25	0.25	0.25
 0.25	0.25	0.25	0.25
 
 [Residual spatial contacts over time after household quarantine]
-$Residual_spatial_contacts_over_time_after_household_quarantine0 $Residual_spatial_contacts_over_time_after_household_quarantine1 $Residual_spatial_contacts_over_time_after_household_quarantine2 
+0.25 0.25 0.25
 
 [Household level compliance with quarantine over time]
-$Household_level_compliance_with_quarantine_over_time0 $Household_level_compliance_with_quarantine_over_time1 $Household_level_compliance_with_quarantine_over_time2 
+0.75 0.75 0.75
 
 [Individual level compliance with quarantine over time]
-$Individual_level_compliance_with_quarantine_over_time0 $Individual_level_compliance_with_quarantine_over_time1 $Individual_level_compliance_with_quarantine_over_time2 
+1.0 1.0 1.0
 
 [Household quarantine trigger incidence per cell over time]
-$Household_quarantine_trigger_incidence_per_cell_over_time0 $Household_quarantine_trigger_incidence_per_cell_over_time1 $Household_quarantine_trigger_incidence_per_cell_over_time2 
+0 0 0
 
 
 ===================================		CASE ISOLATION PARAMETERS
 
 [Case isolation start time]
-$Case_isolation_start_time
+6
 
 [Delay to case isolation by admin unit]
-$Delay_to_case_isolation_by_admin_unit0 $Delay_to_case_isolation_by_admin_unit1 $Delay_to_case_isolation_by_admin_unit2 
+1	1	1
 
 [Duration of case isolation by admin unit]
-$Duration_of_case_isolation_by_admin_unit0 $Duration_of_case_isolation_by_admin_unit1 $Duration_of_case_isolation_by_admin_unit2 
+364	364	364
 
 [Case isolation trigger incidence per cell]
-$Case_isolation_trigger_incidence_per_cell
+0
 
 [Proportion of detected cases isolated]
-$Proportion_of_detected_cases_isolated
+0.9
 
 [Delay to start case isolation]
-$Delay_to_start_case_isolation
+1
 
 ///// i.e. for how many days will given case self-isolate? Different from "Duration of case isolation policy"
 [Duration of case isolation]
-$Duration_of_case_isolation
+7
 
 [Duration of case isolation policy]
-$Duration_of_case_isolation_policy
+364
 
 [Residual contacts after case isolation]
-$Residual_contacts_after_case_isolation
+0.25
 
 [Residual household contacts after case isolation]
-$Residual_household_contacts_after_case_isolation
+0.5
 
 [Number of change times for levels of case isolation]
-$Number_of_change_times_for_levels_of_case_isolation
+5
 
-//// Note: numbers here must match "Number of change times for levels of case isolation"; that any times listed here that are before "Case isolation start time" and after "Duration of case isolation policy" are irrelevant. 
+//// Note: numbers here must match "Number of change times for levels of case isolation"; that any times listed here that are before "Case isolation start time" and after "Duration of case isolation policy" are irrelevant.
 [Change times for levels of case isolation]
-$Change_times_for_levels_of_case_isolation0 $Change_times_for_levels_of_case_isolation1 $Change_times_for_levels_of_case_isolation2 $Change_times_for_levels_of_case_isolation3 $Change_times_for_levels_of_case_isolation4 
+0 31 61 91 121
 
 [Residual contacts after case isolation over time]
-$Residual_contacts_after_case_isolation_over_time0 $Residual_contacts_after_case_isolation_over_time1 $Residual_contacts_after_case_isolation_over_time2 $Residual_contacts_after_case_isolation_over_time3 $Residual_contacts_after_case_isolation_over_time4 
+0.25 0.25 0.25 0.25 0.25
 
 [Residual household contacts after case isolation over time]
-$Residual_household_contacts_after_case_isolation_over_time0 $Residual_household_contacts_after_case_isolation_over_time1 $Residual_household_contacts_after_case_isolation_over_time2 $Residual_household_contacts_after_case_isolation_over_time3 $Residual_household_contacts_after_case_isolation_over_time4 
+0.5 0.5 0.5 0.5 0.5
 
 [Proportion of detected cases isolated over time]
-$Proportion_of_detected_cases_isolated_over_time0 $Proportion_of_detected_cases_isolated_over_time1 $Proportion_of_detected_cases_isolated_over_time2 $Proportion_of_detected_cases_isolated_over_time3 $Proportion_of_detected_cases_isolated_over_time4 
+0.9 0.9 0.9 0.9 0.9
 
 [Case isolation trigger incidence per cell over time]
-$Case_isolation_trigger_incidence_per_cell_over_time0 $Case_isolation_trigger_incidence_per_cell_over_time1 $Case_isolation_trigger_incidence_per_cell_over_time2 $Case_isolation_trigger_incidence_per_cell_over_time3 $Case_isolation_trigger_incidence_per_cell_over_time4 
-
+0 0 0 0 0
 
 ===================================		SOCIAL DISTANCING PARAMETERS
 
 [Social distancing start time]
-$Social_distancing_start_time
+6
 
 [Delay to social distancing by admin unit]
-$Delay_to_social_distancing_by_admin_unit0 $Delay_to_social_distancing_by_admin_unit1 $Delay_to_social_distancing_by_admin_unit2 
+0	0	0
 
 [Duration of social distancing]
-$Duration_of_social_distancing
+364
 
 [Duration of social distancing by admin unit]
-$Duration_of_social_distancing_by_admin_unit0 $Duration_of_social_distancing_by_admin_unit1 $Duration_of_social_distancing_by_admin_unit2 
+364	364	364
 
 [Trigger incidence per cell for social distancing]
-$Trigger_incidence_per_cell_for_social_distancing
+0
 
 [Relative place contact rate given social distancing by place type]
-$Relative_place_contact_rate_given_social_distancing_by_place_type0 $Relative_place_contact_rate_given_social_distancing_by_place_type1 $Relative_place_contact_rate_given_social_distancing_by_place_type2 $Relative_place_contact_rate_given_social_distancing_by_place_type3 
+1 1 0.5 0.5
 
 [Relative household contact rate given social distancing]
-$Relative_household_contact_rate_given_social_distancing
+1.25
 
 [Relative spatial contact rate given social distancing]
-$Relative_spatial_contact_rate_given_social_distancing
+0.1
 
 [Minimum radius for social distancing]
-$Minimum_radius_for_social_distancing
+1
 
 [Proportion compliant with enhanced social distancing]
-$Proportion_compliant_with_enhanced_social_distancing
+0.0
 
 [Proportion compliant with enhanced social distancing by age group]
-$Proportion_compliant_with_enhanced_social_distancing_by_age_group0 $Proportion_compliant_with_enhanced_social_distancing_by_age_group1 $Proportion_compliant_with_enhanced_social_distancing_by_age_group2 $Proportion_compliant_with_enhanced_social_distancing_by_age_group3 $Proportion_compliant_with_enhanced_social_distancing_by_age_group4 $Proportion_compliant_with_enhanced_social_distancing_by_age_group5 $Proportion_compliant_with_enhanced_social_distancing_by_age_group6 $Proportion_compliant_with_enhanced_social_distancing_by_age_group7 $Proportion_compliant_with_enhanced_social_distancing_by_age_group8 $Proportion_compliant_with_enhanced_social_distancing_by_age_group9 $Proportion_compliant_with_enhanced_social_distancing_by_age_group10 $Proportion_compliant_with_enhanced_social_distancing_by_age_group11 $Proportion_compliant_with_enhanced_social_distancing_by_age_group12 $Proportion_compliant_with_enhanced_social_distancing_by_age_group13 $Proportion_compliant_with_enhanced_social_distancing_by_age_group14 $Proportion_compliant_with_enhanced_social_distancing_by_age_group15 $Proportion_compliant_with_enhanced_social_distancing_by_age_group16 
+0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
 
 [Relative place contact rate given enhanced social distancing by place type]
-$Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type0 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type1 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type2 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type3 
+0.25	0.25	0.25	0.25
 
 [Relative household contact rate given enhanced social distancing]
-$Relative_household_contact_rate_given_enhanced_social_distancing
+1
 
 [Relative spatial contact rate given enhanced social distancing]
-$Relative_spatial_contact_rate_given_enhanced_social_distancing
+0.25
 
 [Delay for change in effectiveness of social distancing]
-$Delay_for_change_in_effectiveness_of_social_distancing
+1000
 
 [Relative place contact rate given social distancing by place type after change]
-$Relative_place_contact_rate_given_social_distancing_by_place_type_after_change0 $Relative_place_contact_rate_given_social_distancing_by_place_type_after_change1 $Relative_place_contact_rate_given_social_distancing_by_place_type_after_change2 $Relative_place_contact_rate_given_social_distancing_by_place_type_after_change3 
+1	1	0.75	0.75
 
 [Relative household contact rate given social distancing after change]
-$Relative_household_contact_rate_given_social_distancing_after_change
+1.25
 
 [Relative spatial contact rate given social distancing after change]
-$Relative_spatial_contact_rate_given_social_distancing_after_change
+0.25
 
 //// Must match "Change times for levels of social distancing"
 [Number of change times for levels of social distancing]
-$Number_of_change_times_for_levels_of_social_distancing
+6
 
-//// Note: numbers here must match "Number of change times for levels of social distancing"; that any times listed here that are before "Social distancing start time" and after "Duration of social distancing" are irrelevant. 
+//// Note: numbers here must match "Number of change times for levels of social distancing"; that any times listed here that are before "Social distancing start time" and after "Duration of social distancing" are irrelevant.
 [Change times for levels of social distancing]
-$Change_times_for_levels_of_social_distancing0 $Change_times_for_levels_of_social_distancing1 $Change_times_for_levels_of_social_distancing2 $Change_times_for_levels_of_social_distancing3 $Change_times_for_levels_of_social_distancing4 $Change_times_for_levels_of_social_distancing5 
+0 31 61 91 121 151
 
-//// Again, want this to supercede "Relative place contact rate given social distancing by place type". Should be matrix of dimension "Number of change times for levels of social distancing" by Number of place types. 
+//// Again, want this to supercede "Relative place contact rate given social distancing by place type". Should be matrix of dimension "Number of change times for levels of social distancing" by Number of place types.
 [Relative place contact rates over time given social distancing by place type]
-$Relative_place_contact_rates_over_time_given_social_distancing_by_place_type0 $Relative_place_contact_rates_over_time_given_social_distancing_by_place_type1 $Relative_place_contact_rates_over_time_given_social_distancing_by_place_type2 $Relative_place_contact_rates_over_time_given_social_distancing_by_place_type3 
-1 1 0.5 0.5 
-1 1 0.5 0.5 
-1 1 0.5 0.5 
-1 1 0.5 0.5 
-1 1 0.5 0.5 
+1 1 0.5 0.5
+1 1 0.5 0.5
+1 1 0.5 0.5
+1 1 0.5 0.5
+1 1 0.5 0.5
+1 1 0.5 0.5
 
-////  Ideally want this to supercede "Relative household contact rate given social distancing", but need to preserved backwards compatibility for now. 
+////  Ideally want this to supercede "Relative household contact rate given social distancing", but need to preserved backwards compatibility for now.
 [Relative household contact rates over time given social distancing]
-$Relative_household_contact_rates_over_time_given_social_distancing0 $Relative_household_contact_rates_over_time_given_social_distancing1 $Relative_household_contact_rates_over_time_given_social_distancing2 $Relative_household_contact_rates_over_time_given_social_distancing3 $Relative_household_contact_rates_over_time_given_social_distancing4 $Relative_household_contact_rates_over_time_given_social_distancing5 
+1.25 1.25 1.25 1.25 1.25 1.25
 
-////  Ideally want this to supercede "Relative spatial contact rate given social distancing", but need to preserved backwards compatibility for now. 
+////  Ideally want this to supercede "Relative spatial contact rate given social distancing", but need to preserved backwards compatibility for now.
 [Relative spatial contact rates over time given social distancing]
-$Relative_spatial_contact_rates_over_time_given_social_distancing0 $Relative_spatial_contact_rates_over_time_given_social_distancing1 $Relative_spatial_contact_rates_over_time_given_social_distancing2 $Relative_spatial_contact_rates_over_time_given_social_distancing3 $Relative_spatial_contact_rates_over_time_given_social_distancing4 $Relative_spatial_contact_rates_over_time_given_social_distancing5 
+0.1 0.1 0.1 0.1 0.1 0.1
 
 [Relative household contact rates over time given enhanced social distancing]
-$Relative_household_contact_rates_over_time_given_enhanced_social_distancing0 $Relative_household_contact_rates_over_time_given_enhanced_social_distancing1 $Relative_household_contact_rates_over_time_given_enhanced_social_distancing2 $Relative_household_contact_rates_over_time_given_enhanced_social_distancing3 $Relative_household_contact_rates_over_time_given_enhanced_social_distancing4 $Relative_household_contact_rates_over_time_given_enhanced_social_distancing5 
+1 1 1 1 1 1
 
 [Relative spatial contact rates over time given enhanced social distancing]
-$Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing0 $Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing1 $Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing2 $Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing3 $Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing4 $Relative_spatial_contact_rates_over_time_given_enhanced_social_distancing5 
+0.25 0.25 0.25 0.25 0.25 0.25
 
 [Relative place contact rates over time given enhanced social distancing by place type]
-$Relative_place_contact_rates_over_time_given_enhanced_social_distancing_by_place_type0 $Relative_place_contact_rates_over_time_given_enhanced_social_distancing_by_place_type1 $Relative_place_contact_rates_over_time_given_enhanced_social_distancing_by_place_type2 $Relative_place_contact_rates_over_time_given_enhanced_social_distancing_by_place_type3 
+0.25	0.25	0.25	0.25
 0.25	0.25	0.25	0.25
 0.25	0.25	0.25	0.25
 0.25	0.25	0.25	0.25
@@ -315,6 +314,4 @@ $Relative_place_contact_rates_over_time_given_enhanced_social_distancing_by_plac
 0.25	0.25	0.25	0.25
 
 [Trigger incidence per cell for social distancing over time]
-$Trigger_incidence_per_cell_for_social_distancing_over_time0 $Trigger_incidence_per_cell_for_social_distancing_over_time1 $Trigger_incidence_per_cell_for_social_distancing_over_time2 $Trigger_incidence_per_cell_for_social_distancing_over_time3 $Trigger_incidence_per_cell_for_social_distancing_over_time4 $Trigger_incidence_per_cell_for_social_distancing_over_time5 
-
-
+100 100 100 100 100 100
