@@ -28,8 +28,8 @@ def fabsim(command, arguments, machine = 'localhost'):
     """
     Generic function for running any FabSim3 command.
     """
-    print('Executing', "fabsim {} {}:{}".format(machine, command, arguments))
-    os.system("fabsim {} {}:{}".format(machine, command, arguments))
+    print('Executing', "fab {} {}:{}".format(machine, command, arguments))
+    os.system("fab {} {}:{}".format(machine, command, arguments))
 
 def run_uq_ensemble(config, campaign_dir, machine='localhost', skip = 0, **args):
     """
