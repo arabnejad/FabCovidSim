@@ -20,7 +20,7 @@ config = 'dummy_covid'
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
-# Define parameter space for the cannonsim app
+# Define parameter space 
 params_p_PC7_CI_HQ_SD = json.load(open(home + '/../templates/params_p_PC7_CI_HQ_SD.json'))
 
 # Create an encoder and decoder

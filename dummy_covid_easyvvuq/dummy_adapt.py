@@ -40,7 +40,8 @@ campaign.collate()
 #compute the error at all admissible points, select direction with
 #highest error and add that direction to the grid
 data_frame = campaign.get_collation_result()
-analysis.adapt_dimension(output_columns[0], data_frame)
+analysis.adapt_dimension(output_columns[0], data_frame, 
+                         store_mean_history=True)
 
 #save everything
 campaign.save_state("states/covid_easyvvuq_state.json")
@@ -51,5 +52,7 @@ analysis.save_state("states/covid_analysis_state.pickle")
 campaign.apply_analysis(analysis)
 results = campaign.get_last_analysis()
 print(results['statistical_moments'])
+
+#plot adaptation hist and convergence of statistical mean
 analysis.adaptation_histogram()
-plt.show()
+analysis.plot_mean_convergence()
