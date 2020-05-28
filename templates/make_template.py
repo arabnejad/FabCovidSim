@@ -67,10 +67,12 @@ def make_template(param_file):
                     elif len(var_line) > 1:
                         ### Put exceptions here
                         if var_name == 'Proportion_symptomatic_by_age_group':
-                            outf.write('{% for value in Proportion_symptomatic %}{{ value }} {% endfor %}')
+                            outf.write('{% for value in Proportion_symptomatic_array %}{{ value }} {% endfor %}')
 
                         elif var_name == 'CriticalToDeath_icdf':
-                            outf.write('{% for value in mortality_curve %}{{ value }} {% endfor %}')
+                            outf.write('{% for value in Mortality_curve %}{{ value }} {% endfor %}')
+                        elif var_name == 'Relative_spatial_contact_rates_by_age':
+                            outf.write('{% for value in Relative_spatial_contact_rates_by_age_array %}{{ value }} {% endfor %}')
 
                         else:
                             for i in range(len(var_line)):
