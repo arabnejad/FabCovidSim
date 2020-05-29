@@ -2,6 +2,7 @@
 
 
 
+
 # FabCovidsim
 This is a FabSim3 plugin for Covid-19 simulation
 
@@ -53,7 +54,7 @@ eagle_vecma:
     loaded: ["python/3.7.3", "r/3.6.1-gcc620"] # do not change
     unloaded: [] #
 ```    
-   <br/> _NOTE: you can changes the values of these attributes, but do not change the modules load list._
+   <br/> _NOTE: you can change the values of these attributes, but do not change the modules load list._
   
 ## Testing
 1. To run a single job, simply type:
@@ -64,7 +65,7 @@ eagle_vecma:
   >   - by default **memory=20GB** .
   >   
 
-2. To run the ensemble, you can type, simply type:
+2. To run the ensemble, simply type:
   >``` sh
   > fab <qcg/eagle_vecma> CovidSim_ensemble:UK_sample[,<memory=MemorySize>][,replicas=replica_number]
   > ```   
@@ -80,4 +81,30 @@ eagle_vecma:
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,PilotJob=True`
   >   -  `fab eagle_vecma CovidSim_ensemble:UK_sample,replicas=5`
 
+## Running a standard EasyVVUQ
+This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By `standard` we mean non-dimension adaptive, where each input parameter is sampled equally. To run this model, simply type
+``` sh
+fab eagle_vecma covid_init_SC:UK_easyvvuq_test
+``` 
+This command will generate a `covid_standard_test` folder on your FabCovidsim plugin directory and saves all output campaign files and generated output figures in that folder. Then, submit an ensemble job to the remote machine.  
+To analysis the results, first make sure that all submitted jobs are finished, then run this command which fetches results from the remote machine to your local PC and calls analysis function
+``` sh
+fab eagle_vecma covid_analyse_SC:UK_easyvvuq_test
+``` 
+All figures and output files will be saved in `covid_standard_test` folder
+
+> _NOTE:_ 
+>   -  if you need to change the varied parameters, please modify `covid_standard.py` file
+>   - each time that you execute `covid_init_SC` command, all folders and files in `covid_standard_test` directory will be deleted, so if you want to keep a track of your previous tests, please rename that folder or copy its contains in the another folder
+
+## Running a dimension-adaptive EasyVVUQ
+To run a dimension-adaptive campaign on the CovidSim code, please type the following commands :
+``` sh
+    fab eagle_vecma covid_init:UK_easyvvuq_test
+    fab eagle_vecma covid_analyse:UK_easyvvuq_test
+    loop
+        fab eagle_vecma covid_look_ahead:UK_easyvvuq_test
+        fab eagle_vecma covid_adapt:UK_easyvvuq_test
+
+``` 
 
