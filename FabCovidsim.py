@@ -73,8 +73,10 @@ def CovidSim_ensemble(config,
 
     run_ensemble(config, sweep_dir, **args)
 
-from plugins.FabCovidsim.covid_easyvvuq_standard import run_covid_easyvvuq_standard
-from plugins.FabCovidsim.covid_easyvvuq_standard import analyse_covid_easyvvuq_standard
+from plugins.FabCovidsim.covid_standard import covid_init_SC
+from plugins.FabCovidsim.covid_standard import covid_analyse_SC
 
-#from plugins.FabCovidsim.covid_easyvvuq_adaptive import run_covid_easyvvuq_adaptive
-#from plugins.FabCovidsim.covid_easyvvuq_adaptive import analyse_covid_easyvvuq_adaptive
+from plugins.FabCovidsim.covid_adaptive import covid_init
+from plugins.FabCovidsim.covid_adaptive import covid_analyse
+from plugins.FabCovidsim.covid_adaptive import covid_look_ahead
+from plugins.FabCovidsim.covid_adaptive import covid_adapt
