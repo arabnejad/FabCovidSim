@@ -15,13 +15,13 @@ import fabsim3_cmd_api as fab
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+config = 'PC_CI_HQ_SD_suppress_campaign1'
 
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params_p_PC7_CI_HQ_SD = json.load(open(home + '/../templates/params_p_PC7_CI_HQ_SD.json'))
+params = json.load(open(home + '/../templates/params_p_PC_CI_HQ_SD_and_preGB_R0=2.0.json'))
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
@@ -29,13 +29,13 @@ directory_tree = {'param_files': None}
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(         
-        template_fname=home + '/../templates/p_PC7_CI_HQ_SD.txt',
+        template_fname=home + '/../templates/p_PC_CI_HQ_SD.txt',
         delimiter='$',
-        target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
+        target_filename='param_files/p_PC_CI_HQ_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/preUK_R0=2.0.txt',
+        template_fname=home + '/../templates/preGB_R0=2.0.txt',
         delimiter='$',
-        target_filename='param_files/preUK_R0=2.0.txt')
+        target_filename='param_files/preGB_R0=2.0.txt')
 )
 
 decoder = uq.decoders.SimpleCSV(
@@ -45,8 +45,8 @@ decoder = uq.decoders.SimpleCSV(
 collater = uq.collate.AggregateSamples(average=False)
 
 # Add the app
-campaign.add_app(name="covid_p_PC7_CI_HQ_SD",
-                 params=params_p_PC7_CI_HQ_SD,
+campaign.add_app(name=config,
+                 params=params,
                  encoder=multiencoder_p_PC7_CI_HQ_SD,
                  collater=collater,
                  decoder=decoder)

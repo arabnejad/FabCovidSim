@@ -21,7 +21,9 @@ def find_type(name):
                     type_ = 'float'
                     break
                 else:
-                    raise Exception(line)
+                    type_ = 'string'
+                    break
+                    #raise Exception(line)
     if not type_:
         print('WARNING: variable not read by covid-sim:', name)
     return type_
@@ -84,6 +86,4 @@ def make_template(param_file):
 param_files = sys.argv[1:] # e.g. p_NoInt.txt preUK_R=2.txt
 for param_file in param_files:
     make_template(param_file)
-json.dump(params, open('params.json','w'))
-
-
+json.dump(params, open('params.json','w'), indent="")

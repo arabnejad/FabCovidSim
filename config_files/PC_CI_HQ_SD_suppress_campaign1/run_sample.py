@@ -130,7 +130,7 @@ if __name__ == "__main__":
         "{0}_pop_density.bin".format(args.country))
 
     # Configure pre-parameter file.  This file doesn't change between runs:
-    pp_file = os.path.join(args.paramdir, "preUK_R0=2.0.txt")
+    pp_file = os.path.join(args.paramdir, "preGB_R0=2.0.txt")
     if not os.path.exists(pp_file):
         print("Unable to find pre-parameter file")
         print("Param directory: {0}".format(args.paramdir))
@@ -139,7 +139,7 @@ if __name__ == "__main__":
 
     # Configure No intervention parameter file.  This is run first
     # and provides a baseline
-    no_int_file = os.path.join(args.paramdir, "p_NoInt.txt")
+    no_int_file = os.path.join(args.paramdir, "p_NoInt_suppress.txt")
     if not os.path.exists(no_int_file):
         print("Unable to find parameter file")
         print("Param directory: {0}".format(args.paramdir))
@@ -149,7 +149,7 @@ if __name__ == "__main__":
     # Configure an intervention (controls) parameter file.
     # In reality you will run CovidSim many times with different parameter
     # controls.
-    control_roots = ["PC7_CI_HQ_SD"]
+    control_roots = ["PC_CI_HQ_SD"]
     for root in control_roots:
         cf = os.path.join(args.paramdir, "p_{0}.txt".format(root))
         if not os.path.exists(cf):
