@@ -1127,19 +1127,19 @@
 "default": 14.28,
 "type": "float"
 },
-"Number_of_closest_places_people_pick_from__0=all__for_place_types0": {
+"Number_of_closest_places_people_pick_from__0_all__for_place_types0": {
 "default": 3,
 "type": "integer"
 },
-"Number_of_closest_places_people_pick_from__0=all__for_place_types1": {
+"Number_of_closest_places_people_pick_from__0_all__for_place_types1": {
 "default": 3,
 "type": "integer"
 },
-"Number_of_closest_places_people_pick_from__0=all__for_place_types2": {
+"Number_of_closest_places_people_pick_from__0_all__for_place_types2": {
 "default": 6,
 "type": "integer"
 },
-"Number_of_closest_places_people_pick_from__0=all__for_place_types3": {
+"Number_of_closest_places_people_pick_from__0_all__for_place_types3": {
 "default": 0,
 "type": "integer"
 },

@@ -39,7 +39,7 @@ multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='output_dir/United_Kingdom_PC7_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
+    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.0.avNE.severity.xls', 
     output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)
@@ -50,9 +50,8 @@ campaign.add_app(name=config,
                  encoder=multiencoder_p_PC7_CI_HQ_SD,
                  collater=collater,
                  decoder=decoder)
-# Set the active app to be cannonsim (this is redundant when only one app
-# has been added)
-campaign.set_app("covid_p_PC7_CI_HQ_SD")
+# Set the active app 
+campaign.set_app(config)
 
 #parameters to vary
 vary = {

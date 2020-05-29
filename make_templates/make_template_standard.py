@@ -70,6 +70,7 @@ def make_template(param_file):
                     var_name = var_name.replace("/", "_")
                     var_name = var_name.replace("-", "_")
                     var_name = var_name.replace(":", "_")
+                    var_name = var_name.replace("=", "_")
 
                     var_line = inf.readline().split()
                     if len(var_line) == 1:
