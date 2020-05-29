@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covidr651lvfy/campaign.db",
+    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covid6y97s3mx/campaign.db",
     "db_type": "sql",
     "active_app": "PC_CI_HQ_SD_suppress_campaign1",
     "campaign_name": "covid",
-    "campaign_dir": "covidr651lvfy",
+    "campaign_dir": "covid6y97s3mx",
     "log": [
         {
             "element": {

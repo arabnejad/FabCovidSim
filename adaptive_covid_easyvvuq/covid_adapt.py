@@ -21,7 +21,7 @@ import numpy as np
 # home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+config = 'PC_CI_HQ_SD_suppress_campaign1'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
@@ -53,7 +53,10 @@ analysis.save_state("covid_analysis_state.pickle")
 campaign.apply_analysis(analysis)
 results = campaign.get_last_analysis()
 
-#plot mean +/- std dev
+#########################
+# plot mean +/- std dev #
+#########################
+
 fig = plt.figure()
 ax = fig.add_subplot(111, xlabel="days", ylabel=output_columns[0])
 mean = results["statistical_moments"][output_columns[0]]["mean"]
@@ -63,9 +66,12 @@ ax.plot(mean + std, '--r')
 ax.plot(mean - std, '--r')
 plt.tight_layout()
 
-#plot max quad order per dimension. Gives an idea of which
-#variables are important
+#################################
+# Plot some convergence metrics #
+#################################
+
 analysis.adaptation_histogram()
+analysis.plot_mean_history()
 
 #####################################
 # Plot the random surrogate samples #
@@ -96,13 +102,13 @@ print('done')
 # Plot first-order Sobol indices #
 ##################################
 
-ax = fig.add_subplot(132, title=r'First-order Sobols indices',
-                      xlabel="days", ylabel=output_columns[0])
-sobols_first = results["sobols_first"][output_columns[0]]
-for param in sobols_first.keys():
-    ax.plot(sobols_first[param], label=param)
-leg = ax.legend(loc=0, fontsize=8)
-leg.set_draggable(True)
-plt.tight_layout()
+# ax = fig.add_subplot(132, title=r'First-order Sobols indices',
+#                       xlabel="days", ylabel=output_columns[0])
+# sobols_first = results["sobols_first"][output_columns[0]]
+# for param in sobols_first.keys():
+#     ax.plot(sobols_first[param], label=param)
+# leg = ax.legend(loc=0, fontsize=8)
+# leg.set_draggable(True)
+# plt.tight_layout()
 
 plt.show()
