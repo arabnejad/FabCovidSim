@@ -1,0 +1,20 @@
+{
+    "db_location": "sqlite:////home/hamid/BUL/FabSim3/plugins/FabCovidsim/covid_adaptive_test/campaign.db",
+    "db_type": "sql",
+    "active_app": "covidsim-adaptive-PC_CI_HQ_SD",
+    "campaign_name": "covid-sim-adaptive",
+    "campaign_dir": "covid-sim-adaptivefm4j76i1",
+    "log": [
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 1,
+                "replicas": 1
+            }
+        }
+    ]
+}

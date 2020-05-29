@@ -1,0 +1,20 @@
+{
+    "db_location": "sqlite:////home/hamid/BUL/FabSim3/plugins/FabCovidsim/covid_standard_test/campaign.db",
+    "db_type": "sql",
+    "active_app": "covidsim-standard-PC_CI_HQ_SD",
+    "campaign_name": "covid-sim-standard",
+    "campaign_dir": "covid-sim-standardjxaauqcd",
+    "log": [
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 4,
+                "replicas": 1
+            }
+        }
+    ]
+}
