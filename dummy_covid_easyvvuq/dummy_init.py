@@ -29,11 +29,11 @@ directory_tree = {'param_files': None}
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/template_p_PC7_CI_HQ_SD.txt',
+        template_fname=home + '/../templates/p_PC7_CI_HQ_SD.txt',
         delimiter='$',
-        target_filename='param_files/template_p_PC7_CI_HQ_SD.txt'),
+        target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/template_preUK_R0=2.0.txt',
+        template_fname=home + '/../templates/preUK_R0=2.0.txt',
         delimiter='$',
         target_filename='param_files/preUK_R0=2.0.txt')
 )

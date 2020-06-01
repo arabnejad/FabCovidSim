@@ -18,6 +18,8 @@ import fabsim3_cmd_api as fab
 import matplotlib.pyplot as plt
 import numpy as np
 
+plt.close('all')
+
 # home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
@@ -41,6 +43,7 @@ campaign.collate()
 
 #compute the error at all admissible points, select direction with
 #highest error and add that direction to the grid
+
 data_frame = campaign.get_collation_result()
 analysis.adapt_dimension(output_columns[0], data_frame)
 
@@ -71,7 +74,12 @@ plt.tight_layout()
 #################################
 
 analysis.adaptation_histogram()
-analysis.plot_mean_history()
+analysis.plot_stat_convergence()
+surplus_errors = analysis.get_adaptation_errors()
+fig = plt.figure()
+ax = fig.add_subplot(111, xlabel = 'refinement step', ylabel='max surplus error')
+ax.plot(range(1, len(surplus_errors) + 1), surplus_errors, '-b*')
+plt.tight_layout()
 
 #####################################
 # Plot the random surrogate samples #

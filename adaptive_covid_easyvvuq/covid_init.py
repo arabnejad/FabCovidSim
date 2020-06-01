@@ -26,6 +26,7 @@ params = json.load(open(home + '/../templates/params_p_PC_CI_HQ_SD_and_preGB_R0=
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
 
+#Change this name
 multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(         
@@ -55,19 +56,19 @@ campaign.set_app(config)
 
 #parameters to vary
 vary = {
-    "Proportion_of_places_remaining_open_after_closure_by_place_type2": cp.Uniform(0.2, 0.3),
-    "Proportion_of_places_remaining_open_after_closure_by_place_type3": cp.Uniform(0.9, 1.0),
+    # "Proportion_of_places_remaining_open_after_closure_by_place_type2": cp.Uniform(0.2, 0.3),
+    # "Proportion_of_places_remaining_open_after_closure_by_place_type3": cp.Uniform(0.9, 1.0),
     "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
     "Relative_spatial_contact_rate_after_closure": cp.Uniform(1.25*0.8, 1.25*1.2),
     "Relative_household_contact_rate_after_quarantine": cp.Uniform(2.0*0.8, 2.0*1.2),
-    "Residual_place_contacts_after_household_quarantine_by_place_type0": cp.Uniform(0.8*0.25, 1.2*0.25),
-    "Residual_place_contacts_after_household_quarantine_by_place_type1": cp.Uniform(0.8*0.25, 1.2*0.25),
-    "Residual_place_contacts_after_household_quarantine_by_place_type2": cp.Uniform(0.8*0.25, 1.2*0.25),
-    "Residual_place_contacts_after_household_quarantine_by_place_type3": cp.Uniform(0.8*0.25, 1.2*0.25),
+    # "Residual_place_contacts_after_household_quarantine_by_place_type0": cp.Uniform(0.8*0.25, 1.2*0.25),
+    # "Residual_place_contacts_after_household_quarantine_by_place_type1": cp.Uniform(0.8*0.25, 1.2*0.25),
+    # "Residual_place_contacts_after_household_quarantine_by_place_type2": cp.Uniform(0.8*0.25, 1.2*0.25),
+    # "Residual_place_contacts_after_household_quarantine_by_place_type3": cp.Uniform(0.8*0.25, 1.2*0.25),
     "Residual_spatial_contacts_after_household_quarantine": cp.Uniform(0.25*0.8, 0.25*1.2),
     "Household_level_compliance_with_quarantine": cp.Uniform(0.5, 0.9),
     "Individual_level_compliance_with_quarantine": cp.Uniform(0.9, 1.0),
-    "Proportion_of_detected_cases_isolated":cp.Uniform(0.85, 0.95),
+    "Proportion_of_detected_cases_isolated":cp.Uniform(0.6, 0.8),
     "Residual_contacts_after_case_isolation":cp.Uniform(0.25*0.8, 0.25*1.2),
     "Relative_household_contact_rate_given_social_distancing":cp.Uniform(1.1, 1.25*1.2),
     "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.15, 0.35)
