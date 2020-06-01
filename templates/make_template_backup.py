@@ -19,9 +19,6 @@ def find_type(name):
                 elif line[i+1:i+3] == 'lf':
                     type_ = 'float'
                     break
-                elif line[i+1] == 's':
-                    type_ = 'string'
-                    break
                 else:
                     raise Exception(line)
     if not type_:
@@ -34,23 +31,15 @@ def add_param(var_name, covidsim_name, default):
     # if type not found, default to float??
     if type_ == 0: type_ = 'float'
 
-    try:
-        if type_ == 'integer': default = int(default)
-        elif type_ == 'float': default = float(default)
-    except ValueError:
-        #typecasting error, assume the parameter is a string, and write as is 
-        #Occurs for instance for:
-        # [Trigger incidence per cell for place closure]
-        # #1
-        type_ = 'string'
-        print('Cannot typecast %s = %s, assuming string' % (var_name, default))
+    if type_ == 'integer': default = int(default)
+    elif type_ == 'float': default = float(default)
     params[var_name] = {}
     params[var_name]['default'] = default
     params[var_name]['type'] = type_
 
 def make_template(param_file):
     with open(param_file, 'r') as inf:
-        with open('template_'+param_file, 'w') as outf:
+        with open('template_jinja_'+param_file, 'w') as outf:
             for line in inf:
                 outf.write(line)
 
@@ -69,7 +58,6 @@ def make_template(param_file):
                     var_name = var_name.replace("/", "_")
                     var_name = var_name.replace("-", "_")
                     var_name = var_name.replace(":", "_")
-                    var_name = var_name.replace("=", "_")
 
 
                     var_line = inf.readline().split()
@@ -96,3 +84,5 @@ param_files = sys.argv[1:] # e.g. p_NoInt.txt preUK_R=2.txt
 for param_file in param_files:
     make_template(param_file)
 json.dump(params, open('params.json','w'))
+
+

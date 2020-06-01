@@ -29,7 +29,7 @@
 {{ Initial_immunity_applied_to_all_household_members }}
 
 [Relative spatial contact rates by age]
-{{ Relative_spatial_contact_rates_by_age0 }} {{ Relative_spatial_contact_rates_by_age1 }} {{ Relative_spatial_contact_rates_by_age2 }} {{ Relative_spatial_contact_rates_by_age3 }} {{ Relative_spatial_contact_rates_by_age4 }} {{ Relative_spatial_contact_rates_by_age5 }} {{ Relative_spatial_contact_rates_by_age6 }} {{ Relative_spatial_contact_rates_by_age7 }} {{ Relative_spatial_contact_rates_by_age8 }} {{ Relative_spatial_contact_rates_by_age9 }} {{ Relative_spatial_contact_rates_by_age10 }} {{ Relative_spatial_contact_rates_by_age11 }} {{ Relative_spatial_contact_rates_by_age12 }} {{ Relative_spatial_contact_rates_by_age13 }} {{ Relative_spatial_contact_rates_by_age14 }} {{ Relative_spatial_contact_rates_by_age15 }} {{ Relative_spatial_contact_rates_by_age16 }} 
+{% for value in Relative_spatial_contact_rates_by_age_array %}{{ value }} {% endfor %}
 [POLYMOD, averaging 20-70]
 0.25	0.25	0.5	0.75	1	1	1	1	1	1	1	1	1	0.75	0.5	0.25	0.25
 
@@ -59,7 +59,7 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 (assume average time to symptom onset is a day)
 
 [Proportion symptomatic by age group]
-{% for value in Proportion_symptomatic %}{{ value }} {% endfor %}
+{% for value in Proportion_symptomatic_array %}{{ value }} {% endfor %}
 
 [Symptomatic infectiousness relative to asymptomatic]
 {{ Symptomatic_infectiousness_relative_to_asymptomatic }}
@@ -333,7 +333,7 @@ Also comparable with 1957 pandemic attack rates from Chin.)
 {{ CriticalToCritRecov_icdf0 }} {{ CriticalToCritRecov_icdf1 }} {{ CriticalToCritRecov_icdf2 }} {{ CriticalToCritRecov_icdf3 }} {{ CriticalToCritRecov_icdf4 }} {{ CriticalToCritRecov_icdf5 }} {{ CriticalToCritRecov_icdf6 }} {{ CriticalToCritRecov_icdf7 }} {{ CriticalToCritRecov_icdf8 }} {{ CriticalToCritRecov_icdf9 }} {{ CriticalToCritRecov_icdf10 }} {{ CriticalToCritRecov_icdf11 }} {{ CriticalToCritRecov_icdf12 }} {{ CriticalToCritRecov_icdf13 }} {{ CriticalToCritRecov_icdf14 }} {{ CriticalToCritRecov_icdf15 }} {{ CriticalToCritRecov_icdf16 }} {{ CriticalToCritRecov_icdf17 }} {{ CriticalToCritRecov_icdf18 }} {{ CriticalToCritRecov_icdf19 }} {{ CriticalToCritRecov_icdf20 }} 
 
 [CriticalToDeath_icdf]
-{% for value in mortality_curve %}{{ value }} {% endfor %}
+{% for value in Mortality_curve_array %}{{ value }} {% endfor %}
 
 
 [CritRecovToRecov_icdf]

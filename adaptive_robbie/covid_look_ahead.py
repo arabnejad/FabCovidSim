@@ -17,8 +17,8 @@ import fabsim3_cmd_api as fab
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
-work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+work_dir = '~/postdoc1/covid/campaigns'
+config = 'disease_adaptive'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 

@@ -1,0 +1,36 @@
+[Update timestep]
+{{ Update_timestep }}
+
+[Equilibriation time]
+{{ Equilibriation_time }}
+
+[Sampling timestep]
+{{ Sampling_timestep }}
+
+[Sampling time]
+{{ Sampling_time }}
+
+[Population size]
+{{ Population_size }}
+[ONS pop proj]
+
+[Fix population size at specified value]
+{{ Fix_population_size_at_specified_value }}
+
+[Include administrative units within countries]
+{{ Include_administrative_units_within_countries }}
+
+[Mask for level 1 administrative units]
+{{ Mask_for_level_1_administrative_units }}
+
+[Divisor for level 1 administrative units]
+{{ Divisor_for_level_1_administrative_units }}
+
+[Divisor for countries]
+{{ Divisor_for_countries }}
+
+[Number of countries to include]
+{{ Number_of_countries_to_include }}
+
+[List of names of countries to include]
+{{ List_of_names_of_countries_to_include }}

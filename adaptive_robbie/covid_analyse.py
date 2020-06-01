@@ -10,10 +10,12 @@ import easyvvuq as uq
 import os
 import fabsim3_cmd_api as fab
 
+from custom import CustomEncoder
+
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
-work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+work_dir = '~/postdoc1/covid/campaigns'
+config = 'disease_adaptive'
 
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
                        work_dir=work_dir)
@@ -27,7 +29,10 @@ campaign.set_sampler(sampler)
 #run the UQ ensemble
 fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
                    machine='eagle_vecma')
+print('here')
 campaign.collate()
+print('collaged')
+print(campaign)
 
 # Post-processing analysis
 analysis = uq.analysis.SCAnalysis(

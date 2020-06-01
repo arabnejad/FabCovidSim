@@ -11,11 +11,14 @@ import chaospy as cp
 import os
 import json
 import fabsim3_cmd_api as fab
+import numpy as np
+
+from custom import CustomEncoder
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
-work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+work_dir = '~/postdoc1/covid/campaigns'
+config = 'disease_adaptive'
 
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
@@ -23,35 +26,52 @@ campaign = uq.Campaign(name='covid', work_dir=work_dir)
 # Define parameter space for the cannonsim app
 params = json.load(open(home + '/../templates/params.json'))
 
+params["Mortality_factor"] = {
+                                "default": 1,
+                                "type": "float"
+                            }
+params["Proportion_symptomatic"] = {
+                                  "default": 0.5,
+                                  "type": "float"
+                              }
+params["Relative_spatial_contact_rates_by_age_power"] = {
+                                "default": 1,
+                                "type": "float"
+                            }
+
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
 
-multiencoder_p_PC7_CI_HQ_SD = uq.encoders.MultiEncoder(
+multiencoder = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
+    uq.encoders.GenericEncoder(
+        template_fname=home + '/../templates/template_run_sample.py',
+        delimiter = '$',
+        target_filename='run_sample.py'),
     CustomEncoder(
-        template_fname=home + '/../templates/template_jinja_p_PC7_CI_HQ_SD.txt',
-        target_filename='param_files/p_PC7_CI_HQ_SD.txt'),
+        template_fname=home + '/../templates/template_p_PC_CI_HQ_SD.txt',
+        target_filename='param_files/p_PC_CI_HQ_SD.txt'),
     CustomEncoder(
-        template_fname=home + '/../templates/template_jinja_preUK_R0=2.0.txt',
-        target_filename='param_files/preUK_R0=2.0.txt')
+        template_fname=home + '/../templates/template_preGB_R0=2.0.txt',
+        target_filename='param_files/preGB_R0=2.0.txt')
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='output_dir/United_Kingdom_PC7_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
+    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0.avNE.severity.xls', 
     output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)
 
 # Add the app
-campaign.add_app(name="covid_p_PC7_CI_HQ_SD",
-                 params=params_p_PC7_CI_HQ_SD,
-                 encoder=multiencoder_p_PC7_CI_HQ_SD,
+campaign.add_app(name="covid_robbie",
+                 params=params,
+                 encoder=multiencoder,
                  collater=collater,
                  decoder=decoder)
 # Set the active app to be cannonsim (this is redundant when only one app
 # has been added)
-campaign.set_app("covid_p_PC7_CI_HQ_SD")
+campaign.set_app("covid_robbie")
 
 #parameters to vary
 vary = {

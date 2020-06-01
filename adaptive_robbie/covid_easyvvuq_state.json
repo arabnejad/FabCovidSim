@@ -1,0 +1,20 @@
+{
+    "db_location": "sqlite:////Users/robertsinclair/postdoc1/covid/campaigns/covidqv0r9cvo/campaign.db",
+    "db_type": "sql",
+    "active_app": "covid_robbie",
+    "campaign_name": "covid",
+    "campaign_dir": "covidqv0r9cvo",
+    "log": [
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 1,
+                "replicas": 1
+            }
+        }
+    ]
+}

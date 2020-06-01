@@ -20,8 +20,8 @@ import numpy as np
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
-work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'UK_easyvvuq_test'
+work_dir = '~/postdoc1/covid/campaigns'
+config = 'disease_adaptive'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
@@ -66,3 +66,5 @@ plt.tight_layout()
 #plot max quad order per dimension. Gives an idea of which
 #variables are important
 analysis.adaptation_histogram()
+analysis.plot_stat_convergence()
+print(analysis.get_adaptation_errors())
