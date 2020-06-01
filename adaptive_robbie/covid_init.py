@@ -58,7 +58,7 @@ multiencoder = uq.encoders.MultiEncoder(
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0.avNE.severity.xls', 
+    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD.avNE.severity.xls', 
     output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)

@@ -185,7 +185,7 @@ if __name__ == "__main__":
         "/PP:" + pp_file,  # Preparam file
         "/P:" + no_int_file,  # Param file
         "/O:" + os.path.join(args.outputdir,
-                             "{0}_NoInt_R0={1}".format(args.country, r)),  # Output
+                             "{0}_NoInt".format(args.country, r)),  # Output
         "/D:" + wpop_bin,  # Where to save binary pop density
         "/L:" + network_bin,  # Where to save binary net setup
         "/R:{0}".format(rs),
@@ -210,7 +210,7 @@ if __name__ == "__main__":
             "/PP:" + pp_file,
             "/P:" + cf,
             "/O:" + os.path.join(args.outputdir,
-                                 "{0}_{1}_R0={2}".format(args.country, root, r)),
+                                 "{0}_{1}".format(args.country, root, r)),
             "/D:" + wpop_bin,  # Binary pop density file (speedup)
             "/L:" + network_bin,  # Network to load
             "/R:{0}".format(rs),

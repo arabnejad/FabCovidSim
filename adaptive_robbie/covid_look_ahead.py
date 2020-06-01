@@ -14,6 +14,7 @@ look ahead, adapt, look ahead, adapt, etc
 import easyvvuq as uq
 import os
 import fabsim3_cmd_api as fab
+from custom import CustomEncoder
 
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
