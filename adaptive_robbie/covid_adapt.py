@@ -44,6 +44,7 @@ campaign.collate()
 #compute the error at all admissible points, select direction with
 #highest error and add that direction to the grid
 data_frame = campaign.get_collation_result()
+data_frame.to_csv('results.csv')
 analysis.adapt_dimension(output_columns[0], data_frame)
 
 #save everything

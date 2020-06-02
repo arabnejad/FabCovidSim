@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////Users/robertsinclair/postdoc1/covid/campaigns/covidfj0j_z2v/campaign.db",
+    "db_location": "sqlite:////Users/robertsinclair/postdoc1/covid/campaigns/covidq6h4osiv/campaign.db",
     "db_type": "sql",
     "active_app": "covid_robbie",
     "campaign_name": "covid",
-    "campaign_dir": "covidfj0j_z2v",
+    "campaign_dir": "covidq6h4osiv",
     "log": [
         {
             "element": {
@@ -25,6 +25,352 @@
             "info": {
                 "num_added": 28,
                 "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 28
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 2,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 2
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 6,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 6
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 10,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 10
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 14,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 14
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 8,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 8
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 18,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 18
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 8,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 8
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 16,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 16
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 16,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_samples",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 16
             }
         }
     ]
