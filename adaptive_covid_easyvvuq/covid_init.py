@@ -21,7 +21,7 @@ config = 'PC_CI_HQ_SD_suppress_campaign1'
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params = json.load(open(home + '/../templates/params_p_PC_CI_HQ_SD_and_preGB.json'))
+params = json.load(open(home + '/../templates/params_PC_CI_HQ_SD_preGB.json'))
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
@@ -39,7 +39,7 @@ multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.0.avNE.severity.xls', 
+    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
     output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)
@@ -70,7 +70,11 @@ vary = {
     "Proportion_of_detected_cases_isolated":cp.Uniform(0.6, 0.8),
     "Residual_contacts_after_case_isolation":cp.Uniform(0.25*0.8, 0.25*1.2),
     "Relative_household_contact_rate_given_social_distancing":cp.Uniform(1.1, 1.25*1.2),
-    "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.15, 0.35)
+    "Relative_spatial_contact_rate_given_social_distancing":cp.Uniform(0.15, 0.35),
+    "Delay_to_start_household_quarantine":cp.DiscreteUniform(1, 3),
+    "Length_of_time_households_are_quarantined":cp.DiscreteUniform(12, 16),
+    "Delay_to_start_case_isolation":cp.DiscreteUniform(1, 3),
+    "Duration_of_case_isolation":cp.DiscreteUniform(5, 9)    
 }
 
 #=================================
