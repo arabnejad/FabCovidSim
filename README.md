@@ -332,4 +332,4 @@ Finally, after every adapt step, we can check the difference between the statist
 ```python
 analysis.plot_stat_convergence()
 ```
-whihc shows the inf norm between the mean at iteration i and i-1, ad likewise for the standard deviation. For the current example this looks like
+which shows the inf norm between the mean at iteration i and i-1, and likewise for the standard deviation. For the current example this looks like
