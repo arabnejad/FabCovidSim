@@ -1,0 +1,292 @@
+
+
+[Treatment start time]
+$Treatment_start_time
+
+
+[Relative susceptibility of treated individual]
+$Relative_susceptibility_of_treated_individual
+
+[Relative infectiousness of treated individual]
+$Relative_infectiousness_of_treated_individual
+
+[Proportion of symptomatic cases prevented by treatment]
+$Proportion_of_symptomatic_cases_prevented_by_treatment
+
+[Proportion of symptomatic cases resulting in death prevented by treatment]
+$Proportion_of_symptomatic_cases_resulting_in_death_prevented_by_treatment
+
+[Delay to treat cell]
+$Delay_to_treat_cell
+
+[Duration of course of treatment]
+$Duration_of_course_of_treatment
+
+[Duration of course of prophylaxis]
+$Duration_of_course_of_prophylaxis
+
+[Proportion treated]
+$Proportion_treated
+
+[Treatment radius]
+$Treatment_radius
+
+[Proportion of households of cases treated]
+$Proportion_of_households_of_cases_treated
+
+[Proportion of places treated after case detected]
+$Proportion_of_places_treated_after_case_detected0 $Proportion_of_places_treated_after_case_detected1 $Proportion_of_places_treated_after_case_detected2 $Proportion_of_places_treated_after_case_detected3 
+
+[Proportion of people treated in targeted places]
+$Proportion_of_people_treated_in_targeted_places0 $Proportion_of_people_treated_in_targeted_places1 $Proportion_of_people_treated_in_targeted_places2 $Proportion_of_people_treated_in_targeted_places3 
+
+[Only treat mixing groups within places]
+$Only_treat_mixing_groups_within_places
+
+[Maximum number of doses available]
+$Maximum_number_of_doses_available
+
+
+===================================
+
+[Movement restrictions start time]
+$Movement_restrictions_start_time
+
+[Movement restrictions trigger incidence per cell]
+$Movement_restrictions_trigger_incidence_per_cell
+
+[Delay to start movement restrictions]
+$Delay_to_start_movement_restrictions
+
+[Duration of movement restrictions]
+$Duration_of_movement_restrictions
+
+[Residual movements after restrictions]
+$Residual_movements_after_restrictions
+
+[Minimum radius of movement restrictions]
+$Minimum_radius_of_movement_restrictions
+
+[Impose blanket movement restrictions]
+$Impose_blanket_movement_restrictions
+
+===================================
+
+[Place closure start time]
+$Place_closure_start_time
+
+[Place closure second start time]
+$Place_closure_second_start_time
+
+[Place closure in administrative units rather than rings]
+$Place_closure_in_administrative_units_rather_than_rings
+
+[Administrative unit divisor for place closure]
+$Administrative_unit_divisor_for_place_closure
+
+[Place types to close for admin unit closure (0/1 array)]
+$Place_types_to_close_for_admin_unit_closure__0_1_array_0 $Place_types_to_close_for_admin_unit_closure__0_1_array_1 $Place_types_to_close_for_admin_unit_closure__0_1_array_2 $Place_types_to_close_for_admin_unit_closure__0_1_array_3 
+
+[Cumulative proportion of place members needing to become sick for admin unit closure]
+$Cumulative_proportion_of_place_members_needing_to_become_sick_for_admin_unit_closure
+
+[Proportion of places in admin unit needing to pass threshold for place closure]
+$Proportion_of_places_in_admin_unit_needing_to_pass_threshold_for_place_closure
+
+[Delay to start place closure]
+$Delay_to_start_place_closure
+
+[Duration of place closure]
+$Duration_of_place_closure
+
+
+[Proportion of places remaining open after closure by place type]
+$Proportion_of_places_remaining_open_after_closure_by_place_type0 $Proportion_of_places_remaining_open_after_closure_by_place_type1 $Proportion_of_places_remaining_open_after_closure_by_place_type2 $Proportion_of_places_remaining_open_after_closure_by_place_type3 
+
+[Relative household contact rate after closure]
+$Relative_household_contact_rate_after_closure
+
+[Relative spatial contact rate after closure]
+$Relative_spatial_contact_rate_after_closure
+
+[Minimum radius for place closure]
+$Minimum_radius_for_place_closure
+
+[Place closure incidence threshold]
+$Place_closure_incidence_threshold
+
+ ^^ needs to be 0 for global triggers
+
+[Place closure fractional incidence threshold]
+$Place_closure_fractional_incidence_threshold
+
+ ^^ needs to be 0 for global triggers or if abs incidence threshold used
+
+[Trigger incidence per cell for place closure]
+$Trigger_incidence_per_cell_for_place_closure
+
+[Trigger incidence per cell for end of place closure]
+$Trigger_incidence_per_cell_for_end_of_place_closure
+
+*** ^^^ change this for global too ***
+
+==================================
+
+[Household quarantine start time]
+$Household_quarantine_start_time
+
+[Delay to start household quarantine]
+$Delay_to_start_household_quarantine
+
+[Length of time households are quarantined]
+$Length_of_time_households_are_quarantined
+
+[Duration of household quarantine policy]
+$Duration_of_household_quarantine_policy
+
+[Relative household contact rate after quarantine]
+$Relative_household_contact_rate_after_quarantine
+
+[Residual place contacts after household quarantine by place type]
+$Residual_place_contacts_after_household_quarantine_by_place_type0 $Residual_place_contacts_after_household_quarantine_by_place_type0 $Residual_place_contacts_after_household_quarantine_by_place_type0 $Residual_place_contacts_after_household_quarantine_by_place_type0 
+
+[Residual spatial contacts after household quarantine]
+$Residual_spatial_contacts_after_household_quarantine
+
+[Household level compliance with quarantine]
+$Household_level_compliance_with_quarantine
+
+[Individual level compliance with quarantine]
+$Individual_level_compliance_with_quarantine
+
+===================================
+
+[Vaccination start time]
+$Vaccination_start_time
+
+[Duration of household vaccination policy]
+$Duration_of_household_vaccination_policy
+
+[Apply mass rather than reactive vaccination]
+$Apply_mass_rather_than_reactive_vaccination
+
+[Priority age range for mass vaccination]
+$Priority_age_range_for_mass_vaccination0 $Priority_age_range_for_mass_vaccination1 
+
+[Switch time at which efficacy increases]
+$Switch_time_at_which_efficacy_increases
+
+[Relative susceptibility of vaccinated individual after switch time]
+$Relative_susceptibility_of_vaccinated_individual_after_switch_time
+
+[Relative susceptibility of vaccinated individual]
+$Relative_susceptibility_of_vaccinated_individual
+
+[Relative infectiousness of vaccinated individual]
+$Relative_infectiousness_of_vaccinated_individual
+
+[Proportion of symptomatic cases prevented by vaccination]
+$Proportion_of_symptomatic_cases_prevented_by_vaccination
+
+[Vaccination trigger incidence per cell]
+$Vaccination_trigger_incidence_per_cell
+
+[Delay to vaccinate]
+$Delay_to_vaccinate
+
+[Delay from vaccination to full protection]
+$Delay_from_vaccination_to_full_protection
+
+[Proportion of population vaccinated]
+$Proportion_of_population_vaccinated
+
+[Vaccination radius]
+$Vaccination_radius
+
+[Proportion of households of cases vaccinated]
+$Proportion_of_households_of_cases_vaccinated
+
+[Maximum number of vaccine courses available]
+$Maximum_number_of_vaccine_courses_available
+
+[Start time of additional vaccine production]
+$Start_time_of_additional_vaccine_production
+
+[Rate of additional vaccine production (courses per day)]
+$Rate_of_additional_vaccine_production__courses_per_day_
+
+===================================
+
+[Case isolation start time]
+$Case_isolation_start_time
+
+[Proportion of detected cases isolated]
+$Proportion_of_detected_cases_isolated
+
+[Delay to start case isolation]
+$Delay_to_start_case_isolation
+
+[Duration of case isolation]
+$Duration_of_case_isolation
+
+[Duration of case isolation policy]
+$Duration_of_case_isolation_policy
+
+[Residual contacts after case isolation]
+$Residual_contacts_after_case_isolation
+
+===================================
+
+[Social distancing start time]
+$Social_distancing_start_time
+
+[Trigger incidence per cell for social distancing]
+$Trigger_incidence_per_cell_for_social_distancing
+
+[Trigger incidence per cell for end of social distancing]
+$Trigger_incidence_per_cell_for_end_of_social_distancing
+
+[Duration of social distancing]
+$Duration_of_social_distancing
+
+[Relative place contact rate given social distancing by place type]
+$Relative_place_contact_rate_given_social_distancing_by_place_type0 $Relative_place_contact_rate_given_social_distancing_by_place_type1 $Relative_place_contact_rate_given_social_distancing_by_place_type2 $Relative_place_contact_rate_given_social_distancing_by_place_type3 
+
+[Relative household contact rate given social distancing]
+$Relative_household_contact_rate_given_social_distancing
+
+[Relative spatial contact rate given social distancing]
+$Relative_spatial_contact_rate_given_social_distancing
+
+[Minimum radius for social distancing]
+$Minimum_radius_for_social_distancing
+
+[Proportion compliant with enhanced social distancing]
+$Proportion_compliant_with_enhanced_social_distancing
+
+[Relative place contact rate given enhanced social distancing by place type]
+$Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type0 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type1 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type2 $Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type3 
+
+[Relative household contact rate given enhanced social distancing]
+$Relative_household_contact_rate_given_enhanced_social_distancing
+
+[Relative spatial contact rate given enhanced social distancing]
+$Relative_spatial_contact_rate_given_enhanced_social_distancing
+
+
+===================================
+
+[False positive rate]
+$False_positive_rate
+
+[False positive per capita incidence]
+$False_positive_per_capita_incidence
+0.001666667
+0.000411
+
+[False positive relative incidence by age]
+$False_positive_relative_incidence_by_age0 $False_positive_relative_incidence_by_age1 $False_positive_relative_incidence_by_age2 $False_positive_relative_incidence_by_age3 $False_positive_relative_incidence_by_age4 $False_positive_relative_incidence_by_age5 $False_positive_relative_incidence_by_age6 $False_positive_relative_incidence_by_age7 $False_positive_relative_incidence_by_age8 $False_positive_relative_incidence_by_age9 $False_positive_relative_incidence_by_age10 $False_positive_relative_incidence_by_age11 $False_positive_relative_incidence_by_age12 $False_positive_relative_incidence_by_age13 $False_positive_relative_incidence_by_age14 $False_positive_relative_incidence_by_age15 $False_positive_relative_incidence_by_age16 
+1	0.75	0.75	0.5	0.35	0.35	0.35	0.35	0.35	0.35	0.35	0.35	0.35	0.25	0.25	0.25	0.25
+
+===================================
+
