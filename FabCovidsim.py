@@ -29,6 +29,7 @@ def CovidSim(config,
     fab eagle_vecma CovidSim:UK_sample,memory=20000
 
     """
+
     update_environment(args, {"output_dir": "output_dir",
                               "memory": memory
                               })
@@ -73,8 +74,9 @@ def CovidSim_ensemble(config,
 
     run_ensemble(config, sweep_dir, **args)
 
-from plugins.FabCovidsim.covid_standard import covid_init_SC
-from plugins.FabCovidsim.covid_standard import covid_analyse_SC
+#from plugins.FabCovidsim.covid_standard import covid_init_SC
+#from plugins.FabCovidsim.covid_standard import covid_analyse_SC
+
 
 from plugins.FabCovidsim.covid_adaptive import covid_init
 from plugins.FabCovidsim.covid_adaptive import covid_analyse

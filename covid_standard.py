@@ -11,27 +11,17 @@ import easyvvuq as uq
 import chaospy as cp
 import os
 import sys
-import pytest
 import math
 from pprint import pprint
-import subprocess
 import json
 from shutil import copyfile, rmtree
-from sqlalchemy import create_engine
-import re
-import pandas as pd
 import matplotlib.pyplot as plt
-
-try:
-    import glob
-except ImportError:
-    raise ImportError('python glob module NOT found !! ')
 
 
 from plugins.FabCovidsim.FabCovidsim import *
 
 # load custom Campaign
-from customEasyVVUQ import CustomCampaign
+from plugins.FabCovidsim.customEasyVVUQ import CustomCampaign
 uq.Campaign = CustomCampaign
 
 # from customEasyVVUQ import CustomEncoder
@@ -58,7 +48,6 @@ def covid_init_SC(config, ** args):
     fab eagle_vecma covid_init_SC:UK_easyvvuq_test
 
     '''
-
     # delete work_dir_SC is exists
     if os.path.exists(work_dir_SC):
         rmtree(work_dir_SC)
@@ -102,17 +91,11 @@ def covid_init_SC(config, ** args):
                                     header=0,
                                     delimiter='\t')
 
+    decoder2 = uq.decoders.SimpleCSV(target_filename='output_dir/United_Kingdom_NoInt_R0=2.4.avNE.severity.xls',
+                                     output_columns=output_columns,
+                                     header=0,
+                                     delimiter='\t')
     collater = uq.collate.AggregateSamples(average=False)
-
-    # Add the app
-    campaign.add_app(name="covidsim-standard-PC_CI_HQ_SD",
-                     params=params,
-                     encoder=multiencoder_covid_sim,
-                     collater=collater,
-                     decoder=decoder)
-
-    # Set the active app to be covidsim-standard-PC_CI_HQ_SD
-    campaign.set_app("covidsim-standard-PC_CI_HQ_SD")
 
     # parameters to vary
     vary = {
@@ -127,10 +110,36 @@ def covid_init_SC(config, ** args):
                                     polynomial_order=1,
                                     quadrature_rule="G")
 
-    campaign.set_sampler(sampler)
+    # Add the app
+    campaign.add_app(name="covidsim-standard-NoInt",
+                     params=params,
+                     encoder=multiencoder_covid_sim,
+                     collater=collater,
+                     decoder=decoder2)
 
+    campaign.add_app(name="covidsim-standard-PC_CI_HQ_SD",
+                     params=params,
+                     encoder=multiencoder_covid_sim,
+                     collater=collater,
+                     decoder=decoder)
+
+    # Set the active app to be covidsim-standard-PC_CI_HQ_SD
+    campaign.set_app("covidsim-standard-NoInt")
+    campaign.set_sampler(sampler)
     campaign.draw_samples()
-    campaign.populate_runs_dir()
+
+    # Set the active app to be covidsim-standard-PC_CI_HQ_SD
+    campaign.set_app("covidsim-standard-PC_CI_HQ_SD")
+    campaign.set_sampler(sampler)
+    campaign.draw_samples()
+
+    campaign.set_app("covidsim-standard-NoInt")
+    run_ids = campaign.populate_runs_dir()
+    pprint(run_ids)
+
+    campaign.set_app("covidsim-standard-PC_CI_HQ_SD")
+    run_ids = campaign.populate_runs_dir()
+    pprint(run_ids)
 
     # copy generated run folders to SWEEP directory in config folder
     path_to_config = find_config_file_path(config)
@@ -145,6 +154,7 @@ def covid_init_SC(config, ** args):
                              )
           )
 
+    exit()
     # submit ensemble jobs to remote machine
     CovidSim_ensemble(config, label=job_label, **args)
 

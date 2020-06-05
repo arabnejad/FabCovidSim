@@ -84,12 +84,12 @@ eagle_vecma:
 ## Running a standard EasyVVUQ
 This demonstrates how to use a standard EasyVVUQ campaign on the CovidSim code. By `standard` we mean non-dimension adaptive, where each input parameter is sampled equally. To run this model, simply type
 ``` sh
-fab eagle_vecma covid_init_SC:UK_easyvvuq_test
+fab eagle_vecma covid_init_SC:GB_suppress
 ``` 
 This command will generate a `covid_standard_test` folder on your FabCovidsim plugin directory and saves all output campaign files and generated output figures in that folder. Then, submit an ensemble job to the remote machine.  
 To analysis the results, first make sure that all submitted jobs are finished, then run this command which fetches results from the remote machine to your local PC and calls analysis function
 ``` sh
-fab eagle_vecma covid_analyse_SC:UK_easyvvuq_test
+fab eagle_vecma covid_analyse_SC:GB_suppress
 ``` 
 All figures and output files will be saved in `covid_standard_test` folder
 
@@ -100,11 +100,11 @@ All figures and output files will be saved in `covid_standard_test` folder
 ## Running a dimension-adaptive EasyVVUQ
 To run a dimension-adaptive campaign on the CovidSim code, please type the following commands :
 ``` sh
-    fab eagle_vecma covid_init:UK_easyvvuq_test
-    fab eagle_vecma covid_analyse:UK_easyvvuq_test
+    fab eagle_vecma covid_init:GB_suppress
+    fab eagle_vecma covid_analyse:GB_suppress
     loop
-        fab eagle_vecma covid_look_ahead:UK_easyvvuq_test
-        fab eagle_vecma covid_adapt:UK_easyvvuq_test
+        fab eagle_vecma covid_look_ahead:GB_suppress
+        fab eagle_vecma covid_adapt:GB_suppress
 
 ``` 
 

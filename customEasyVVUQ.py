@@ -96,22 +96,7 @@ class CustomSCAnalysis(SCAnalysis):
     # changes :
     # add file input parameter to save generated plot
     # ----------------------------------------------------------------------
-
     def adaptation_histogram(self, file=None):
-        """
-        Parameters
-        ----------
-        None
-
-        Returns
-        -------
-        Plots a bar chart of the maximum order of the quadrature rule
-        that is used in each dimension. Use in case of the dimension adaptive
-        sampler to get an idea of which parameters were more refined than others.
-        This gives only a first-order idea, as it only plots the max quad
-        order independently per input parameter, so higher-order refinements
-        that were made do not show up in the bar chart.
-        """
         import matplotlib.pyplot as plt
 
         fig = plt.figure(figsize=[4, 8])
@@ -127,6 +112,53 @@ class CustomSCAnalysis(SCAnalysis):
         plt.xticks(rotation=90)
         plt.tight_layout()
 
+        if file == None:
+            plt.show()
+        else:
+            plt.savefig(file, dpi=400)
+
+    # ----------------------------------------------------------------------
+    # changes :
+    # add file input parameter to save generated plot
+    # ----------------------------------------------------------------------
+    def plot_stat_convergence(self, file=None):
+
+        if not self.dimension_adaptive:
+            print('Only works for the dimension adaptive sampler.')
+            return
+
+        K = len(self.mean_history)
+        if K < 2:
+            print('Means from at least two refinements are required')
+            return
+        else:
+            differ_mean = np.zeros(K - 1)
+            differ_std = np.zeros(K - 1)
+            for i in range(1, K):
+                differ_mean[i - 1] = np.linalg.norm(self.mean_history[i] -
+                                                    self.mean_history[i - 1], np.inf)
+
+                differ_std[i - 1] = np.linalg.norm(self.std_history[i] -
+                                                   self.std_history[i - 1], np.inf)
+
+        import matplotlib.pyplot as plt
+        fig = plt.figure('stat_conv')
+        ax1 = fig.add_subplot(111, title='moment convergence')
+        ax1.set_xlabel('refinement step')
+        ax1.set_ylabel(r'$ ||\mathrm{mean}_i - \mathrm{mean}_{i - 1}||_\infty$',
+                       color='r', fontsize=12)
+        ax1.plot(range(2, K + 1), differ_mean, color='r', marker='+')
+        ax1.tick_params(axis='y', labelcolor='r')
+
+        ax2 = ax1.twinx()  # instantiate a second axes that shares the same x-axis
+
+        ax2.set_ylabel(r'$ ||\mathrm{std}_i - \mathrm{std}_{i - 1}||_\infty$',
+                       color='b', fontsize=12)
+        ax2.plot(range(2, K + 1), differ_std, color='b', marker='*')
+        ax2.tick_params(axis='y', labelcolor='b')
+
+        plt.tight_layout()
+        # plt.show()
         if file == None:
             plt.show()
         else:
