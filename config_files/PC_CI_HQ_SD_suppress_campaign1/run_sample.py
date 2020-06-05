@@ -125,6 +125,7 @@ if __name__ == "__main__":
     wpop_file = os.path.join(
         InputLoadFiles,
         "wpop_{0}.txt".format(wpop_file_root))
+
     wpop_bin = os.path.join(
         InputLoadFiles,
         "{0}_pop_density.bin".format(args.country))
@@ -139,7 +140,7 @@ if __name__ == "__main__":
 
     # Configure No intervention parameter file.  This is run first
     # and provides a baseline
-    no_int_file = os.path.join(args.paramdir, "p_NoInt_suppress.txt")
+    no_int_file = os.path.join(args.paramdir, "p_NoInt.txt")
     if not os.path.exists(no_int_file):
         print("Unable to find parameter file")
         print("Param directory: {0}".format(args.paramdir))
@@ -176,13 +177,19 @@ if __name__ == "__main__":
     '''
     network_bin = os.path.join(InputLoadFiles, "Network_United_Kingdom.bin")
 
+    # added later
+
+    network_bin = os.path.join(
+        InputLoadFiles, "NetworkGB_28T_H.bin")
+    wpop_bin = os.path.join(InputLoadFiles, "GB_pop2018_H.bin")
+
     # Run the no intervention sim.  This also does some extra setup which is one
     # off for each R.
     print("No intervention: {0} NoInt {1}".format(args.country, r))
     cmd = [
         exe,
         "/c:{0}".format(args.threads),
-        "/A:" + admin_file
+        #"/A:" + admin_file
     ]
 
     cmd.extend([
@@ -193,6 +200,8 @@ if __name__ == "__main__":
         "/D:" + wpop_bin,  # Where to save binary pop density
         "/L:" + network_bin,  # Where to save binary net setup
         "/R:{0}".format(rs),
+        "/CLP1:" + "100000",  # FIXED
+        "/CLP2:" + "0",  # FIXED
         "98798150",  # These four numbers are RNG seeds
         "729101",
         "17389101",
@@ -207,7 +216,7 @@ if __name__ == "__main__":
         cmd = [
             exe,
             "/c:{0}".format(args.threads),
-            "/A:" + admin_file
+            #"/A:" + admin_file
         ]
 
         cmd.extend([
@@ -218,6 +227,11 @@ if __name__ == "__main__":
             "/D:" + wpop_bin,  # Binary pop density file (speedup)
             "/L:" + network_bin,  # Network to load
             "/R:{0}".format(rs),
+            "/CLP1:" + "60",
+            "/CLP2:" + "1000",
+            "/CLP3:" + "1000",
+            "/CLP4:" + "1000",
+            "/CLP5:" + "15",
             "98798150",
             "729101",
             "17389101",

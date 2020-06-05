@@ -102,7 +102,8 @@ if __name__ == "__main__":
 
     args = parse_args()
     
-    vary = ["Relative_household_contact_rate_after_closure",
+    vary = ["Delay_to_start_household_quarantine",
+        "Relative_household_contact_rate_after_closure",
         "Relative_spatial_contact_rate_after_closure",
         "Relative_household_contact_rate_after_quarantine",
         "Residual_spatial_contacts_after_household_quarantine",
@@ -120,7 +121,7 @@ if __name__ == "__main__":
         a[i] = a[i-1]/2
     
     # fname = os.path.join(args.paramdir, 'template_p_PC7_CI_HQ_SD.txt')
-    fname = './param_files/template_p_PC7_CI_HQ_SD.txt'
+    fname = './param_files/p_PC_CI_HQ_SD.txt'
     fp = open(fname, 'r')
     lines = fp.readlines()
     fp.close()

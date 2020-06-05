@@ -110,13 +110,13 @@ print('done')
 # Plot first-order Sobol indices #
 ##################################
 
-# ax = fig.add_subplot(132, title=r'First-order Sobols indices',
-#                       xlabel="days", ylabel=output_columns[0])
-# sobols_first = results["sobols_first"][output_columns[0]]
-# for param in sobols_first.keys():
-#     ax.plot(sobols_first[param], label=param)
-# leg = ax.legend(loc=0, fontsize=8)
-# leg.set_draggable(True)
-# plt.tight_layout()
+ax = fig.add_subplot(132, title=r'First-order Sobols indices',
+                      xlabel="days", ylabel=output_columns[0])
+sobols_first = results["sobols_first"][output_columns[0]]
+for param in sobols_first.keys():
+    ax.plot(sobols_first[param], label=param)
+leg = ax.legend(loc=0, fontsize=8)
+leg.set_draggable(True)
+plt.tight_layout()
 
 plt.show()

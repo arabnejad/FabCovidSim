@@ -83,13 +83,6 @@ London	South_East	South_West	East_of_England	Midlands	North_East_and_Yorkshire	N
 0.056393006	0.061635577	0.060073027	0.054560339	0.061329898	0.066922394	0.067518576	0.06574789	0.060963049	0.064146025	0.068722991	0.067173597	0.057479141	0.050111639	0.05033679	0.035952953	0.050933109
 [ONS proj for 2020]
 
-0.062 0.056 0.058 0.063 0.068 0.068 0.065 0.066 0.073 0.073 0.065 0.057 0.060 0.048 0.039 0.032 0.047
-
-0.060217209	0.062909252	0.057928152	0.056681257	0.064513611	0.069143606	0.067567882	0.065719808	0.061143348	0.068915034	0.070793169	0.064107711	0.054836779	0.051557335	0.047376881	0.032364885	0.023616544	0.020607538
-
-	
-0	5	10	15	20	25	30	35	40	45	50	55	60	65	70	75	80
-
 (Data from:
 
 [Initial immunity profile by age]	
@@ -102,8 +95,6 @@ London	South_East	South_West	East_of_England	Midlands	North_East_and_Yorkshire	N
 0.6	0.7	0.75	1	1	1	1	1	1	1	1	1	1	1	1	0.75	0.5
 [POLYMOD, averaging 20-70]
 
-0.25	0.25	0.5	0.75	1	1	1	1	1	1	1	1	1	0.75	0.5	0.25	0.25
-
 
 [Include households]
 1		
@@ -111,8 +102,6 @@ London	South_East	South_West	East_of_England	Midlands	North_East_and_Yorkshire	N
 [Household size distribution]
 0.294601783	0.345349339	0.154075618	0.139483899	0.045069005	0.015590461	0.003622199	0.001441591	0.000573727	0.000228319
 (ONS 2020)
-	
-0.302836228	0.34073158	0.155126509	0.133195683	0.048757632	0.014061717	0.003267019	0.001300234	0.000517469	0.000205931
 
 [Household attack rate]
 0.14
@@ -256,7 +245,7 @@ assume average time to symptom onset is a day
 
 [Location of initial infecteds]
 -0.176 50.835
-200000	200000
+(not used)
 
 [Maximum population in microcell of initial infection]
 500000000
@@ -273,10 +262,8 @@ assume average time to symptom onset is a day
 [Initial rate of importation of infections]
 1
 
-
 [Changed rate of importation of infections]
 1
-
 
 [Length of importation time profile provided]
 180
@@ -306,14 +293,6 @@ assume average time to symptom onset is a day
 [Latent period inverse CDF]
 0	0.098616903	0.171170649	0.239705594	0.307516598	0.376194441	0.446827262	0.520343677	0.597665592	0.679808341	0.767974922	0.863671993	0.968878064	1.086313899	1.219915022	1.37573215	1.563841395	1.803041398	2.135346254	2.694118208	3.964172493
 
-
-1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
-(fixed latent period)
-
-0	0.084316056	0.179208436	0.287716206	0.414411663	0.566644354	0.757376134	0.806831536	0.859743301	0.916631096	0.978141381	1.04509234	1.118540666	1.199884333	1.291027502	1.394658862	1.514752269	1.645029341	1.802468475	2.001461849	2.272128403
-
-(Elveback)
-
 [Model time varying infectiousness]
 1
 
@@ -323,11 +302,6 @@ assume average time to symptom onset is a day
 
 [Infectious period]
 14
-
-[Infectious period inverse CDF]	
-0	0.171566836	0.424943468	0.464725594	0.50866631	0.55773764	0.613298069	0.67732916	0.752886568	0.843151261	0.895791527	0.955973422	1.026225109	1.110607115	1.216272375	1.336349102	1.487791911	1.701882384	1.865779085	2.126940581	2.524164972
-
-(Cauchemez)
 
 [k of individual variation in infectiousness]
 0.25
@@ -351,7 +325,7 @@ assume average time to symptom onset is a day
 ===================================
 
 [Target country]	
-44
+1
 	
 [Restrict treatment to target country]
 0
@@ -394,7 +368,6 @@ assume average time to symptom onset is a day
 [Social distancing only once]
 0
 
-
 [Use ICU case triggers for interventions]
 1
 
@@ -413,7 +386,7 @@ assume average time to symptom onset is a day
 0
 
 [Output every realisation]
-1
+0
 
 [Output bitmap]
 0

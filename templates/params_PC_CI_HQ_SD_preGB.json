@@ -2455,90 +2455,6 @@
 "default": 14.0,
 "type": "float"
 },
-"Infectious_period_inverse_CDF0": {
-"default": 0.0,
-"type": "float"
-},
-"Infectious_period_inverse_CDF1": {
-"default": 0.171566836,
-"type": "float"
-},
-"Infectious_period_inverse_CDF2": {
-"default": 0.424943468,
-"type": "float"
-},
-"Infectious_period_inverse_CDF3": {
-"default": 0.464725594,
-"type": "float"
-},
-"Infectious_period_inverse_CDF4": {
-"default": 0.50866631,
-"type": "float"
-},
-"Infectious_period_inverse_CDF5": {
-"default": 0.55773764,
-"type": "float"
-},
-"Infectious_period_inverse_CDF6": {
-"default": 0.613298069,
-"type": "float"
-},
-"Infectious_period_inverse_CDF7": {
-"default": 0.67732916,
-"type": "float"
-},
-"Infectious_period_inverse_CDF8": {
-"default": 0.752886568,
-"type": "float"
-},
-"Infectious_period_inverse_CDF9": {
-"default": 0.843151261,
-"type": "float"
-},
-"Infectious_period_inverse_CDF10": {
-"default": 0.895791527,
-"type": "float"
-},
-"Infectious_period_inverse_CDF11": {
-"default": 0.955973422,
-"type": "float"
-},
-"Infectious_period_inverse_CDF12": {
-"default": 1.026225109,
-"type": "float"
-},
-"Infectious_period_inverse_CDF13": {
-"default": 1.110607115,
-"type": "float"
-},
-"Infectious_period_inverse_CDF14": {
-"default": 1.216272375,
-"type": "float"
-},
-"Infectious_period_inverse_CDF15": {
-"default": 1.336349102,
-"type": "float"
-},
-"Infectious_period_inverse_CDF16": {
-"default": 1.487791911,
-"type": "float"
-},
-"Infectious_period_inverse_CDF17": {
-"default": 1.701882384,
-"type": "float"
-},
-"Infectious_period_inverse_CDF18": {
-"default": 1.865779085,
-"type": "float"
-},
-"Infectious_period_inverse_CDF19": {
-"default": 2.126940581,
-"type": "float"
-},
-"Infectious_period_inverse_CDF20": {
-"default": 2.524164972,
-"type": "float"
-},
 "k_of_individual_variation_in_infectiousness": {
 "default": 0.25,
 "type": "float"
@@ -2608,7 +2524,7 @@
 "type": "float"
 },
 "Target_country": {
-"default": 44.0,
+"default": 1.0,
 "type": "float"
 },
 "Restrict_treatment_to_target_country": {
@@ -2684,7 +2600,7 @@
 "type": "integer"
 },
 "Output_every_realisation": {
-"default": 1,
+"default": 0,
 "type": "integer"
 },
 "Output_bitmap": {
