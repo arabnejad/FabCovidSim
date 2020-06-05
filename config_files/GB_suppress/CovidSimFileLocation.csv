@@ -1,0 +1,3 @@
+covidsim,/home/plgrid-groups/plggvecma/covid-sim/build/CovidSim
+network_bin,/home/plgrid-groups/plggvecma/covid-sim-input-files/NetworkGB_28T_H.bin
+wpop_bin,/home/plgrid-groups/plggvecma/covid-sim-input-files/GB_pop2018_H.bin
