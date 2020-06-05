@@ -333,3 +333,7 @@ Finally, after every adapt step, we can check the difference between the statist
 analysis.plot_stat_convergence()
 ```
 which shows the inf norm between the mean at iteration i and i-1, and likewise for the standard deviation. For the current example this looks like
+
+![alt text](https://github.com/arabnejad/FabCovidsim/blob/dev/dummy_covid_easyvvuq/figs/stat_conv.png)
+
+Note that the current example is a polynomial test function, for which rapid convergence as displayed above is to be expected. In real-world problems it is likely that more refinements are required.
