@@ -320,3 +320,16 @@ array([[1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 we see that the last selected multi index was `[2, 2, 1, 1, 1, 1, 1, 1, 1, 1]`. This is a *joint* (interaction) refinement between the first and the second input. This histogram does not show such interaction refinements, and should be interpreted as some type of first-order sensitivity index. Note that this means that the algorithmn is not necessarily a 'one-at-a-time' refinement, and that multiple inputs can be refined during the same iteration. Visualizing higher-order refinements is a bit tricky though, suggestions are welcome.
 
 **Also**: currenlty it selects one of the adimissible multi indices every iteration, which can result in small ensembles. Perhaps we should build in the option of selecting a user-specified number of indices each iteration.
+
+## Checking for convergence
+
+There are several ways of checking if the sampler reaches something like a 'steady state' after a number of iterations. The first is already discussed above, i.e. the use of `analysis.adaptation_histogram()`. In practise most problems have an effective dimension that is lower than the actual dimension of the problem (although there is no real guarantee), such that after a number of iterations one tends to see the sampler focusing on a subset of all inputs parameters. Secondly, the aforementioned hierarchical surplus errors are stored, and should display a downward trend, although it may do so in a non-monotonic fashion. To access these surplus errors, type:
+```python
+analysis.get_adaptation_errors()
+```
+
+Finally, after every adapt step, we can check the difference between the statistical QoI mean and variance of this iteration, and the values at the previous step. A norm of this difference should also have a downward trend, once the important variables are sufficiently sampled. This can be plotted via
+```python
+analysis.plot_stat_convergence()
+```
+whihc shows the inf norm between the mean at iteration i and i-1, ad likewise for the standard deviation. For the current example this looks like
