@@ -1,14 +1,8 @@
 """
 ==============================================================================
-THE ADAPTATION STEP
+THE POSTPROCESSING STEP
 
-Execute the look ahead step first
-
-Takes the admissble points computed in the look ahead step to decide along 
-which dimension to place more samples. See adapt_dimension subroutine.
-
-The look-ahead step and the adaptation step can be executed multiple times:
-look ahead, adapt, look ahead, adapt, etc
+Analyse results after all sampling has completed
 ==============================================================================
 """
        
@@ -36,21 +30,6 @@ sampler.load_state("covid_sampler_state.pickle")
 campaign.set_sampler(sampler)
 analysis = uq.analysis.SCAnalysis(sampler=sampler, qoi_cols=output_columns)
 analysis.load_state("covid_analysis_state.pickle")
-
-fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
-                   machine='eagle_vecma')
-campaign.collate()
-
-#compute the error at all admissible points, select direction with
-#highest error and add that direction to the grid
-
-data_frame = campaign.get_collation_result()
-analysis.adapt_dimension(output_columns[0], data_frame)
-
-#save everything
-campaign.save_state("covid_easyvvuq_state.json")
-sampler.save_state("covid_sampler_state.pickle")
-analysis.save_state("covid_analysis_state.pickle")
 
 #apply analysis
 campaign.apply_analysis(analysis)
