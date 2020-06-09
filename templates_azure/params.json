@@ -1,0 +1,4458 @@
+{
+"Treatment_start_time": {
+"default": 1000.0,
+"type": "float"
+},
+"Relative_susceptibility_of_treated_individual": {
+"default": 0.7,
+"type": "float"
+},
+"Relative_infectiousness_of_treated_individual": {
+"default": 0.4,
+"type": "float"
+},
+"Proportion_of_symptomatic_cases_prevented_by_treatment": {
+"default": 0.65,
+"type": "float"
+},
+"Proportion_of_symptomatic_cases_resulting_in_death_prevented_by_treatment": {
+"default": 0.0,
+"type": "float"
+},
+"Delay_to_treat_cell": {
+"default": 1.0,
+"type": "float"
+},
+"Duration_of_course_of_treatment": {
+"default": 5.0,
+"type": "float"
+},
+"Duration_of_course_of_prophylaxis": {
+"default": 10.0,
+"type": "float"
+},
+"Proportion_treated": {
+"default": 0.9,
+"type": "float"
+},
+"Treatment_radius": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_households_of_cases_treated": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_treated_after_case_detected0": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_treated_after_case_detected1": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_treated_after_case_detected2": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_treated_after_case_detected3": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_people_treated_in_targeted_places0": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_people_treated_in_targeted_places1": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_people_treated_in_targeted_places2": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_people_treated_in_targeted_places3": {
+"default": 0.0,
+"type": "float"
+},
+"Only_treat_mixing_groups_within_places": {
+"default": 0,
+"type": "integer"
+},
+"Maximum_number_of_doses_available": {
+"default": 60000000.0,
+"type": "float"
+},
+"Movement_restrictions_start_time": {
+"default": 10000000000.0,
+"type": "float"
+},
+"Movement_restrictions_trigger_incidence_per_cell": {
+"default": 1000000000,
+"type": "integer"
+},
+"Delay_to_start_movement_restrictions": {
+"default": 2.0,
+"type": "float"
+},
+"Duration_of_movement_restrictions": {
+"default": 7.0,
+"type": "float"
+},
+"Residual_movements_after_restrictions": {
+"default": 0.25,
+"type": "float"
+},
+"Minimum_radius_of_movement_restrictions": {
+"default": 5000.0,
+"type": "float"
+},
+"Impose_blanket_movement_restrictions": {
+"default": 0,
+"type": "integer"
+},
+"Place_closure_start_time": {
+"default": 0.0,
+"type": "float"
+},
+"Place_closure_second_start_time": {
+"default": 1000.0,
+"type": "float"
+},
+"Place_closure_in_administrative_units_rather_than_rings": {
+"default": 0,
+"type": "integer"
+},
+"Administrative_unit_divisor_for_place_closure": {
+"default": 1,
+"type": "integer"
+},
+"Place_types_to_close_for_admin_unit_closure__0_1_array_0": {
+"default": 1,
+"type": "integer"
+},
+"Place_types_to_close_for_admin_unit_closure__0_1_array_1": {
+"default": 1,
+"type": "integer"
+},
+"Place_types_to_close_for_admin_unit_closure__0_1_array_2": {
+"default": 1,
+"type": "integer"
+},
+"Place_types_to_close_for_admin_unit_closure__0_1_array_3": {
+"default": 0,
+"type": "integer"
+},
+"Cumulative_proportion_of_place_members_needing_to_become_sick_for_admin_unit_closure": {
+"default": 1.0,
+"type": "float"
+},
+"Proportion_of_places_in_admin_unit_needing_to_pass_threshold_for_place_closure": {
+"default": 1.0,
+"type": "float"
+},
+"Delay_to_start_place_closure": {
+"default": 1.0,
+"type": "float"
+},
+"Duration_of_place_closure": {
+"default": "#2",
+"type": "string"
+},
+"Proportion_of_places_remaining_open_after_closure_by_place_type0": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_after_closure_by_place_type1": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_after_closure_by_place_type2": {
+"default": 0.25,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_after_closure_by_place_type3": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_household_contact_rate_after_closure": {
+"default": 1.5,
+"type": "float"
+},
+"Relative_spatial_contact_rate_after_closure": {
+"default": 1.25,
+"type": "float"
+},
+"Minimum_radius_for_place_closure": {
+"default": 1.0,
+"type": "float"
+},
+"Place_closure_incidence_threshold": {
+"default": 0,
+"type": "integer"
+},
+"Place_closure_fractional_incidence_threshold": {
+"default": 0.0,
+"type": "float"
+},
+"Trigger_incidence_per_cell_for_place_closure": {
+"default": "#1",
+"type": "string"
+},
+"Trigger_incidence_per_cell_for_end_of_place_closure": {
+"default": "#5",
+"type": "string"
+},
+"Household_quarantine_start_time": {
+"default": 0.0,
+"type": "float"
+},
+"Delay_to_start_household_quarantine": {
+"default": 1.0,
+"type": "float"
+},
+"Length_of_time_households_are_quarantined": {
+"default": 14.0,
+"type": "float"
+},
+"Duration_of_household_quarantine_policy": {
+"default": "#4",
+"type": "string"
+},
+"Relative_household_contact_rate_after_quarantine": {
+"default": 2.0,
+"type": "float"
+},
+"Residual_place_contacts_after_household_quarantine_by_place_type0": {
+"default": 0.25,
+"type": "float"
+},
+"Residual_place_contacts_after_household_quarantine_by_place_type1": {
+"default": 0.25,
+"type": "float"
+},
+"Residual_place_contacts_after_household_quarantine_by_place_type2": {
+"default": 0.25,
+"type": "float"
+},
+"Residual_place_contacts_after_household_quarantine_by_place_type3": {
+"default": 0.25,
+"type": "float"
+},
+"Residual_spatial_contacts_after_household_quarantine": {
+"default": 0.25,
+"type": "float"
+},
+"Household_level_compliance_with_quarantine": {
+"default": 0.5,
+"type": "float"
+},
+"Individual_level_compliance_with_quarantine": {
+"default": 1.0,
+"type": "float"
+},
+"Vaccination_start_time": {
+"default": 1000.0,
+"type": "float"
+},
+"Duration_of_household_vaccination_policy": {
+"default": 1000.0,
+"type": "float"
+},
+"Apply_mass_rather_than_reactive_vaccination": {
+"default": 1,
+"type": "integer"
+},
+"Priority_age_range_for_mass_vaccination0": {
+"default": 0,
+"type": "integer"
+},
+"Priority_age_range_for_mass_vaccination1": {
+"default": 16,
+"type": "integer"
+},
+"Switch_time_at_which_efficacy_increases": {
+"default": 90.0,
+"type": "float"
+},
+"Relative_susceptibility_of_vaccinated_individual_after_switch_time": {
+"default": 0.8,
+"type": "float"
+},
+"Relative_susceptibility_of_vaccinated_individual": {
+"default": 0.8,
+"type": "float"
+},
+"Relative_infectiousness_of_vaccinated_individual": {
+"default": 0.8,
+"type": "float"
+},
+"Proportion_of_symptomatic_cases_prevented_by_vaccination": {
+"default": 0.4,
+"type": "float"
+},
+"Vaccination_trigger_incidence_per_cell": {
+"default": 1.0,
+"type": "float"
+},
+"Delay_to_vaccinate": {
+"default": 0.0,
+"type": "float"
+},
+"Delay_from_vaccination_to_full_protection": {
+"default": 14.0,
+"type": "float"
+},
+"Proportion_of_population_vaccinated": {
+"default": 0.9,
+"type": "float"
+},
+"Vaccination_radius": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_households_of_cases_vaccinated": {
+"default": 0.0,
+"type": "float"
+},
+"Maximum_number_of_vaccine_courses_available": {
+"default": 23246000.0,
+"type": "float"
+},
+"Start_time_of_additional_vaccine_production": {
+"default": 1000.0,
+"type": "float"
+},
+"Rate_of_additional_vaccine_production__courses_per_day_": {
+"default": 0.0,
+"type": "float"
+},
+"Case_isolation_start_time": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_detected_cases_isolated": {
+"default": 0.7,
+"type": "float"
+},
+"Delay_to_start_case_isolation": {
+"default": 1.0,
+"type": "float"
+},
+"Duration_of_case_isolation": {
+"default": 7.0,
+"type": "float"
+},
+"Duration_of_case_isolation_policy": {
+"default": "#4",
+"type": "string"
+},
+"Residual_contacts_after_case_isolation": {
+"default": 0.25,
+"type": "float"
+},
+"Social_distancing_start_time": {
+"default": 0.0,
+"type": "float"
+},
+"Trigger_incidence_per_cell_for_social_distancing": {
+"default": "#1",
+"type": "string"
+},
+"Trigger_incidence_per_cell_for_end_of_social_distancing": {
+"default": "#5",
+"type": "string"
+},
+"Duration_of_social_distancing": {
+"default": "#2",
+"type": "string"
+},
+"Relative_place_contact_rate_given_social_distancing_by_place_type0": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_place_contact_rate_given_social_distancing_by_place_type1": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_place_contact_rate_given_social_distancing_by_place_type2": {
+"default": 0.75,
+"type": "float"
+},
+"Relative_place_contact_rate_given_social_distancing_by_place_type3": {
+"default": 0.75,
+"type": "float"
+},
+"Relative_household_contact_rate_given_social_distancing": {
+"default": 1.25,
+"type": "float"
+},
+"Relative_spatial_contact_rate_given_social_distancing": {
+"default": 0.25,
+"type": "float"
+},
+"Minimum_radius_for_social_distancing": {
+"default": 1.0,
+"type": "float"
+},
+"Proportion_compliant_with_enhanced_social_distancing": {
+"default": 0.0,
+"type": "float"
+},
+"Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type0": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type1": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type2": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_place_contact_rate_given_enhanced_social_distancing_by_place_type3": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_household_contact_rate_given_enhanced_social_distancing": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rate_given_enhanced_social_distancing": {
+"default": 0.25,
+"type": "float"
+},
+"False_positive_rate": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_per_capita_incidence": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age0": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age1": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age2": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age3": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age4": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age5": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age6": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age7": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age8": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age9": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age10": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age11": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age12": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age13": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age14": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age15": {
+"default": 0.0,
+"type": "float"
+},
+"False_positive_relative_incidence_by_age16": {
+"default": 0.0,
+"type": "float"
+},
+"Update_timestep": {
+"default": 0.25,
+"type": "float"
+},
+"Equilibriation_time": {
+"default": 0.0,
+"type": "float"
+},
+"Sampling_timestep": {
+"default": 1.0,
+"type": "float"
+},
+"Sampling_time": {
+"default": 720.0,
+"type": "float"
+},
+"Population_size": {
+"default": 65293913,
+"type": "integer"
+},
+"Fix_population_size_at_specified_value": {
+"default": 1,
+"type": "integer"
+},
+"Include_administrative_units_within_countries": {
+"default": 1,
+"type": "integer"
+},
+"Mask_for_level_1_administrative_units": {
+"default": 100000,
+"type": "integer"
+},
+"Divisor_for_level_1_administrative_units": {
+"default": 1,
+"type": "integer"
+},
+"Divisor_for_countries": {
+"default": 1000,
+"type": "integer"
+},
+"Number_of_level_1_administrative_units_to_include": {
+"default": 183,
+"type": "integer"
+},
+"List_of_level_1_administrative_units_to_include0": {
+"default": "44001",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include1": {
+"default": "44002",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include2": {
+"default": "44003",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include3": {
+"default": "44004",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include4": {
+"default": "44005",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include5": {
+"default": "44006",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include6": {
+"default": "44007",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include7": {
+"default": "44008",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include8": {
+"default": "44009",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include9": {
+"default": "44010",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include10": {
+"default": "44011",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include11": {
+"default": "44012",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include12": {
+"default": "44013",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include13": {
+"default": "44014",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include14": {
+"default": "44015",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include15": {
+"default": "44016",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include16": {
+"default": "44017",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include17": {
+"default": "44018",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include18": {
+"default": "44019",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include19": {
+"default": "44020",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include20": {
+"default": "44021",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include21": {
+"default": "44022",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include22": {
+"default": "44023",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include23": {
+"default": "44024",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include24": {
+"default": "44025",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include25": {
+"default": "44026",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include26": {
+"default": "44027",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include27": {
+"default": "44028",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include28": {
+"default": "44029",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include29": {
+"default": "44030",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include30": {
+"default": "44031",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include31": {
+"default": "44032",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include32": {
+"default": "44033",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include33": {
+"default": "44034",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include34": {
+"default": "44035",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include35": {
+"default": "44036",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include36": {
+"default": "44037",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include37": {
+"default": "44038",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include38": {
+"default": "44039",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include39": {
+"default": "44040",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include40": {
+"default": "44041",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include41": {
+"default": "44042",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include42": {
+"default": "44043",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include43": {
+"default": "44044",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include44": {
+"default": "44045",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include45": {
+"default": "44046",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include46": {
+"default": "44047",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include47": {
+"default": "44048",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include48": {
+"default": "44049",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include49": {
+"default": "44050",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include50": {
+"default": "44051",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include51": {
+"default": "44052",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include52": {
+"default": "44053",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include53": {
+"default": "44054",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include54": {
+"default": "44055",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include55": {
+"default": "44056",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include56": {
+"default": "44057",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include57": {
+"default": "44058",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include58": {
+"default": "44059",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include59": {
+"default": "44060",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include60": {
+"default": "44061",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include61": {
+"default": "44062",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include62": {
+"default": "44063",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include63": {
+"default": "44064",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include64": {
+"default": "44065",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include65": {
+"default": "44066",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include66": {
+"default": "44067",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include67": {
+"default": "44068",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include68": {
+"default": "44069",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include69": {
+"default": "44070",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include70": {
+"default": "44071",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include71": {
+"default": "44072",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include72": {
+"default": "44073",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include73": {
+"default": "44074",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include74": {
+"default": "44075",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include75": {
+"default": "44076",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include76": {
+"default": "44077",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include77": {
+"default": "44078",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include78": {
+"default": "44079",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include79": {
+"default": "44080",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include80": {
+"default": "44081",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include81": {
+"default": "44082",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include82": {
+"default": "44083",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include83": {
+"default": "44084",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include84": {
+"default": "44085",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include85": {
+"default": "44086",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include86": {
+"default": "44087",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include87": {
+"default": "44088",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include88": {
+"default": "44089",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include89": {
+"default": "44090",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include90": {
+"default": "44091",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include91": {
+"default": "44092",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include92": {
+"default": "44093",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include93": {
+"default": "44094",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include94": {
+"default": "44095",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include95": {
+"default": "44096",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include96": {
+"default": "44097",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include97": {
+"default": "44098",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include98": {
+"default": "44099",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include99": {
+"default": "44100",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include100": {
+"default": "44101",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include101": {
+"default": "44102",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include102": {
+"default": "44103",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include103": {
+"default": "44104",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include104": {
+"default": "44105",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include105": {
+"default": "44106",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include106": {
+"default": "44107",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include107": {
+"default": "44108",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include108": {
+"default": "44109",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include109": {
+"default": "44110",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include110": {
+"default": "44111",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include111": {
+"default": "44112",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include112": {
+"default": "44113",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include113": {
+"default": "44114",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include114": {
+"default": "44115",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include115": {
+"default": "44116",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include116": {
+"default": "44117",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include117": {
+"default": "44118",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include118": {
+"default": "44119",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include119": {
+"default": "44120",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include120": {
+"default": "44121",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include121": {
+"default": "44122",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include122": {
+"default": "44123",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include123": {
+"default": "44124",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include124": {
+"default": "44125",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include125": {
+"default": "44126",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include126": {
+"default": "44127",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include127": {
+"default": "44128",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include128": {
+"default": "44129",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include129": {
+"default": "44130",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include130": {
+"default": "44131",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include131": {
+"default": "44132",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include132": {
+"default": "44133",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include133": {
+"default": "44134",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include134": {
+"default": "44135",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include135": {
+"default": "44136",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include136": {
+"default": "44137",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include137": {
+"default": "44138",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include138": {
+"default": "44139",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include139": {
+"default": "44140",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include140": {
+"default": "44141",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include141": {
+"default": "44142",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include142": {
+"default": "44143",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include143": {
+"default": "44144",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include144": {
+"default": "44145",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include145": {
+"default": "44146",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include146": {
+"default": "44147",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include147": {
+"default": "44148",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include148": {
+"default": "44149",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include149": {
+"default": "44150",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include150": {
+"default": "44151",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include151": {
+"default": "44152",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include152": {
+"default": "44153",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include153": {
+"default": "44154",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include154": {
+"default": "44155",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include155": {
+"default": "44156",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include156": {
+"default": "44157",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include157": {
+"default": "44158",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include158": {
+"default": "44159",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include159": {
+"default": "44160",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include160": {
+"default": "44161",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include161": {
+"default": "44162",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include162": {
+"default": "44163",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include163": {
+"default": "44164",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include164": {
+"default": "44165",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include165": {
+"default": "44166",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include166": {
+"default": "44167",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include167": {
+"default": "44168",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include168": {
+"default": "44169",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include169": {
+"default": "44170",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include170": {
+"default": "44171",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include171": {
+"default": "44172",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include172": {
+"default": "44173",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include173": {
+"default": "44174",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include174": {
+"default": "44175",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include175": {
+"default": "44176",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include176": {
+"default": "44177",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include177": {
+"default": "44178",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include178": {
+"default": "44179",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include179": {
+"default": "44180",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include180": {
+"default": "44181",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include181": {
+"default": "44182",
+"type": "string"
+},
+"List_of_level_1_administrative_units_to_include182": {
+"default": "44183",
+"type": "string"
+},
+"Output_incidence_by_administrative_unit": {
+"default": 1,
+"type": "integer"
+},
+"Correct_administrative_unit_populations": {
+"default": 0,
+"type": "integer"
+},
+"Number_of_spatial_cells": {
+"default": -1.0,
+"type": "float"
+},
+"Grid_size": {
+"default": 0.075,
+"type": "float"
+},
+"Use_long_lat_coord_system": {
+"default": 1,
+"type": "integer"
+},
+"Spatial_domain_for_simulation0": {
+"default": 73.0,
+"type": "float"
+},
+"Spatial_domain_for_simulation1": {
+"default": 6.3,
+"type": "float"
+},
+"Number_of_micro_cells_per_spatial_cell_width": {
+"default": 9,
+"type": "integer"
+},
+"Proportion_of_network_transmission": {
+"default": 0.0,
+"type": "float"
+},
+"Include_age": {
+"default": 1,
+"type": "integer"
+},
+"Age_distribution_of_population0": {
+"default": 0.056393006,
+"type": "float"
+},
+"Age_distribution_of_population1": {
+"default": 0.061635577,
+"type": "float"
+},
+"Age_distribution_of_population2": {
+"default": 0.060073027,
+"type": "float"
+},
+"Age_distribution_of_population3": {
+"default": 0.054560339,
+"type": "float"
+},
+"Age_distribution_of_population4": {
+"default": 0.061329898,
+"type": "float"
+},
+"Age_distribution_of_population5": {
+"default": 0.066922394,
+"type": "float"
+},
+"Age_distribution_of_population6": {
+"default": 0.067518576,
+"type": "float"
+},
+"Age_distribution_of_population7": {
+"default": 0.06574789,
+"type": "float"
+},
+"Age_distribution_of_population8": {
+"default": 0.060963049,
+"type": "float"
+},
+"Age_distribution_of_population9": {
+"default": 0.064146025,
+"type": "float"
+},
+"Age_distribution_of_population10": {
+"default": 0.068722991,
+"type": "float"
+},
+"Age_distribution_of_population11": {
+"default": 0.067173597,
+"type": "float"
+},
+"Age_distribution_of_population12": {
+"default": 0.057479141,
+"type": "float"
+},
+"Age_distribution_of_population13": {
+"default": 0.050111639,
+"type": "float"
+},
+"Age_distribution_of_population14": {
+"default": 0.05033679,
+"type": "float"
+},
+"Age_distribution_of_population15": {
+"default": 0.035952953,
+"type": "float"
+},
+"Age_distribution_of_population16": {
+"default": 0.050933109,
+"type": "float"
+},
+"Initial_immunity_profile_by_age0": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age1": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age2": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age3": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age4": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age5": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age6": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age7": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age8": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age9": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age10": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age11": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age12": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age13": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age14": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age15": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_profile_by_age16": {
+"default": 0.0,
+"type": "float"
+},
+"Initial_immunity_applied_to_all_household_members": {
+"default": 1,
+"type": "integer"
+},
+"Relative_spatial_contact_rates_by_age0": {
+"default": 0.6,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age1": {
+"default": 0.7,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age2": {
+"default": 0.75,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age3": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age4": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age5": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age6": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age7": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age8": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age9": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age10": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age11": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age12": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age13": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age14": {
+"default": 1.0,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age15": {
+"default": 0.75,
+"type": "float"
+},
+"Relative_spatial_contact_rates_by_age16": {
+"default": 0.5,
+"type": "float"
+},
+"Include_households": {
+"default": 1,
+"type": "integer"
+},
+"Household_size_distribution0": {
+"default": 0.294601783,
+"type": "float"
+},
+"Household_size_distribution1": {
+"default": 0.345349339,
+"type": "float"
+},
+"Household_size_distribution2": {
+"default": 0.154075618,
+"type": "float"
+},
+"Household_size_distribution3": {
+"default": 0.139483899,
+"type": "float"
+},
+"Household_size_distribution4": {
+"default": 0.045069005,
+"type": "float"
+},
+"Household_size_distribution5": {
+"default": 0.015590461,
+"type": "float"
+},
+"Household_size_distribution6": {
+"default": 0.003622199,
+"type": "float"
+},
+"Household_size_distribution7": {
+"default": 0.001441591,
+"type": "float"
+},
+"Household_size_distribution8": {
+"default": 0.000573727,
+"type": "float"
+},
+"Household_size_distribution9": {
+"default": 0.000228319,
+"type": "float"
+},
+"Household_attack_rate": {
+"default": 0.14,
+"type": "float"
+},
+"Relative_transmission_rates_for_place_types0": {
+"default": 0.14,
+"type": "float"
+},
+"Relative_transmission_rates_for_place_types1": {
+"default": 0.14,
+"type": "float"
+},
+"Relative_transmission_rates_for_place_types2": {
+"default": 0.1,
+"type": "float"
+},
+"Relative_transmission_rates_for_place_types3": {
+"default": 0.07,
+"type": "float"
+},
+"Household_transmission_denominator_power": {
+"default": 0.8,
+"type": "float"
+},
+"Include_places": {
+"default": 1,
+"type": "integer"
+},
+"Place_overlap_matrix0": {
+"default": 1.0,
+"type": "float"
+},
+"Place_overlap_matrix1": {
+"default": 0.0,
+"type": "float"
+},
+"Place_overlap_matrix2": {
+"default": 0.0,
+"type": "float"
+},
+"Place_overlap_matrix3": {
+"default": 0.0,
+"type": "float"
+},
+"Number_of_types_of_places": {
+"default": 4,
+"type": "integer"
+},
+"Proportion_of_age_group_1_in_place_types0": {
+"default": 1.0,
+"type": "float"
+},
+"Proportion_of_age_group_1_in_place_types1": {
+"default": 1.0,
+"type": "float"
+},
+"Proportion_of_age_group_1_in_place_types2": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_age_group_1_in_place_types3": {
+"default": 0.21,
+"type": "float"
+},
+"Minimum_age_for_age_group_1_in_place_types0": {
+"default": 5,
+"type": "integer"
+},
+"Minimum_age_for_age_group_1_in_place_types1": {
+"default": 11,
+"type": "integer"
+},
+"Minimum_age_for_age_group_1_in_place_types2": {
+"default": 18,
+"type": "integer"
+},
+"Minimum_age_for_age_group_1_in_place_types3": {
+"default": 16,
+"type": "integer"
+},
+"Maximum_age_for_age_group_1_in_place_types0": {
+"default": 11,
+"type": "integer"
+},
+"Maximum_age_for_age_group_1_in_place_types1": {
+"default": 16,
+"type": "integer"
+},
+"Maximum_age_for_age_group_1_in_place_types2": {
+"default": 65,
+"type": "integer"
+},
+"Maximum_age_for_age_group_1_in_place_types3": {
+"default": 18,
+"type": "integer"
+},
+"Proportion_of_age_group_2_in_place_types0": {
+"default": 0.65,
+"type": "float"
+},
+"Proportion_of_age_group_2_in_place_types1": {
+"default": 0.79,
+"type": "float"
+},
+"Proportion_of_age_group_2_in_place_types2": {
+"default": 0.43,
+"type": "float"
+},
+"Proportion_of_age_group_2_in_place_types3": {
+"default": 0.57,
+"type": "float"
+},
+"Minimum_age_for_age_group_2_in_place_types0": {
+"default": 3,
+"type": "integer"
+},
+"Minimum_age_for_age_group_2_in_place_types1": {
+"default": 16,
+"type": "integer"
+},
+"Minimum_age_for_age_group_2_in_place_types2": {
+"default": 18,
+"type": "integer"
+},
+"Minimum_age_for_age_group_2_in_place_types3": {
+"default": 18,
+"type": "integer"
+},
+"Maximum_age_for_age_group_2_in_place_types0": {
+"default": 5,
+"type": "integer"
+},
+"Maximum_age_for_age_group_2_in_place_types1": {
+"default": 18,
+"type": "integer"
+},
+"Maximum_age_for_age_group_2_in_place_types2": {
+"default": 21,
+"type": "integer"
+},
+"Maximum_age_for_age_group_2_in_place_types3": {
+"default": 21,
+"type": "integer"
+},
+"Proportion_of_age_group_3_in_place_types0": {
+"default": 0.0075,
+"type": "float"
+},
+"Proportion_of_age_group_3_in_place_types1": {
+"default": 0.0093,
+"type": "float"
+},
+"Proportion_of_age_group_3_in_place_types2": {
+"default": 0.0026,
+"type": "float"
+},
+"Proportion_of_age_group_3_in_place_types3": {
+"default": 0.6406,
+"type": "float"
+},
+"Minimum_age_for_age_group_3_in_place_types0": {
+"default": 21,
+"type": "integer"
+},
+"Minimum_age_for_age_group_3_in_place_types1": {
+"default": 21,
+"type": "integer"
+},
+"Minimum_age_for_age_group_3_in_place_types2": {
+"default": 21,
+"type": "integer"
+},
+"Minimum_age_for_age_group_3_in_place_types3": {
+"default": 21,
+"type": "integer"
+},
+"Maximum_age_for_age_group_3_in_place_types0": {
+"default": 65,
+"type": "integer"
+},
+"Maximum_age_for_age_group_3_in_place_types1": {
+"default": 65,
+"type": "integer"
+},
+"Maximum_age_for_age_group_3_in_place_types2": {
+"default": 65,
+"type": "integer"
+},
+"Maximum_age_for_age_group_3_in_place_types3": {
+"default": 65,
+"type": "integer"
+},
+"Kernel_shape_params_for_place_types0": {
+"default": 3.0,
+"type": "float"
+},
+"Kernel_shape_params_for_place_types1": {
+"default": 3.0,
+"type": "float"
+},
+"Kernel_shape_params_for_place_types2": {
+"default": 3.0,
+"type": "float"
+},
+"Kernel_shape_params_for_place_types3": {
+"default": 3.0,
+"type": "float"
+},
+"Kernel_scale_params_for_place_types0": {
+"default": 4000.0,
+"type": "float"
+},
+"Kernel_scale_params_for_place_types1": {
+"default": 4000.0,
+"type": "float"
+},
+"Kernel_scale_params_for_place_types2": {
+"default": 4000.0,
+"type": "float"
+},
+"Kernel_scale_params_for_place_types3": {
+"default": 4000.0,
+"type": "float"
+},
+"Mean_size_of_place_types0": {
+"default": 230.0,
+"type": "float"
+},
+"Mean_size_of_place_types1": {
+"default": 1010.0,
+"type": "float"
+},
+"Mean_size_of_place_types2": {
+"default": 3300.0,
+"type": "float"
+},
+"Mean_size_of_place_types3": {
+"default": 14.28,
+"type": "float"
+},
+"Number_of_closest_places_people_pick_from__0_all__for_place_types0": {
+"default": 3,
+"type": "integer"
+},
+"Number_of_closest_places_people_pick_from__0_all__for_place_types1": {
+"default": 3,
+"type": "integer"
+},
+"Number_of_closest_places_people_pick_from__0_all__for_place_types2": {
+"default": 6,
+"type": "integer"
+},
+"Number_of_closest_places_people_pick_from__0_all__for_place_types3": {
+"default": 0,
+"type": "integer"
+},
+"Param_1_of_place_group_size_distribution0": {
+"default": 25.0,
+"type": "float"
+},
+"Param_1_of_place_group_size_distribution1": {
+"default": 25.0,
+"type": "float"
+},
+"Param_1_of_place_group_size_distribution2": {
+"default": 100.0,
+"type": "float"
+},
+"Param_1_of_place_group_size_distribution3": {
+"default": 10.0,
+"type": "float"
+},
+"Power_of_place_size_distribution0": {
+"default": 0.0,
+"type": "float"
+},
+"Power_of_place_size_distribution1": {
+"default": 0.0,
+"type": "float"
+},
+"Power_of_place_size_distribution2": {
+"default": 0.0,
+"type": "float"
+},
+"Power_of_place_size_distribution3": {
+"default": 1.34,
+"type": "float"
+},
+"Offset_of_place_size_distribution0": {
+"default": 0.0,
+"type": "float"
+},
+"Offset_of_place_size_distribution1": {
+"default": 0.0,
+"type": "float"
+},
+"Offset_of_place_size_distribution2": {
+"default": 0.0,
+"type": "float"
+},
+"Offset_of_place_size_distribution3": {
+"default": 5.35,
+"type": "float"
+},
+"Maximum_of_place_size_distribution0": {
+"default": 0.0,
+"type": "float"
+},
+"Maximum_of_place_size_distribution1": {
+"default": 0.0,
+"type": "float"
+},
+"Maximum_of_place_size_distribution2": {
+"default": 0.0,
+"type": "float"
+},
+"Maximum_of_place_size_distribution3": {
+"default": 5927.0,
+"type": "float"
+},
+"Proportion_of_between_group_place_links0": {
+"default": 0.25,
+"type": "float"
+},
+"Proportion_of_between_group_place_links1": {
+"default": 0.25,
+"type": "float"
+},
+"Proportion_of_between_group_place_links2": {
+"default": 0.25,
+"type": "float"
+},
+"Proportion_of_between_group_place_links3": {
+"default": 0.25,
+"type": "float"
+},
+"Include_symptoms": {
+"default": 1,
+"type": "integer"
+},
+"Delay_from_end_of_latent_period_to_start_of_symptoms": {
+"default": 0.5,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group0": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group1": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group2": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group3": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group4": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group5": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group6": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group7": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group8": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group9": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group10": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group11": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group12": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group13": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group14": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group15": {
+"default": 0.66,
+"type": "float"
+},
+"Proportion_symptomatic_by_age_group16": {
+"default": 0.66,
+"type": "float"
+},
+"Symptomatic_infectiousness_relative_to_asymptomatic": {
+"default": 1.5,
+"type": "float"
+},
+"Relative_rate_of_random_contacts_if_symptomatic": {
+"default": 0.5,
+"type": "float"
+},
+"Relative_level_of_place_attendance_if_symptomatic0": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_level_of_place_attendance_if_symptomatic1": {
+"default": 0.25,
+"type": "float"
+},
+"Relative_level_of_place_attendance_if_symptomatic2": {
+"default": 0.5,
+"type": "float"
+},
+"Relative_level_of_place_attendance_if_symptomatic3": {
+"default": 0.5,
+"type": "float"
+},
+"Model_symptomatic_withdrawal_to_home_as_true_absenteeism": {
+"default": 1,
+"type": "integer"
+},
+"Maximum_age_of_child_at_home_for_whom_one_adult_also_stays_at_home": {
+"default": 16,
+"type": "integer"
+},
+"Proportion_of_children_at_home_for_whom_one_adult_also_stays_at_home": {
+"default": 1.0,
+"type": "float"
+},
+"Duration_of_place_absenteeism_for_cases_who_withdraw": {
+"default": 7.0,
+"type": "float"
+},
+"Proportion_of_cases_dying": {
+"default": 0.01,
+"type": "float"
+},
+"Kernel_type": {
+"default": 2,
+"type": "integer"
+},
+"Kernel_scale": {
+"default": 4000.0,
+"type": "float"
+},
+"Kernel_Shape": {
+"default": 3.0,
+"type": "float"
+},
+"Initial_number_of_infecteds": {
+"default": 0,
+"type": "integer"
+},
+"Location_of_initial_infecteds0": {
+"default": -0.176,
+"type": "float"
+},
+"Location_of_initial_infecteds1": {
+"default": 50.835,
+"type": "float"
+},
+"Maximum_population_in_microcell_of_initial_infection": {
+"default": 500000000,
+"type": "integer"
+},
+"Randomise_initial_infection_location": {
+"default": 1,
+"type": "integer"
+},
+"All_initial_infections_located_in_same_microcell": {
+"default": 0,
+"type": "integer"
+},
+"Time_when_infection_rate_changes": {
+"default": 30.0,
+"type": "float"
+},
+"Initial_rate_of_importation_of_infections": {
+"default": 1.0,
+"type": "float"
+},
+"Changed_rate_of_importation_of_infections": {
+"default": 1.0,
+"type": "float"
+},
+"Length_of_importation_time_profile_provided": {
+"default": 180,
+"type": "integer"
+},
+"Daily_importation_time_profile0": {
+"default": 0.00039637,
+"type": "float"
+},
+"Daily_importation_time_profile1": {
+"default": 0.000422404,
+"type": "float"
+},
+"Daily_importation_time_profile2": {
+"default": 0.000603232,
+"type": "float"
+},
+"Daily_importation_time_profile3": {
+"default": 0.000806818,
+"type": "float"
+},
+"Daily_importation_time_profile4": {
+"default": 0.000977838,
+"type": "float"
+},
+"Daily_importation_time_profile5": {
+"default": 0.001215654,
+"type": "float"
+},
+"Daily_importation_time_profile6": {
+"default": 0.001475435,
+"type": "float"
+},
+"Daily_importation_time_profile7": {
+"default": 0.001759331,
+"type": "float"
+},
+"Daily_importation_time_profile8": {
+"default": 0.002095855,
+"type": "float"
+},
+"Daily_importation_time_profile9": {
+"default": 0.002476933,
+"type": "float"
+},
+"Daily_importation_time_profile10": {
+"default": 0.002909161,
+"type": "float"
+},
+"Daily_importation_time_profile11": {
+"default": 0.003410198,
+"type": "float"
+},
+"Daily_importation_time_profile12": {
+"default": 0.003982451,
+"type": "float"
+},
+"Daily_importation_time_profile13": {
+"default": 0.004638805,
+"type": "float"
+},
+"Daily_importation_time_profile14": {
+"default": 0.005395127,
+"type": "float"
+},
+"Daily_importation_time_profile15": {
+"default": 0.00626298,
+"type": "float"
+},
+"Daily_importation_time_profile16": {
+"default": 0.007261369,
+"type": "float"
+},
+"Daily_importation_time_profile17": {
+"default": 0.008410463,
+"type": "float"
+},
+"Daily_importation_time_profile18": {
+"default": 0.009732184,
+"type": "float"
+},
+"Daily_importation_time_profile19": {
+"default": 0.011253768,
+"type": "float"
+},
+"Daily_importation_time_profile20": {
+"default": 0.01300553,
+"type": "float"
+},
+"Daily_importation_time_profile21": {
+"default": 0.015022328,
+"type": "float"
+},
+"Daily_importation_time_profile22": {
+"default": 0.017344927,
+"type": "float"
+},
+"Daily_importation_time_profile23": {
+"default": 0.020019826,
+"type": "float"
+},
+"Daily_importation_time_profile24": {
+"default": 0.023100555,
+"type": "float"
+},
+"Daily_importation_time_profile25": {
+"default": 0.026649391,
+"type": "float"
+},
+"Daily_importation_time_profile26": {
+"default": 0.030737285,
+"type": "float"
+},
+"Daily_importation_time_profile27": {
+"default": 0.035446471,
+"type": "float"
+},
+"Daily_importation_time_profile28": {
+"default": 0.04087166,
+"type": "float"
+},
+"Daily_importation_time_profile29": {
+"default": 0.04712199,
+"type": "float"
+},
+"Daily_importation_time_profile30": {
+"default": 0.054323081,
+"type": "float"
+},
+"Daily_importation_time_profile31": {
+"default": 0.062619805,
+"type": "float"
+},
+"Daily_importation_time_profile32": {
+"default": 0.072178958,
+"type": "float"
+},
+"Daily_importation_time_profile33": {
+"default": 0.083192875,
+"type": "float"
+},
+"Daily_importation_time_profile34": {
+"default": 0.095883242,
+"type": "float"
+},
+"Daily_importation_time_profile35": {
+"default": 0.110505088,
+"type": "float"
+},
+"Daily_importation_time_profile36": {
+"default": 0.127353055,
+"type": "float"
+},
+"Daily_importation_time_profile37": {
+"default": 0.146765647,
+"type": "float"
+},
+"Daily_importation_time_profile38": {
+"default": 0.169134051,
+"type": "float"
+},
+"Daily_importation_time_profile39": {
+"default": 0.194907414,
+"type": "float"
+},
+"Daily_importation_time_profile40": {
+"default": 0.224605405,
+"type": "float"
+},
+"Daily_importation_time_profile41": {
+"default": 0.258825037,
+"type": "float"
+},
+"Daily_importation_time_profile42": {
+"default": 0.298255169,
+"type": "float"
+},
+"Daily_importation_time_profile43": {
+"default": 0.343688393,
+"type": "float"
+},
+"Daily_importation_time_profile44": {
+"default": 0.396040694,
+"type": "float"
+},
+"Daily_importation_time_profile45": {
+"default": 0.456363956,
+"type": "float"
+},
+"Daily_importation_time_profile46": {
+"default": 0.525872339,
+"type": "float"
+},
+"Daily_importation_time_profile47": {
+"default": 0.605965353,
+"type": "float"
+},
+"Daily_importation_time_profile48": {
+"default": 0.698253328,
+"type": "float"
+},
+"Daily_importation_time_profile49": {
+"default": 0.804594637,
+"type": "float"
+},
+"Daily_importation_time_profile50": {
+"default": 0.927128729,
+"type": "float"
+},
+"Daily_importation_time_profile51": {
+"default": 1.068321589,
+"type": "float"
+},
+"Daily_importation_time_profile52": {
+"default": 1.231009953,
+"type": "float"
+},
+"Daily_importation_time_profile53": {
+"default": 1.418469229,
+"type": "float"
+},
+"Daily_importation_time_profile54": {
+"default": 1.634476217,
+"type": "float"
+},
+"Daily_importation_time_profile55": {
+"default": 1.883366252,
+"type": "float"
+},
+"Daily_importation_time_profile56": {
+"default": 2.170149943,
+"type": "float"
+},
+"Daily_importation_time_profile57": {
+"default": 2.500595049,
+"type": "float"
+},
+"Daily_importation_time_profile58": {
+"default": 2.881346836,
+"type": "float"
+},
+"Daily_importation_time_profile59": {
+"default": 3.320054954,
+"type": "float"
+},
+"Daily_importation_time_profile60": {
+"default": 3.825541988,
+"type": "float"
+},
+"Daily_importation_time_profile61": {
+"default": 4.407960394,
+"type": "float"
+},
+"Daily_importation_time_profile62": {
+"default": 5.07901906,
+"type": "float"
+},
+"Daily_importation_time_profile63": {
+"default": 5.852193458,
+"type": "float"
+},
+"Daily_importation_time_profile64": {
+"default": 6.742999237,
+"type": "float"
+},
+"Daily_importation_time_profile65": {
+"default": 7.769281222,
+"type": "float"
+},
+"Daily_importation_time_profile66": {
+"default": 8.951656384,
+"type": "float"
+},
+"Daily_importation_time_profile67": {
+"default": 10.31379847,
+"type": "float"
+},
+"Daily_importation_time_profile68": {
+"default": 11.88295306,
+"type": "float"
+},
+"Daily_importation_time_profile69": {
+"default": 13.690484,
+"type": "float"
+},
+"Daily_importation_time_profile70": {
+"default": 15.7725322,
+"type": "float"
+},
+"Daily_importation_time_profile71": {
+"default": 18.17054397,
+"type": "float"
+},
+"Daily_importation_time_profile72": {
+"default": 20.93225706,
+"type": "float"
+},
+"Daily_importation_time_profile73": {
+"default": 24.11247717,
+"type": "float"
+},
+"Daily_importation_time_profile74": {
+"default": 27.77414928,
+"type": "float"
+},
+"Daily_importation_time_profile75": {
+"default": 31.98955641,
+"type": "float"
+},
+"Daily_importation_time_profile76": {
+"default": 36.84153527,
+"type": "float"
+},
+"Daily_importation_time_profile77": {
+"default": 42.42484495,
+"type": "float"
+},
+"Daily_importation_time_profile78": {
+"default": 48.84810841,
+"type": "float"
+},
+"Daily_importation_time_profile79": {
+"default": 56.23529325,
+"type": "float"
+},
+"Daily_importation_time_profile80": {
+"default": 64.72777172,
+"type": "float"
+},
+"Daily_importation_time_profile81": {
+"default": 74.48650501,
+"type": "float"
+},
+"Daily_importation_time_profile82": {
+"default": 85.69401624,
+"type": "float"
+},
+"Daily_importation_time_profile83": {
+"default": 98.55689323,
+"type": "float"
+},
+"Daily_importation_time_profile84": {
+"default": 113.307934,
+"type": "float"
+},
+"Daily_importation_time_profile85": {
+"default": 130.2079818,
+"type": "float"
+},
+"Daily_importation_time_profile86": {
+"default": 149.5482524,
+"type": "float"
+},
+"Daily_importation_time_profile87": {
+"default": 171.650606,
+"type": "float"
+},
+"Daily_importation_time_profile88": {
+"default": 196.8670786,
+"type": "float"
+},
+"Daily_importation_time_profile89": {
+"default": 225.5805289,
+"type": "float"
+},
+"Daily_importation_time_profile90": {
+"default": 258.1996665,
+"type": "float"
+},
+"Daily_importation_time_profile91": {
+"default": 295.1479906,
+"type": "float"
+},
+"Daily_importation_time_profile92": {
+"default": 336.8602628,
+"type": "float"
+},
+"Daily_importation_time_profile93": {
+"default": 383.7567184,
+"type": "float"
+},
+"Daily_importation_time_profile94": {
+"default": 436.226154,
+"type": "float"
+},
+"Daily_importation_time_profile95": {
+"default": 494.5852818,
+"type": "float"
+},
+"Daily_importation_time_profile96": {
+"default": 559.0401758,
+"type": "float"
+},
+"Daily_importation_time_profile97": {
+"default": 629.6271715,
+"type": "float"
+},
+"Daily_importation_time_profile98": {
+"default": 706.1466306,
+"type": "float"
+},
+"Daily_importation_time_profile99": {
+"default": 788.0877032,
+"type": "float"
+},
+"Daily_importation_time_profile100": {
+"default": 874.5385994,
+"type": "float"
+},
+"Daily_importation_time_profile101": {
+"default": 964.1277368,
+"type": "float"
+},
+"Daily_importation_time_profile102": {
+"default": 1054.942274,
+"type": "float"
+},
+"Daily_importation_time_profile103": {
+"default": 1144.497997,
+"type": "float"
+},
+"Daily_importation_time_profile104": {
+"default": 1229.819016,
+"type": "float"
+},
+"Daily_importation_time_profile105": {
+"default": 1307.478109,
+"type": "float"
+},
+"Daily_importation_time_profile106": {
+"default": 1373.849859,
+"type": "float"
+},
+"Daily_importation_time_profile107": {
+"default": 1425.375658,
+"type": "float"
+},
+"Daily_importation_time_profile108": {
+"default": 1458.909049,
+"type": "float"
+},
+"Daily_importation_time_profile109": {
+"default": 1472.112189,
+"type": "float"
+},
+"Daily_importation_time_profile110": {
+"default": 1463.74025,
+"type": "float"
+},
+"Daily_importation_time_profile111": {
+"default": 1433.873478,
+"type": "float"
+},
+"Daily_importation_time_profile112": {
+"default": 1383.937547,
+"type": "float"
+},
+"Daily_importation_time_profile113": {
+"default": 1316.559006,
+"type": "float"
+},
+"Daily_importation_time_profile114": {
+"default": 1235.24025,
+"type": "float"
+},
+"Daily_importation_time_profile115": {
+"default": 1143.978092,
+"type": "float"
+},
+"Daily_importation_time_profile116": {
+"default": 1046.827852,
+"type": "float"
+},
+"Daily_importation_time_profile117": {
+"default": 947.5742692,
+"type": "float"
+},
+"Daily_importation_time_profile118": {
+"default": 849.4524822,
+"type": "float"
+},
+"Daily_importation_time_profile119": {
+"default": 755.0099762,
+"type": "float"
+},
+"Daily_importation_time_profile120": {
+"default": 666.1067926,
+"type": "float"
+},
+"Daily_importation_time_profile121": {
+"default": 583.9342875,
+"type": "float"
+},
+"Daily_importation_time_profile122": {
+"default": 509.1260534,
+"type": "float"
+},
+"Daily_importation_time_profile123": {
+"default": 441.8703774,
+"type": "float"
+},
+"Daily_importation_time_profile124": {
+"default": 382.0284161,
+"type": "float"
+},
+"Daily_importation_time_profile125": {
+"default": 329.2333209,
+"type": "float"
+},
+"Daily_importation_time_profile126": {
+"default": 282.9819783,
+"type": "float"
+},
+"Daily_importation_time_profile127": {
+"default": 242.6943429,
+"type": "float"
+},
+"Daily_importation_time_profile128": {
+"default": 207.7671547,
+"type": "float"
+},
+"Daily_importation_time_profile129": {
+"default": 177.6025491,
+"type": "float"
+},
+"Daily_importation_time_profile130": {
+"default": 151.6341438,
+"type": "float"
+},
+"Daily_importation_time_profile131": {
+"default": 129.3333359,
+"type": "float"
+},
+"Daily_importation_time_profile132": {
+"default": 110.223406,
+"type": "float"
+},
+"Daily_importation_time_profile133": {
+"default": 93.87499488,
+"type": "float"
+},
+"Daily_importation_time_profile134": {
+"default": 79.90856345,
+"type": "float"
+},
+"Daily_importation_time_profile135": {
+"default": 67.99027638,
+"type": "float"
+},
+"Daily_importation_time_profile136": {
+"default": 57.82900897,
+"type": "float"
+},
+"Daily_importation_time_profile137": {
+"default": 49.17215405,
+"type": "float"
+},
+"Daily_importation_time_profile138": {
+"default": 41.80131863,
+"type": "float"
+},
+"Daily_importation_time_profile139": {
+"default": 35.5286855,
+"type": "float"
+},
+"Daily_importation_time_profile140": {
+"default": 30.19272742,
+"type": "float"
+},
+"Daily_importation_time_profile141": {
+"default": 25.65482116,
+"type": "float"
+},
+"Daily_importation_time_profile142": {
+"default": 21.79680064,
+"type": "float"
+},
+"Daily_importation_time_profile143": {
+"default": 18.51741927,
+"type": "float"
+},
+"Daily_importation_time_profile144": {
+"default": 15.73036742,
+"type": "float"
+},
+"Daily_importation_time_profile145": {
+"default": 13.3620726,
+"type": "float"
+},
+"Daily_importation_time_profile146": {
+"default": 11.34984238,
+"type": "float"
+},
+"Daily_importation_time_profile147": {
+"default": 9.640307581,
+"type": "float"
+},
+"Daily_importation_time_profile148": {
+"default": 8.188006869,
+"type": "float"
+},
+"Daily_importation_time_profile149": {
+"default": 6.954337378,
+"type": "float"
+},
+"Daily_importation_time_profile150": {
+"default": 5.906435165,
+"type": "float"
+},
+"Daily_importation_time_profile151": {
+"default": 5.016354116,
+"type": "float"
+},
+"Daily_importation_time_profile152": {
+"default": 4.260368274,
+"type": "float"
+},
+"Daily_importation_time_profile153": {
+"default": 3.61826508,
+"type": "float"
+},
+"Daily_importation_time_profile154": {
+"default": 3.072912654,
+"type": "float"
+},
+"Daily_importation_time_profile155": {
+"default": 2.609742089,
+"type": "float"
+},
+"Daily_importation_time_profile156": {
+"default": 2.216371142,
+"type": "float"
+},
+"Daily_importation_time_profile157": {
+"default": 1.882286966,
+"type": "float"
+},
+"Daily_importation_time_profile158": {
+"default": 1.598554546,
+"type": "float"
+},
+"Daily_importation_time_profile159": {
+"default": 1.357591285,
+"type": "float"
+},
+"Daily_importation_time_profile160": {
+"default": 1.152944119,
+"type": "float"
+},
+"Daily_importation_time_profile161": {
+"default": 0.979149081,
+"type": "float"
+},
+"Daily_importation_time_profile162": {
+"default": 0.831549648,
+"type": "float"
+},
+"Daily_importation_time_profile163": {
+"default": 0.70620165,
+"type": "float"
+},
+"Daily_importation_time_profile164": {
+"default": 0.59974816,
+"type": "float"
+},
+"Daily_importation_time_profile165": {
+"default": 0.509342763,
+"type": "float"
+},
+"Daily_importation_time_profile166": {
+"default": 0.43256591,
+"type": "float"
+},
+"Daily_importation_time_profile167": {
+"default": 0.367362791,
+"type": "float"
+},
+"Daily_importation_time_profile168": {
+"default": 0.311990061,
+"type": "float"
+},
+"Daily_importation_time_profile169": {
+"default": 0.264964778,
+"type": "float"
+},
+"Daily_importation_time_profile170": {
+"default": 0.22502858,
+"type": "float"
+},
+"Daily_importation_time_profile171": {
+"default": 0.19111364,
+"type": "float"
+},
+"Daily_importation_time_profile172": {
+"default": 0.162311178,
+"type": "float"
+},
+"Daily_importation_time_profile173": {
+"default": 0.137852214,
+"type": "float"
+},
+"Daily_importation_time_profile174": {
+"default": 0.117080312,
+"type": "float"
+},
+"Daily_importation_time_profile175": {
+"default": 0.099440002,
+"type": "float"
+},
+"Daily_importation_time_profile176": {
+"default": 0.084459683,
+"type": "float"
+},
+"Daily_importation_time_profile177": {
+"default": 0.07173828,
+"type": "float"
+},
+"Daily_importation_time_profile178": {
+"default": 0.06093513,
+"type": "float"
+},
+"Daily_importation_time_profile179": {
+"default": 0.051761119,
+"type": "float"
+},
+"Assume_SI_model": {
+"default": 0,
+"type": "integer"
+},
+"Reproduction_number": {
+"default": 2.0,
+"type": "float"
+},
+"Power_of_scaling_of_spatial_R0_with_density": {
+"default": 0.0,
+"type": "float"
+},
+"Include_latent_period": {
+"default": 1,
+"type": "integer"
+},
+"Latent_period": {
+"default": 4.59,
+"type": "float"
+},
+"Latent_period_inverse_CDF0": {
+"default": 0.0,
+"type": "float"
+},
+"Latent_period_inverse_CDF1": {
+"default": 0.098616903,
+"type": "float"
+},
+"Latent_period_inverse_CDF2": {
+"default": 0.171170649,
+"type": "float"
+},
+"Latent_period_inverse_CDF3": {
+"default": 0.239705594,
+"type": "float"
+},
+"Latent_period_inverse_CDF4": {
+"default": 0.307516598,
+"type": "float"
+},
+"Latent_period_inverse_CDF5": {
+"default": 0.376194441,
+"type": "float"
+},
+"Latent_period_inverse_CDF6": {
+"default": 0.446827262,
+"type": "float"
+},
+"Latent_period_inverse_CDF7": {
+"default": 0.520343677,
+"type": "float"
+},
+"Latent_period_inverse_CDF8": {
+"default": 0.597665592,
+"type": "float"
+},
+"Latent_period_inverse_CDF9": {
+"default": 0.679808341,
+"type": "float"
+},
+"Latent_period_inverse_CDF10": {
+"default": 0.767974922,
+"type": "float"
+},
+"Latent_period_inverse_CDF11": {
+"default": 0.863671993,
+"type": "float"
+},
+"Latent_period_inverse_CDF12": {
+"default": 0.968878064,
+"type": "float"
+},
+"Latent_period_inverse_CDF13": {
+"default": 1.086313899,
+"type": "float"
+},
+"Latent_period_inverse_CDF14": {
+"default": 1.219915022,
+"type": "float"
+},
+"Latent_period_inverse_CDF15": {
+"default": 1.37573215,
+"type": "float"
+},
+"Latent_period_inverse_CDF16": {
+"default": 1.563841395,
+"type": "float"
+},
+"Latent_period_inverse_CDF17": {
+"default": 1.803041398,
+"type": "float"
+},
+"Latent_period_inverse_CDF18": {
+"default": 2.135346254,
+"type": "float"
+},
+"Latent_period_inverse_CDF19": {
+"default": 2.694118208,
+"type": "float"
+},
+"Latent_period_inverse_CDF20": {
+"default": 3.964172493,
+"type": "float"
+},
+"Model_time_varying_infectiousness": {
+"default": 1,
+"type": "integer"
+},
+"Infectiousness_profile0": {
+"default": 0.487464241,
+"type": "float"
+},
+"Infectiousness_profile1": {
+"default": 1.0,
+"type": "float"
+},
+"Infectiousness_profile2": {
+"default": 1.229764827,
+"type": "float"
+},
+"Infectiousness_profile3": {
+"default": 1.312453175,
+"type": "float"
+},
+"Infectiousness_profile4": {
+"default": 1.307955665,
+"type": "float"
+},
+"Infectiousness_profile5": {
+"default": 1.251658756,
+"type": "float"
+},
+"Infectiousness_profile6": {
+"default": 1.166040358,
+"type": "float"
+},
+"Infectiousness_profile7": {
+"default": 1.065716869,
+"type": "float"
+},
+"Infectiousness_profile8": {
+"default": 0.960199498,
+"type": "float"
+},
+"Infectiousness_profile9": {
+"default": 0.855580145,
+"type": "float"
+},
+"Infectiousness_profile10": {
+"default": 0.755628835,
+"type": "float"
+},
+"Infectiousness_profile11": {
+"default": 0.662534099,
+"type": "float"
+},
+"Infectiousness_profile12": {
+"default": 0.577412896,
+"type": "float"
+},
+"Infectiousness_profile13": {
+"default": 0.500665739,
+"type": "float"
+},
+"Infectiousness_profile14": {
+"default": 0.432225141,
+"type": "float"
+},
+"Infectiousness_profile15": {
+"default": 0.371729322,
+"type": "float"
+},
+"Infectiousness_profile16": {
+"default": 0.318643018,
+"type": "float"
+},
+"Infectiousness_profile17": {
+"default": 0.272340645,
+"type": "float"
+},
+"Infectiousness_profile18": {
+"default": 0.232162632,
+"type": "float"
+},
+"Infectiousness_profile19": {
+"default": 0.19745264,
+"type": "float"
+},
+"Infectiousness_profile20": {
+"default": 0.167581252,
+"type": "float"
+},
+"Infectiousness_profile21": {
+"default": 0.141960133,
+"type": "float"
+},
+"Infectiousness_profile22": {
+"default": 0.120049578,
+"type": "float"
+},
+"Infectiousness_profile23": {
+"default": 0.101361532,
+"type": "float"
+},
+"Infectiousness_profile24": {
+"default": 0.085459603,
+"type": "float"
+},
+"Infectiousness_profile25": {
+"default": 0.071957123,
+"type": "float"
+},
+"Infectiousness_profile26": {
+"default": 0.060514046,
+"type": "float"
+},
+"Infectiousness_profile27": {
+"default": 0.050833195,
+"type": "float"
+},
+"Infectiousness_profile28": {
+"default": 0.04265624,
+"type": "float"
+},
+"Infectiousness_profile29": {
+"default": 0.035759641,
+"type": "float"
+},
+"Infectiousness_profile30": {
+"default": 0.029950735,
+"type": "float"
+},
+"Infectiousness_profile31": {
+"default": 0.025064045,
+"type": "float"
+},
+"Infectiousness_profile32": {
+"default": 0.02095788,
+"type": "float"
+},
+"Infectiousness_profile33": {
+"default": 0.017511251,
+"type": "float"
+},
+"Infectiousness_profile34": {
+"default": 0.014621091,
+"type": "float"
+},
+"Infectiousness_profile35": {
+"default": 0.012199802,
+"type": "float"
+},
+"Infectiousness_profile36": {
+"default": 0.010173075,
+"type": "float"
+},
+"Infectiousness_profile37": {
+"default": 0.008477992,
+"type": "float"
+},
+"Infectiousness_profile38": {
+"default": 0.007061366,
+"type": "float"
+},
+"Infectiousness_profile39": {
+"default": 0.005878301,
+"type": "float"
+},
+"Infectiousness_profile40": {
+"default": 0.00489096,
+"type": "float"
+},
+"Infectiousness_profile41": {
+"default": 0.004067488,
+"type": "float"
+},
+"Infectiousness_profile42": {
+"default": 0.003381102,
+"type": "float"
+},
+"Infectiousness_profile43": {
+"default": 0.00280931,
+"type": "float"
+},
+"Infectiousness_profile44": {
+"default": 0.002333237,
+"type": "float"
+},
+"Infectiousness_profile45": {
+"default": 0.001937064,
+"type": "float"
+},
+"Infectiousness_profile46": {
+"default": 0.001607543,
+"type": "float"
+},
+"Infectiousness_profile47": {
+"default": 0.001333589,
+"type": "float"
+},
+"Infectiousness_profile48": {
+"default": 0.001105933,
+"type": "float"
+},
+"Infectiousness_profile49": {
+"default": 0.00091683,
+"type": "float"
+},
+"Infectiousness_profile50": {
+"default": 0.000759816,
+"type": "float"
+},
+"Infectiousness_profile51": {
+"default": 0.000629496,
+"type": "float"
+},
+"Infectiousness_profile52": {
+"default": 0.000521372,
+"type": "float"
+},
+"Infectiousness_profile53": {
+"default": 0.000431695,
+"type": "float"
+},
+"Infectiousness_profile54": {
+"default": 0.000357344,
+"type": "float"
+},
+"Infectiousness_profile55": {
+"default": 0.000295719,
+"type": "float"
+},
+"Infectiousness_profile56": {
+"default": 0.000244659,
+"type": "float"
+},
+"Infectious_period": {
+"default": 14.0,
+"type": "float"
+},
+"Infectious_period_inverse_CDF0": {
+"default": 0.0,
+"type": "float"
+},
+"Infectious_period_inverse_CDF1": {
+"default": 0.171566836,
+"type": "float"
+},
+"Infectious_period_inverse_CDF2": {
+"default": 0.424943468,
+"type": "float"
+},
+"Infectious_period_inverse_CDF3": {
+"default": 0.464725594,
+"type": "float"
+},
+"Infectious_period_inverse_CDF4": {
+"default": 0.50866631,
+"type": "float"
+},
+"Infectious_period_inverse_CDF5": {
+"default": 0.55773764,
+"type": "float"
+},
+"Infectious_period_inverse_CDF6": {
+"default": 0.613298069,
+"type": "float"
+},
+"Infectious_period_inverse_CDF7": {
+"default": 0.67732916,
+"type": "float"
+},
+"Infectious_period_inverse_CDF8": {
+"default": 0.752886568,
+"type": "float"
+},
+"Infectious_period_inverse_CDF9": {
+"default": 0.843151261,
+"type": "float"
+},
+"Infectious_period_inverse_CDF10": {
+"default": 0.895791527,
+"type": "float"
+},
+"Infectious_period_inverse_CDF11": {
+"default": 0.955973422,
+"type": "float"
+},
+"Infectious_period_inverse_CDF12": {
+"default": 1.026225109,
+"type": "float"
+},
+"Infectious_period_inverse_CDF13": {
+"default": 1.110607115,
+"type": "float"
+},
+"Infectious_period_inverse_CDF14": {
+"default": 1.216272375,
+"type": "float"
+},
+"Infectious_period_inverse_CDF15": {
+"default": 1.336349102,
+"type": "float"
+},
+"Infectious_period_inverse_CDF16": {
+"default": 1.487791911,
+"type": "float"
+},
+"Infectious_period_inverse_CDF17": {
+"default": 1.701882384,
+"type": "float"
+},
+"Infectious_period_inverse_CDF18": {
+"default": 1.865779085,
+"type": "float"
+},
+"Infectious_period_inverse_CDF19": {
+"default": 2.126940581,
+"type": "float"
+},
+"Infectious_period_inverse_CDF20": {
+"default": 2.524164972,
+"type": "float"
+},
+"k_of_individual_variation_in_infectiousness": {
+"default": 0.25,
+"type": "float"
+},
+"Include_holidays": {
+"default": 1,
+"type": "integer"
+},
+"Proportion_of_places_remaining_open_during_holidays_by_place_type0": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_during_holidays_by_place_type1": {
+"default": 0.0,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_during_holidays_by_place_type2": {
+"default": 1.0,
+"type": "float"
+},
+"Proportion_of_places_remaining_open_during_holidays_by_place_type3": {
+"default": 1.0,
+"type": "float"
+},
+"Number_of_holidays": {
+"default": 5,
+"type": "integer"
+},
+"Holiday_start_times0": {
+"default": 23.0,
+"type": "float"
+},
+"Holiday_start_times1": {
+"default": 78.0,
+"type": "float"
+},
+"Holiday_start_times2": {
+"default": 127.0,
+"type": "float"
+},
+"Holiday_start_times3": {
+"default": 176.0,
+"type": "float"
+},
+"Holiday_start_times4": {
+"default": 234.0,
+"type": "float"
+},
+"Holiday_durations0": {
+"default": 14.0,
+"type": "float"
+},
+"Holiday_durations1": {
+"default": 7.0,
+"type": "float"
+},
+"Holiday_durations2": {
+"default": 14.0,
+"type": "float"
+},
+"Holiday_durations3": {
+"default": 7.0,
+"type": "float"
+},
+"Holiday_durations4": {
+"default": 42.0,
+"type": "float"
+},
+"Target_country": {
+"default": 44.0,
+"type": "float"
+},
+"Restrict_treatment_to_target_country": {
+"default": 0.0,
+"type": "float"
+},
+"Use_global_triggers_for_interventions": {
+"default": 1,
+"type": "integer"
+},
+"Use_admin_unit_triggers_for_interventions": {
+"default": 0,
+"type": "integer"
+},
+"Number_of_sampling_intervals_over_which_cumulative_incidence_measured_for_global_trigger": {
+"default": 7,
+"type": "integer"
+},
+"Use_cases_per_thousand_threshold_for_area_controls": {
+"default": 0,
+"type": "integer"
+},
+"Divisor_for_per_capita_global_threshold__default_1000_": {
+"default": 100000,
+"type": "integer"
+},
+"Divisor_for_per_capita_area_threshold__default_1000_": {
+"default": 1000,
+"type": "integer"
+},
+"Proportion_of_cases_detected_before_outbreak_alert": {
+"default": 1.0,
+"type": "float"
+},
+"Number_of_detected_cases_needed_before_outbreak_alert_triggered": {
+"default": 100,
+"type": "integer"
+},
+"Proportion_of_cases_detected_for_treatment": {
+"default": 1.0,
+"type": "float"
+},
+"Treatment_trigger_incidence_per_cell": {
+"default": 100.0,
+"type": "float"
+},
+"Places_close_only_once": {
+"default": 0,
+"type": "integer"
+},
+"Social_distancing_only_once": {
+"default": 0,
+"type": "integer"
+},
+"Use_ICU_case_triggers_for_interventions": {
+"default": 1,
+"type": "integer"
+},
+"Number_of_realisations": {
+"default": 1,
+"type": "integer"
+},
+"Number_of_non_extinct_realisations": {
+"default": 1,
+"type": "integer"
+},
+"Maximum_number_of_cases_defining_small_outbreak": {
+"default": 10000,
+"type": "integer"
+},
+"Do_one_generation": {
+"default": 0,
+"type": "integer"
+},
+"Output_every_realisation": {
+"default": 1,
+"type": "integer"
+},
+"Output_bitmap": {
+"default": 0,
+"type": "integer"
+},
+"Output_infection_tree": {
+"default": 0,
+"type": "integer"
+},
+"Only_output_non_extinct_realisations": {
+"default": 0,
+"type": "integer"
+},
+"Bitmap_scale": {
+"default": 60.0,
+"type": "float"
+},
+"Bitmap_y_x_aspect_scaling": {
+"default": 1.5,
+"type": "float"
+},
+"Calculate_spatial_correlations": {
+"default": 0.0,
+"type": "float"
+},
+"Bitmap_movie_frame_interval": {
+"default": 300,
+"type": "integer"
+},
+"Record_infection_events": {
+"default": 0,
+"type": "integer"
+},
+"Record_infection_events_per_run": {
+"default": 0,
+"type": "integer"
+},
+"Max_number_of_infection_events_to_record": {
+"default": 10000000000,
+"type": "integer"
+},
+"Limit_number_of_infections": {
+"default": 0,
+"type": "integer"
+},
+"Max_number_of_infections": {
+"default": 10000000000,
+"type": "integer"
+},
+"Do_Severity_Analysis": {
+"default": 1,
+"type": "integer"
+},
+"Mean_MildToRecovery": {
+"default": 10.0,
+"type": "float"
+},
+"Mean_ILIToRecovery": {
+"default": 14.0,
+"type": "float"
+},
+"Mean_SARIToRecovery": {
+"default": 8.0,
+"type": "float"
+},
+"Mean_CriticalToCritRecov": {
+"default": 10.0,
+"type": "float"
+},
+"Mean_CritRecovToRecov": {
+"default": 5.0,
+"type": "float"
+},
+"Mean_ILIToSARI": {
+"default": 5.0,
+"type": "float"
+},
+"Mean_SARIToCritical": {
+"default": 6.0,
+"type": "float"
+},
+"Mean_CriticalToDeath": {
+"default": 10.0,
+"type": "float"
+},
+"Mean_SARIToDeath": {
+"default": 8.0,
+"type": "float"
+},
+"MildToRecovery_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"MildToRecovery_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToRecovery_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToRecovery_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToCritRecov_icdf": {
+"default": "[CritRecovToRecov_icdf]",
+"type": "string"
+},
+"ILIToSARI_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"ILIToSARI_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToCritical_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"CriticalToDeath_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf0": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf1": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf2": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf3": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf4": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf5": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf6": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf7": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf8": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf9": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf10": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf11": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf12": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf13": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf14": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf15": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf16": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf17": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf18": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf19": {
+"default": 1.0,
+"type": "float"
+},
+"SARIToDeath_icdf20": {
+"default": 1.0,
+"type": "float"
+},
+"Prop_Mild_ByAge0": {
+"default": 0.642962245,
+"type": "float"
+},
+"Prop_Mild_ByAge1": {
+"default": 0.642962245,
+"type": "float"
+},
+"Prop_Mild_ByAge2": {
+"default": 0.628705377,
+"type": "float"
+},
+"Prop_Mild_ByAge3": {
+"default": 0.628705377,
+"type": "float"
+},
+"Prop_Mild_ByAge4": {
+"default": 0.579207151,
+"type": "float"
+},
+"Prop_Mild_ByAge5": {
+"default": 0.579207151,
+"type": "float"
+},
+"Prop_Mild_ByAge6": {
+"default": 0.540447477,
+"type": "float"
+},
+"Prop_Mild_ByAge7": {
+"default": 0.540447477,
+"type": "float"
+},
+"Prop_Mild_ByAge8": {
+"default": 0.511295428,
+"type": "float"
+},
+"Prop_Mild_ByAge9": {
+"default": 0.511295428,
+"type": "float"
+},
+"Prop_Mild_ByAge10": {
+"default": 0.421230829,
+"type": "float"
+},
+"Prop_Mild_ByAge11": {
+"default": 0.421230829,
+"type": "float"
+},
+"Prop_Mild_ByAge12": {
+"default": 0.342452284,
+"type": "float"
+},
+"Prop_Mild_ByAge13": {
+"default": 0.342452284,
+"type": "float"
+},
+"Prop_Mild_ByAge14": {
+"default": 0.267218361,
+"type": "float"
+},
+"Prop_Mild_ByAge15": {
+"default": 0.267218361,
+"type": "float"
+},
+"Prop_Mild_ByAge16": {
+"default": 0.234989185,
+"type": "float"
+},
+"Prop_ILI_ByAge0": {
+"default": 0.356293563,
+"type": "float"
+},
+"Prop_ILI_ByAge1": {
+"default": 0.35640359,
+"type": "float"
+},
+"Prop_ILI_ByAge2": {
+"default": 0.370123515,
+"type": "float"
+},
+"Prop_ILI_ByAge3": {
+"default": 0.368900031,
+"type": "float"
+},
+"Prop_ILI_ByAge4": {
+"default": 0.415446412,
+"type": "float"
+},
+"Prop_ILI_ByAge5": {
+"default": 0.410502964,
+"type": "float"
+},
+"Prop_ILI_ByAge6": {
+"default": 0.443317919,
+"type": "float"
+},
+"Prop_ILI_ByAge7": {
+"default": 0.436203354,
+"type": "float"
+},
+"Prop_ILI_ByAge8": {
+"default": 0.459759949,
+"type": "float"
+},
+"Prop_ILI_ByAge9": {
+"default": 0.45009753,
+"type": "float"
+},
+"Prop_ILI_ByAge10": {
+"default": 0.521034292,
+"type": "float"
+},
+"Prop_ILI_ByAge11": {
+"default": 0.506347036,
+"type": "float"
+},
+"Prop_ILI_ByAge12": {
+"default": 0.555945257,
+"type": "float"
+},
+"Prop_ILI_ByAge13": {
+"default": 0.540567901,
+"type": "float"
+},
+"Prop_ILI_ByAge14": {
+"default": 0.586682575,
+"type": "float"
+},
+"Prop_ILI_ByAge15": {
+"default": 0.556146985,
+"type": "float"
+},
+"Prop_ILI_ByAge16": {
+"default": 0.585010815,
+"type": "float"
+},
+"Prop_SARI_ByAge0": {
+"default": 0.001070934,
+"type": "float"
+},
+"Prop_SARI_ByAge1": {
+"default": 0.0009126,
+"type": "float"
+},
+"Prop_SARI_ByAge2": {
+"default": 0.001685292,
+"type": "float"
+},
+"Prop_SARI_ByAge3": {
+"default": 0.003445953,
+"type": "float"
+},
+"Prop_SARI_ByAge4": {
+"default": 0.007693823,
+"type": "float"
+},
+"Prop_SARI_ByAge5": {
+"default": 0.014807722,
+"type": "float"
+},
+"Prop_SARI_ByAge6": {
+"default": 0.023362506,
+"type": "float"
+},
+"Prop_SARI_ByAge7": {
+"default": 0.033494916,
+"type": "float"
+},
+"Prop_SARI_ByAge8": {
+"default": 0.041235376,
+"type": "float"
+},
+"Prop_SARI_ByAge9": {
+"default": 0.054131584,
+"type": "float"
+},
+"Prop_SARI_ByAge10": {
+"default": 0.078413377,
+"type": "float"
+},
+"Prop_SARI_ByAge11": {
+"default": 0.093333699,
+"type": "float"
+},
+"Prop_SARI_ByAge12": {
+"default": 0.119494142,
+"type": "float"
+},
+"Prop_SARI_ByAge13": {
+"default": 0.122831301,
+"type": "float"
+},
+"Prop_SARI_ByAge14": {
+"default": 0.135965201,
+"type": "float"
+},
+"Prop_SARI_ByAge15": {
+"default": 0.144193328,
+"type": "float"
+},
+"Prop_SARI_ByAge16": {
+"default": 0.079242424,
+"type": "float"
+},
+"Prop_Critical_ByAge0": {
+"default": 5.66296e-05,
+"type": "float"
+},
+"Prop_Critical_ByAge1": {
+"default": 4.82571e-05,
+"type": "float"
+},
+"Prop_Critical_ByAge2": {
+"default": 8.9116e-05,
+"type": "float"
+},
+"Prop_Critical_ByAge3": {
+"default": 0.000182217,
+"type": "float"
+},
+"Prop_Critical_ByAge4": {
+"default": 0.000406839,
+"type": "float"
+},
+"Prop_Critical_ByAge5": {
+"default": 0.000783013,
+"type": "float"
+},
+"Prop_Critical_ByAge6": {
+"default": 0.001235379,
+"type": "float"
+},
+"Prop_Critical_ByAge7": {
+"default": 0.001882613,
+"type": "float"
+},
+"Prop_Critical_ByAge8": {
+"default": 0.002620114,
+"type": "float"
+},
+"Prop_Critical_ByAge9": {
+"default": 0.004363934,
+"type": "float"
+},
+"Prop_Critical_ByAge10": {
+"default": 0.009063713,
+"type": "float"
+},
+"Prop_Critical_ByAge11": {
+"default": 0.016396809,
+"type": "float"
+},
+"Prop_Critical_ByAge12": {
+"default": 0.034448976,
+"type": "float"
+},
+"Prop_Critical_ByAge13": {
+"default": 0.054410842,
+"type": "float"
+},
+"Prop_Critical_ByAge14": {
+"default": 0.085397018,
+"type": "float"
+},
+"Prop_Critical_ByAge15": {
+"default": 0.123434935,
+"type": "float"
+},
+"Prop_Critical_ByAge16": {
+"default": 0.193484848,
+"type": "float"
+},
+"CFR_Critical_ByAge0": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge1": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge2": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge3": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge4": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge5": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge6": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge7": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge8": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge9": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge10": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge11": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge12": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge13": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge14": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge15": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_Critical_ByAge16": {
+"default": 0.5,
+"type": "float"
+},
+"CFR_SARI_ByAge0": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge1": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge2": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge3": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge4": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge5": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge6": {
+"default": 0.013447578,
+"type": "float"
+},
+"CFR_SARI_ByAge7": {
+"default": 0.014293732,
+"type": "float"
+},
+"CFR_SARI_ByAge8": {
+"default": 0.016158969,
+"type": "float"
+},
+"CFR_SARI_ByAge9": {
+"default": 0.020501748,
+"type": "float"
+},
+"CFR_SARI_ByAge10": {
+"default": 0.029395403,
+"type": "float"
+},
+"CFR_SARI_ByAge11": {
+"default": 0.044677032,
+"type": "float"
+},
+"CFR_SARI_ByAge12": {
+"default": 0.073315052,
+"type": "float"
+},
+"CFR_SARI_ByAge13": {
+"default": 0.112652243,
+"type": "float"
+},
+"CFR_SARI_ByAge14": {
+"default": 0.159727019,
+"type": "float"
+},
+"CFR_SARI_ByAge15": {
+"default": 0.21769897,
+"type": "float"
+},
+"CFR_SARI_ByAge16": {
+"default": 0.620944315,
+"type": "float"
+}
+}

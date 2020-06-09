@@ -33,6 +33,10 @@ def add_param(var_name, covidsim_name, default):
 
     # if type not found, default to float??
     if type_ == 0: type_ = 'float'
+    
+    if 'Random_seeds' in var_name:
+        print('Assuming integer type for %s' % var_name)
+        type_ = 'integer'
 
     try:
         if type_ == 'integer': default = int(default)
