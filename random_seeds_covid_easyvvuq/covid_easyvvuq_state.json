@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covidnhabc31g/campaign.db",
+    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covid_pngaz9x/campaign.db",
     "db_type": "sql",
-    "active_app": "PC_CI_HQ_SD_suppress_campaign2",
+    "active_app": "PC_CI_SD_suppress_campaign2",
     "campaign_name": "covid",
-    "campaign_dir": "covidnhabc31g",
+    "campaign_dir": "covid_pngaz9x",
     "log": [
         {
             "element": {
@@ -12,7 +12,7 @@
                 "category": "sampling"
             },
             "info": {
-                "num_added": 36,
+                "num_added": 81,
                 "replicas": 1
             }
         }

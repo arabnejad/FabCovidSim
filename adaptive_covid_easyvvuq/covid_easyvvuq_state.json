@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covid76ktia9e/campaign.db",
+    "db_location": "sqlite:////home/wouter/VECMA/Campaigns/covid_xw9bp7x/campaign.db",
     "db_type": "sql",
-    "active_app": "PC_CI_HQ_SD_suppress_campaign1_cumCritical",
+    "active_app": "PC_CI_HQ_SD_suppress_campaign3_1",
     "campaign_name": "covid",
-    "campaign_dir": "covid76ktia9e",
+    "campaign_dir": "covid_xw9bp7x",
     "log": [
         {
             "element": {
@@ -312,38 +312,6 @@
         },
         {
             "element": {
-                "name": "sc_sampler",
-                "version": "0.5",
-                "category": "sampling"
-            },
-            "info": {
-                "num_added": 16,
-                "replicas": 1
-            }
-        },
-        {
-            "element": {
-                "name": "aggregate_samples",
-                "version": "0.1",
-                "category": "collation"
-            },
-            "info": {
-                "num_collated": 16
-            }
-        },
-        {
-            "element": {
-                "name": "sc_sampler",
-                "version": "0.5",
-                "category": "sampling"
-            },
-            "info": {
-                "num_added": 0,
-                "replicas": 1
-            }
-        },
-        {
-            "element": {
                 "name": "aggregate_samples",
                 "version": "0.1",
                 "category": "collation"
@@ -359,7 +327,7 @@
                 "category": "sampling"
             },
             "info": {
-                "num_added": 16,
+                "num_added": 24,
                 "replicas": 1
             }
         }

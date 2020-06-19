@@ -13,33 +13,34 @@ import fabsim3_cmd_api as fab
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign2'
+# work_dir = '/tmp'
+config = 'PC_CI_SD_suppress_campaign2'
 
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params = json.load(open(home + '/../templates_campaign2/params.json'))
+params = json.load(open(home + '/../templates_campaign2_PC_CI_SD/params.json'))
 
 directory_tree = {'param_files': None}
 multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(         
-        template_fname=home + '/../templates_campaign2/p_PC_CI_HQ_SD.txt',
+        template_fname=home + '/../templates_campaign2_PC_CI_SD/p_PC_CI_SD.txt',
         delimiter='$',
-        target_filename='param_files/p_PC_CI_HQ_SD.txt'),
+        target_filename='param_files/p_PC_CI_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates_campaign2/preGB_R0=2.0.txt',
+        template_fname=home + '/../templates_campaign2_PC_CI_SD/preGB_R0=2.0.txt',
         delimiter='$',
         target_filename='param_files/preGB_R0=2.0.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates_campaign2/p_seeds.txt',
+        template_fname=home + '/../templates_campaign2_PC_CI_SD/p_seeds.txt',
         delimiter='$',
         target_filename='param_files/p_seeds.txt')
 )
 
 decoder = uq.decoders.SimpleCSV(
-    target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
+    target_filename='output_dir/United_Kingdom_PC_CI_SD_R0=2.4.avNE.severity.xls', 
     output_columns=output_columns, header=0, delimiter='\t')
 
 collater = uq.collate.AggregateSamples(average=False)
@@ -54,8 +55,11 @@ campaign.add_app(name=config,
 campaign.set_app(config)
 
 #parameters to vary
-vary = {'Random_seeds2':cp.DiscreteUniform(100000, 150000),
-        'Random_seeds3':cp.DiscreteUniform(150001, 200000)}
+vary = {'Random_seeds0':cp.DiscreteUniform(100000, 150000),
+        'Random_seeds1':cp.DiscreteUniform(150001, 200000),
+        'Random_seeds2':cp.DiscreteUniform(200001, 250000),
+        'Random_seeds3':cp.DiscreteUniform(250001, 300000),
+        }
 
 #=================================
 #create dimension-adaptive sampler
@@ -64,9 +68,9 @@ vary = {'Random_seeds2':cp.DiscreteUniform(100000, 150000),
 #growth = use a nested quadrature rule (not required)
 #midpoint_level1 = use a single collocation point in the 1st iteration (not required)
 #dimension_adaptive = use a dimension adaptive sampler (required)
-sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=5,
+sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=2,
                                 quadrature_rule="C",
-                                sparse=False, growth=False)
+                                sparse=False, growth=False, midpoint_level1=False)
 campaign.set_sampler(sampler)
 
 print('Number of samples = %d' % sampler._number_of_samples)

@@ -13,15 +13,21 @@ import json
 import fabsim3_cmd_api as fab
 
 home = os.path.abspath(os.path.dirname(__file__))
-output_columns = ["cumCritical"]
+output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign1_cumCritical'
+config = 'PC_CI_HQ_SD_suppress_campaign3_1'
 
-# Set up a fresh campaign called "cannon"
+# Set up a fresh campaign
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
 
 # Define parameter space for the cannonsim app
-params = json.load(open(home + '/../templates/params_PC_CI_HQ_SD_preGB.json'))
+params = json.load(open(home + '/../templates_campaign3_1/params.json'))
+
+#for this campaign modify the random seeds manually, once
+params['Random_seeds0']['default'] = 98798250
+params['Random_seeds1']['default'] = 729201
+params['Random_seeds2']['default'] = 17389301
+params['Random_seeds3']['default'] = 4797332
 
 # Create an encoder and decoder
 directory_tree = {'param_files': None}
@@ -29,11 +35,11 @@ directory_tree = {'param_files': None}
 multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.DirectoryBuilder(tree=directory_tree),
     uq.encoders.GenericEncoder(         
-        template_fname=home + '/../templates/p_PC_CI_HQ_SD.txt',
+        template_fname=home + '/../templates_campaign3_1/p_PC_CI_HQ_SD.txt',
         delimiter='$',
         target_filename='param_files/p_PC_CI_HQ_SD.txt'),
     uq.encoders.GenericEncoder(
-        template_fname=home + '/../templates/preGB_R0=2.0.txt',
+        template_fname=home + '/../templates_campaign3_1/preGB_R0=2.0.txt',
         delimiter='$',
         target_filename='param_files/preGB_R0=2.0.txt')
 )

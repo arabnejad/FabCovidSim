@@ -21,9 +21,9 @@ import numpy as np
 plt.close('all')
 
 # home = os.path.abspath(os.path.dirname(__file__))
-output_columns = ["cumCritical"]
+output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign1_cumCritical'
+config = 'PC_CI_HQ_SD_suppress_campaign3_1'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
@@ -87,7 +87,7 @@ plt.tight_layout()
 
 fig = plt.figure(figsize=[12, 4])
 ax = fig.add_subplot(131, xlabel='days', ylabel=output_columns[0],
-                     title='Surrogate samples')
+                      title='Surrogate samples')
 ax.plot(analysis.get_sample_array(output_columns[0]).T, 'ro', alpha = 0.5)
 
 #generate n_mc samples from the input distributions

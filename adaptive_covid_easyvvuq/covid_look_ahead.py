@@ -16,9 +16,9 @@ import os
 import fabsim3_cmd_api as fab
 
 # home = os.path.abspath(os.path.dirname(__file__))
-output_columns = ["cumCritical"]
+output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign1_cumCritical'
+config = 'PC_CI_HQ_SD_suppress_campaign3_1'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file="covid_easyvvuq_state.json", 
