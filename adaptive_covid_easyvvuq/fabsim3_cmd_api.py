@@ -29,9 +29,9 @@ def fabsim(command, arguments, machine = 'localhost'):
 def fetch_results(machine='localhost'):
     fabsim("fetch_results", "", machine)
     
-def resubmit_ensemble(config, command='CovidSim_ensemble', machine='localhost', 
-                      PilotJob=False):
-    arguments = "{},PilotJob={}".format(config, PilotJob)
+def resubmit_previous_ensemble(config, script='CovidSim', command='CovidSim_ensemble', machine='localhost', 
+                               PilotJob=False):
+    arguments = "{},script={},PilotJob={}".format(config, script, PilotJob)
     fabsim(command, arguments, machine)
 
 def run_uq_ensemble(config, campaign_dir, script, machine='localhost', skip = 0,

@@ -15,7 +15,7 @@ import fabsim3_cmd_api as fab
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign3_1'
+config = 'PC_CI_HQ_SD_suppress_campaign3_1_repeat'
 
 # Set up a fresh campaign
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
@@ -41,7 +41,11 @@ multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
     uq.encoders.GenericEncoder(
         template_fname=home + '/../templates_campaign3_1/preGB_R0=2.0.txt',
         delimiter='$',
-        target_filename='param_files/preGB_R0=2.0.txt')
+        target_filename='param_files/preGB_R0=2.0.txt'),
+    uq.encoders.GenericEncoder(
+        template_fname=home + '/../templates_campaign3_1/p_seeds.txt',
+        delimiter='$',
+        target_filename='param_files/p_seeds.txt')
 )
 
 decoder = uq.decoders.SimpleCSV(
