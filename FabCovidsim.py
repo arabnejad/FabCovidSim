@@ -81,7 +81,6 @@ from plugins.FabCovidsim.covid_adaptive import covid_init
 from plugins.FabCovidsim.covid_adaptive import covid_analyse
 from plugins.FabCovidsim.covid_adaptive import covid_look_ahead
 from plugins.FabCovidsim.covid_adaptive import covid_adapt
-from plugins.FabCovidsim.covid_adaptive import covid_adapt_RAMP_report
 
 #from plugins.FabCovidsim.covid_standard_azure import covid_init_SC_Azure
 from plugins.FabCovidsim.covid_standard_azure import covid_analyse_SC_Azure
