@@ -159,19 +159,19 @@
     "default": "#2",
     "type": "string"
   },
-  "Proportion_of_places_remaining_open_after_closure_by_place_type0": {
+  "Proportion_of_places_remaining_open_after_closure_by_place_type_elementary_school": {
     "default": 0.0,
     "type": "float"
   },
-  "Proportion_of_places_remaining_open_after_closure_by_place_type1": {
+  "Proportion_of_places_remaining_open_after_closure_by_place_type_high_schools": {
     "default": 0.0,
     "type": "float"
   },
-  "Proportion_of_places_remaining_open_after_closure_by_place_type2": {
+  "Proportion_of_places_remaining_open_after_closure_by_place_type_universities": {
     "default": 0.25,
     "type": "float"
   },
-  "Proportion_of_places_remaining_open_after_closure_by_place_type3": {
+  "Proportion_of_places_remaining_open_after_closure_by_place_type_workplaces": {
     "default": 1.0,
     "type": "float"
   },
@@ -223,19 +223,19 @@
     "default": 2.0,
     "type": "float"
   },
-  "Residual_place_contacts_after_household_quarantine_by_place_type0": {
+  "Residual_place_contacts_after_household_quarantine_by_place_type_elementary_school": {
     "default": 0.25,
     "type": "float"
   },
-  "Residual_place_contacts_after_household_quarantine_by_place_type1": {
+  "Residual_place_contacts_after_household_quarantine_by_place_type_high_schools": {
     "default": 0.25,
     "type": "float"
   },
-  "Residual_place_contacts_after_household_quarantine_by_place_type2": {
+  "Residual_place_contacts_after_household_quarantine_by_place_type_universities": {
     "default": 0.25,
     "type": "float"
   },
-  "Residual_place_contacts_after_household_quarantine_by_place_type3": {
+  "Residual_place_contacts_after_household_quarantine_by_place_type_workplaces": {
     "default": 0.25,
     "type": "float"
   },
@@ -367,19 +367,19 @@
     "default": "#2",
     "type": "string"
   },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type0": {
+  "Relative_place_contact_rate_given_social_distancing_by_place_type_elementary_school": {
     "default": 1.0,
     "type": "float"
   },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type1": {
+  "Relative_place_contact_rate_given_social_distancing_by_place_type_high_schools": {
     "default": 1.0,
     "type": "float"
   },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type2": {
+  "Relative_place_contact_rate_given_social_distancing_by_place_type_universities": {
     "default": 0.75,
     "type": "float"
   },
-  "Relative_place_contact_rate_given_social_distancing_by_place_type3": {
+  "Relative_place_contact_rate_given_social_distancing_by_place_type_workplaces": {
     "default": 0.75,
     "type": "float"
   },
@@ -1307,19 +1307,19 @@
     "default": 0.5,
     "type": "float"
   },
-  "Relative_level_of_place_attendance_if_symptomatic0": {
+  "Relative_level_of_place_attendance_if_symptomatic_elementary_school": {
     "default": 0.25,
     "type": "float"
   },
-  "Relative_level_of_place_attendance_if_symptomatic1": {
+  "Relative_level_of_place_attendance_if_symptomatic_high_schools": {
     "default": 0.25,
     "type": "float"
   },
-  "Relative_level_of_place_attendance_if_symptomatic2": {
+  "Relative_level_of_place_attendance_if_symptomatic_universities": {
     "default": 0.5,
     "type": "float"
   },
-  "Relative_level_of_place_attendance_if_symptomatic3": {
+  "Relative_level_of_place_attendance_if_symptomatic_workplaces": {
     "default": 0.5,
     "type": "float"
   },
@@ -3843,12 +3843,12 @@
     "default": 0.620944315,
     "type": "float"
   },
-  "Off_trigger_as_proportion_of_on_trigger": {
+  "CLP1": {
     "default": 60,
     "type": "float"
   },
-  "On_trigger": {
-    "default": 0.2,
+  "CLP5": {
+    "default": 0.25,
     "type": "float"
   },
   "R0": {

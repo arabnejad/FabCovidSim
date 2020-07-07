@@ -133,10 +133,12 @@ if __name__ == "__main__":
     rs = r / 2
 
     # calculate CLP1-5
-    x = $Off_trigger_as_proportion_of_on_trigger  # "60 100 200 300 400"
-    z = $On_trigger  # "0.25 0.5 0.75"
+    CLP1 = round($CLP1)  # "60 100 200 300 400"
     q = 1000
-    y = x * z
+    CLP2 = q
+    CLP3 = q
+    CLP4 = q
+    CLP5 = round(CLP1 * $CLP5)
 
     # Run the no intervention sim.  This also does some extra setup which is one
     # off for each R.
@@ -180,11 +182,11 @@ if __name__ == "__main__":
         "/D:" + wpop_bin,  # Binary pop density file (speedup)
         "/L:" + network_bin,  # Network to load
         "/R:{0}".format(rs),
-        "/CLP1:%f" % (x),
-        "/CLP2:%f" % (q),
-        "/CLP3:%f" % (q),
-        "/CLP4:%f" % (q),
-        "/CLP5:%f" % (y),
+        "/CLP1:%d" % (CLP1),
+        "/CLP2:%d" % (CLP2),
+        "/CLP3:%d" % (CLP3),
+        "/CLP4:%d" % (CLP4),
+        "/CLP5:%d" % (CLP5),
         "98798150",
         "729101",
         "17389101",
