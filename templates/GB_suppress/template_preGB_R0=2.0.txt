@@ -81,13 +81,6 @@ $Include_age
 [Age distribution of population]
 $Age_distribution_of_population0 $Age_distribution_of_population1 $Age_distribution_of_population2 $Age_distribution_of_population3 $Age_distribution_of_population4 $Age_distribution_of_population5 $Age_distribution_of_population6 $Age_distribution_of_population7 $Age_distribution_of_population8 $Age_distribution_of_population9 $Age_distribution_of_population10 $Age_distribution_of_population11 $Age_distribution_of_population12 $Age_distribution_of_population13 $Age_distribution_of_population14 $Age_distribution_of_population15 $Age_distribution_of_population16 
 [ONS proj for 2020]
-0.062 0.056 0.058 0.063 0.068 0.068 0.065 0.066 0.073 0.073 0.065 0.057 0.060 0.048 0.039 0.032 0.047
-
-0.060217209	0.062909252	0.057928152	0.056681257	0.064513611	0.069143606	0.067567882	0.065719808	0.061143348	0.068915034	0.070793169	0.064107711	0.054836779	0.051557335	0.047376881	0.032364885	0.023616544	0.020607538
-
-	
-0	5	10	15	20	25	30	35	40	45	50	55	60	65	70	75	80
-
 (Data from:
 
 [Initial immunity profile by age]	
@@ -99,8 +92,6 @@ $Initial_immunity_applied_to_all_household_members
 [Relative spatial contact rates by age]
 $Relative_spatial_contact_rates_by_age0 $Relative_spatial_contact_rates_by_age1 $Relative_spatial_contact_rates_by_age2 $Relative_spatial_contact_rates_by_age3 $Relative_spatial_contact_rates_by_age4 $Relative_spatial_contact_rates_by_age5 $Relative_spatial_contact_rates_by_age6 $Relative_spatial_contact_rates_by_age7 $Relative_spatial_contact_rates_by_age8 $Relative_spatial_contact_rates_by_age9 $Relative_spatial_contact_rates_by_age10 $Relative_spatial_contact_rates_by_age11 $Relative_spatial_contact_rates_by_age12 $Relative_spatial_contact_rates_by_age13 $Relative_spatial_contact_rates_by_age14 $Relative_spatial_contact_rates_by_age15 $Relative_spatial_contact_rates_by_age16 
 [POLYMOD, averaging 20-70]
-0.25	0.25	0.5	0.75	1	1	1	1	1	1	1	1	1	0.75	0.5	0.25	0.25
-
 
 [Include households]
 $Include_households
@@ -108,8 +99,6 @@ $Include_households
 [Household size distribution]
 $Household_size_distribution0 $Household_size_distribution1 $Household_size_distribution2 $Household_size_distribution3 $Household_size_distribution4 $Household_size_distribution5 $Household_size_distribution6 $Household_size_distribution7 $Household_size_distribution8 $Household_size_distribution9 
 (ONS 2020)
-	
-0.302836228	0.34073158	0.155126509	0.133195683	0.048757632	0.014061717	0.003267019	0.001300234	0.000517469	0.000205931
 
 [Household attack rate]
 $Household_attack_rate
@@ -253,7 +242,7 @@ $Initial_number_of_infecteds
 
 [Location of initial infecteds]
 $Location_of_initial_infecteds0 $Location_of_initial_infecteds1 
-200000	200000
+(not used)
 
 [Maximum population in microcell of initial infection]
 $Maximum_population_in_microcell_of_initial_infection
@@ -270,10 +259,8 @@ $Time_when_infection_rate_changes
 [Initial rate of importation of infections]
 $Initial_rate_of_importation_of_infections
 
-
 [Changed rate of importation of infections]
 $Changed_rate_of_importation_of_infections
-
 
 [Length of importation time profile provided]
 $Length_of_importation_time_profile_provided
@@ -303,14 +290,6 @@ $Latent_period
 [Latent period inverse CDF]
 $Latent_period_inverse_CDF0 $Latent_period_inverse_CDF1 $Latent_period_inverse_CDF2 $Latent_period_inverse_CDF3 $Latent_period_inverse_CDF4 $Latent_period_inverse_CDF5 $Latent_period_inverse_CDF6 $Latent_period_inverse_CDF7 $Latent_period_inverse_CDF8 $Latent_period_inverse_CDF9 $Latent_period_inverse_CDF10 $Latent_period_inverse_CDF11 $Latent_period_inverse_CDF12 $Latent_period_inverse_CDF13 $Latent_period_inverse_CDF14 $Latent_period_inverse_CDF15 $Latent_period_inverse_CDF16 $Latent_period_inverse_CDF17 $Latent_period_inverse_CDF18 $Latent_period_inverse_CDF19 $Latent_period_inverse_CDF20 
 
-
-1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
-(fixed latent period)
-
-0	0.084316056	0.179208436	0.287716206	0.414411663	0.566644354	0.757376134	0.806831536	0.859743301	0.916631096	0.978141381	1.04509234	1.118540666	1.199884333	1.291027502	1.394658862	1.514752269	1.645029341	1.802468475	2.001461849	2.272128403
-
-(Elveback)
-
 [Model time varying infectiousness]
 $Model_time_varying_infectiousness
 
@@ -320,11 +299,6 @@ $Infectiousness_profile0 $Infectiousness_profile1 $Infectiousness_profile2 $Infe
 
 [Infectious period]
 $Infectious_period
-
-[Infectious period inverse CDF]	
-$Infectious_period_inverse_CDF0 $Infectious_period_inverse_CDF1 $Infectious_period_inverse_CDF2 $Infectious_period_inverse_CDF3 $Infectious_period_inverse_CDF4 $Infectious_period_inverse_CDF5 $Infectious_period_inverse_CDF6 $Infectious_period_inverse_CDF7 $Infectious_period_inverse_CDF8 $Infectious_period_inverse_CDF9 $Infectious_period_inverse_CDF10 $Infectious_period_inverse_CDF11 $Infectious_period_inverse_CDF12 $Infectious_period_inverse_CDF13 $Infectious_period_inverse_CDF14 $Infectious_period_inverse_CDF15 $Infectious_period_inverse_CDF16 $Infectious_period_inverse_CDF17 $Infectious_period_inverse_CDF18 $Infectious_period_inverse_CDF19 $Infectious_period_inverse_CDF20 
-
-(Cauchemez)
 
 [k of individual variation in infectiousness]
 $k_of_individual_variation_in_infectiousness
@@ -390,7 +364,6 @@ $Places_close_only_once
 
 [Social distancing only once]
 $Social_distancing_only_once
-
 
 [Use ICU case triggers for interventions]
 $Use_ICU_case_triggers_for_interventions

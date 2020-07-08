@@ -97,6 +97,17 @@ if __name__ == "__main__":
     # Ensure output directory exists
     os.makedirs(args.outputdir, exist_ok=True)
 
+    # The admin file to use
+    admin_file = os.path.join(args.datadir, "admin_units",
+                              "{0}_admin.txt".format(args.country))
+
+    if not os.path.exists(admin_file):
+        print("Unable to find admin file for country: {0}".format(
+            args.country))
+        print("Data directory: {0}".format(args.datadir))
+        print("Looked for: {0}".format(admin_file))
+        exit(1)
+
     # Population density file in gziped form, text file, and binary file as
     # processed by CovidSim
 
@@ -150,6 +161,7 @@ if __name__ == "__main__":
 
     cmd.extend([
         "/PP:" + pp_file,  # Preparam file
+        "/A:" + admin_file,
         "/P:" + no_int_file,  # Param file
         "/O:" + os.path.join(args.outputdir,
                              "{0}_NoInt_R0={1}".format(args.country, r)),  # Output
@@ -176,6 +188,7 @@ if __name__ == "__main__":
 
     cmd.extend([
         "/PP:" + pp_file,
+        "/A:" + admin_file,
         "/P:" + cf,
         "/O:" + os.path.join(args.outputdir,
                              "{0}_{1}_R0={2}".format(args.country, root, r)),
