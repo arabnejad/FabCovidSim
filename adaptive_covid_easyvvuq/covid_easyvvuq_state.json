@@ -1287,6 +1287,17 @@
                 "num_added": 0,
                 "replicas": 1
             }
+        },
+        {
+            "element": {
+                "name": "sc_sampler",
+                "version": "0.5",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 0,
+                "replicas": 1
+            }
         }
     ]
 }

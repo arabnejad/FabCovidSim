@@ -1,0 +1,2 @@
+CovidSim /NR:10 /c:8 /PP:preGB_R0=2.0.txt /P:p_NoInt.txt /CLP1:100000 /CLP2:0 /O:meanT8_NR10/NoInt_R0=2.0 /D:../population/GB_pop2018.bin /L:../population/NetworkGB_8T.bin /R:1 98798150 729101 17389101 4797132
+CovidSim /NR:10 /c:8 /PP:preGB_R0=2.0.txt /P:p_PC_CI_HQ_SD.txt /CLP1:60 /CLP2:1000 /CLP3:1000 /CLP4:1000 /CLP5:15 /O:meanT8_NR10/PC_CI_HQ_SD_60_15_R0=2.0 /D:../population/GB_pop2018.bin /L:../population/NetworkGB_8T.bin /R:1 98798150 729101 17389101 4797132
