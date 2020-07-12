@@ -1,1 +1,0 @@
-Total Executing Time = 428.306325524 seconds
