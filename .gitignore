@@ -2,3 +2,12 @@ __pycache__/
 dummy_covid_easyvvuq/__pycache__
 standard_covid_easyvvuq/__pycache__
 adaptive_covid_easyvvuq/__pycache__
+config_files/PC_CI_HQ_SD_suppress_campaign3_1_repeat/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign3_1/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign1/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign1_critical/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign1_cumCritical/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign2/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP/
+config_files/dummy_covid/SWEEP/
+
