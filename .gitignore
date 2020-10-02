@@ -9,5 +9,6 @@ config_files/PC_CI_HQ_SD_suppress_campaign1_critical/SWEEP/
 config_files/PC_CI_HQ_SD_suppress_campaign1_cumCritical/SWEEP/
 config_files/PC_CI_HQ_SD_suppress_campaign2/SWEEP/
 config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP/
+config_files/PC_CI_HQ_SD_suppress_campaign_full1_surplus_quad/SWEEP/
 config_files/dummy_covid/SWEEP/
 
