@@ -1,0 +1,124 @@
+sending incremental file list
+SWEEP/
+SWEEP/Run_1/
+SWEEP/Run_1/param_files/
+SWEEP/Run_1/param_files/p_PC_CI_HQ_SD.txt
+SWEEP/Run_1/param_files/p_seeds.txt
+SWEEP/Run_1/param_files/preGB_R0=2.0.txt
+
+sent 863 bytes  received 290 bytes  2.31K bytes/sec
+total size is 111.57K  speedup is 96.77
+[plgwedeling@eagle.man.poznan.pl] Executing task 'run_adaptive_easyvvuq'
+[localhost] local: rm -rf /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP/*
+[localhost] local: mkdir -p /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP
+[localhost] local: rsync -pthrz /home/wouter/VECMA/Campaigns/covidcpht1jgp/runs/ /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP
+local config file path at: /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1
+[plgwedeling@eagle.man.poznan.pl] Executing task 'put_configs'
+[plgwedeling@eagle.man.poznan.pl] run: mkdir -p /home/plgrid/plgwedeling/FabSim3/config_files; mkdir -p /home/plgrid/plgwedeling/FabSim3/results; mkdir -p /home/plgrid/plgwedeling/FabSim3/scripts; mkdir -p /home/plgrid/plgwedeling/FabSim3/config_files/PC_CI_HQ_SD_suppress_campaign_full1
+[plgwedeling@eagle.man.poznan.pl] rsync_project: rsync  -pthrvz  --rsh='ssh  -p 22  ' /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1/ plgwedeling@eagle.man.poznan.pl:/home/plgrid/plgwedeling/FabSim3/config_files/PC_CI_HQ_SD_suppress_campaign_full1
+[localhost] local: rsync  -pthrvz  --rsh='ssh  -p 22  ' /home/wouter/VECMA/FabSim3/plugins/FabCovidsim/config_files/PC_CI_HQ_SD_suppress_campaign_full1/ plgwedeling@eagle.man.poznan.pl:/home/plgrid/plgwedeling/FabSim3/config_files/PC_CI_HQ_SD_suppress_campaign_full1
+SCRIPT:  CovidSim
+[plgwedeling@eagle.man.poznan.pl] put: /home/wouter/VECMA/FabSim3/deploy/.jobscripts/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28_Run_1.sh -> /home/plgrid/plgwedeling/FabSim3/scripts/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28_Run_1.sh
+[plgwedeling@eagle.man.poznan.pl] run: mkdir -p /home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1 && rsync -av --progress                     /home/plgrid/plgwedeling/FabSim3/config_files/PC_CI_HQ_SD_suppress_campaign_full1/* /home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1/ --exclude SWEEP &&                     cp /home/plgrid/plgwedeling/FabSim3/scripts/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28_Run_1.sh /home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1
+[plgwedeling@eagle.man.poznan.pl] out: sending incremental file list
+[plgwedeling@eagle.man.poznan.pl] out: CLP.txt
+[plgwedeling@eagle.man.poznan.pl] out:          468 100%    0.00kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          468 100%    0.00kB/s    0:00:00 (xfer#1, to-check=21/22)
+[plgwedeling@eagle.man.poznan.pl] out: CovidSimFileLocation.csv
+[plgwedeling@eagle.man.poznan.pl] out:          131 100%   18.28kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          131 100%   18.28kB/s    0:00:00 (xfer#2, to-check=20/22)
+[plgwedeling@eagle.man.poznan.pl] out: SimSettings.csv
+[plgwedeling@eagle.man.poznan.pl] out:            7 100%    0.85kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:            7 100%    0.85kB/s    0:00:00 (xfer#3, to-check=19/22)
+[plgwedeling@eagle.man.poznan.pl] out: batch_command.sh
+[plgwedeling@eagle.man.poznan.pl] out:          792 100%   85.94kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          792 100%   85.94kB/s    0:00:00 (xfer#4, to-check=18/22)
+[plgwedeling@eagle.man.poznan.pl] out: run_sample.py
+[plgwedeling@eagle.man.poznan.pl] out:        10053 100%    1.07MB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:        10053 100%    1.07MB/s    0:00:00 (xfer#5, to-check=17/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/.gitignore
+[plgwedeling@eagle.man.poznan.pl] out:            8 100%    0.71kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:            8 100%    0.71kB/s    0:00:00 (xfer#6, to-check=12/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/CompareRuns.R
+[plgwedeling@eagle.man.poznan.pl] out:         8844 100%  719.73kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:         8844 100%  719.73kB/s    0:00:00 (xfer#7, to-check=11/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/Convert_xls_to_csv.R
+[plgwedeling@eagle.man.poznan.pl] out:          659 100%   49.50kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          659 100%   49.50kB/s    0:00:00 (xfer#8, to-check=10/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/PlotRuns.R
+[plgwedeling@eagle.man.poznan.pl] out:        15844 100%  455.08kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:        15844 100%  455.08kB/s    0:00:00 (xfer#9, to-check=9/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/README.md
+[plgwedeling@eagle.man.poznan.pl] out:          769 100%   21.46kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          769 100%   21.46kB/s    0:00:00 (xfer#10, to-check=8/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/RScripts.Rproj
+[plgwedeling@eagle.man.poznan.pl] out:          205 100%    5.56kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:          205 100%    5.56kB/s    0:00:00 (xfer#11, to-check=7/22)
+[plgwedeling@eagle.man.poznan.pl] out: Rscripts/ReadCompareParamFiles.R
+[plgwedeling@eagle.man.poznan.pl] out:         7641 100%  196.37kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:         7641 100%  196.37kB/s    0:00:00 (xfer#12, to-check=6/22)
+[plgwedeling@eagle.man.poznan.pl] out: admin_units/
+[plgwedeling@eagle.man.poznan.pl] out: admin_units/United_Kingdom_admin.txt
+[plgwedeling@eagle.man.poznan.pl] out:         3742 100%   66.44kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:         3742 100%   66.44kB/s    0:00:00 (xfer#13, to-check=5/22)
+[plgwedeling@eagle.man.poznan.pl] out: output_dir/
+[plgwedeling@eagle.man.poznan.pl] out: output_dir/.keep
+[plgwedeling@eagle.man.poznan.pl] out:            0 100%    0.00kB/s    0:00:00 (xfer#14, to-check=4/22)
+[plgwedeling@eagle.man.poznan.pl] out: param_files/
+[plgwedeling@eagle.man.poznan.pl] out: param_files/p_NoInt.txt
+[plgwedeling@eagle.man.poznan.pl] out:         4825 100%   84.14kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:         4825 100%   84.14kB/s    0:00:00 (xfer#15, to-check=3/22)
+[plgwedeling@eagle.man.poznan.pl] out: param_files/p_PC_CI_HQ_SD.txt
+[plgwedeling@eagle.man.poznan.pl] out:         4932 100%   70.83kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:         4932 100%   70.83kB/s    0:00:00 (xfer#16, to-check=2/22)
+[plgwedeling@eagle.man.poznan.pl] out: param_files/p_seeds.txt
+[plgwedeling@eagle.man.poznan.pl] out:           48 100%    0.68kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:           48 100%    0.68kB/s    0:00:00 (xfer#17, to-check=1/22)
+[plgwedeling@eagle.man.poznan.pl] out: param_files/preGB_R0=2.0.txt
+[plgwedeling@eagle.man.poznan.pl] out:        13030 100%  146.26kB/s    0:00:00
+[plgwedeling@eagle.man.poznan.pl] out:        13030 100%  146.26kB/s    0:00:00 (xfer#18, to-check=0/22)
+[plgwedeling@eagle.man.poznan.pl] out: 
+[plgwedeling@eagle.man.poznan.pl] out: sent 73331 bytes  received 370 bytes  147402.00 bytes/sec
+[plgwedeling@eagle.man.poznan.pl] out: total size is 71998  speedup is 0.98
+[plgwedeling@eagle.man.poznan.pl] out: 
+
+[plgwedeling@eagle.man.poznan.pl] run: rsync -pthrvz                         /home/plgrid/plgwedeling/FabSim3/config_files/PC_CI_HQ_SD_suppress_campaign_full1/SWEEP/Run_1/ /home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1/
+[plgwedeling@eagle.man.poznan.pl] out: sending incremental file list
+[plgwedeling@eagle.man.poznan.pl] out: ./
+[plgwedeling@eagle.man.poznan.pl] out: param_files/
+[plgwedeling@eagle.man.poznan.pl] out: param_files/p_PC_CI_HQ_SD.txt
+[plgwedeling@eagle.man.poznan.pl] out: param_files/p_seeds.txt
+[plgwedeling@eagle.man.poznan.pl] out: param_files/preGB_R0=2.0.txt
+[plgwedeling@eagle.man.poznan.pl] out: 
+[plgwedeling@eagle.man.poznan.pl] out: sent 6.92K bytes  received 76 bytes  13.99K bytes/sec
+[plgwedeling@eagle.man.poznan.pl] out: total size is 19.09K  speedup is 2.73
+[plgwedeling@eagle.man.poznan.pl] out: 
+
+[plgwedeling@eagle.man.poznan.pl] put: /tmp/tmpu7bdd19d -> /home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1/env.yml
+[plgwedeling@eagle.man.poznan.pl] run: chmod u+x /home/plgrid/plgwedeling/FabSim3/scripts/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28_Run_1.sh
+[plgwedeling@eagle.man.poznan.pl] run: sbatch /home/plgrid/plgwedeling/FabSim3/scripts/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28_Run_1.sh
+[plgwedeling@eagle.man.poznan.pl] out: Submitted batch job 14938641
+[plgwedeling@eagle.man.poznan.pl] out: 
+
+JOB OUTPUT IS STORED REMOTELY IN: eagle.man.poznan.pl:/home/plgrid/plgwedeling/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1 
+Use `fab eagle_vecma fetch_results` to copy the results back to /home/wouter/VECMA/FabSim3/results/PC_CI_HQ_SD_suppress_campaign_full1_eagle_vecma_28/RUNS/Run_1 on            localhost.
+All threads are over
+
+Done.
+Disconnecting from plgwedeling@eagle.man.poznan.pl... done.
+Received integer polynomial order, assuming isotropic grid
+Input 3 is discrete, setting max quadrature order to 1
+Input 4 is discrete, setting max quadrature order to 2
+Input 5 is discrete, setting max quadrature order to 1
+Input 6 is discrete, setting max quadrature order to 2
+Number of samples = 1
+Executing fab eagle_vecma run_adaptive_easyvvuq:PC_CI_HQ_SD_suppress_campaign_full1,campaign_dir=/home/wouter/VECMA/Campaigns/covidcpht1jgp,script=CovidSim,skip=0,PilotJob=False
+Checking job status...
+Job 14938641 is PENDING
+Checking job status...
+Job 14938641 is RUNNING
+Checking job status...
+Job 14938641 is RUNNING
+Checking job status...
+Job 14938641 is RUNNING

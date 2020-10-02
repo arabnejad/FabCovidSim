@@ -15,12 +15,11 @@ import chaospy as cp
 
 plt.close('all')
 
-# home = os.path.abspath(os.path.dirname(__file__))
+home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign3_1_repeat'
-ID = ''
-# ID = '_campaign3_1'
+config = 'PC_CI_HQ_SD_suppress_campaign_full1'
+ID = '_leftovers'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file='covid_easyvvuq_state' + ID + '.json', work_dir=work_dir)

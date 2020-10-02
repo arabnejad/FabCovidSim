@@ -19,6 +19,9 @@ def find_type(name):
                 elif line[i+1:i+3] == 'lf':
                     type_ = 'float'
                     break
+                elif line[i+1] == 's':
+                    type_ = 'string'
+                    break
                 else:
                     raise Exception(line)
     if not type_:
@@ -30,6 +33,10 @@ def add_param(var_name, covidsim_name, default):
 
     # if type not found, default to float??
     if type_ == 0: type_ = 'float'
+
+    if 'Random_seeds' in var_name:
+        print('Assuming integer type for %s' % var_name)
+        type_ = 'integer'
 
     try:
         if type_ == 'integer': default = int(default)
@@ -66,7 +73,7 @@ def make_template(param_file):
                     var_name = var_name.replace("/", "_")
                     var_name = var_name.replace("-", "_")
                     var_name = var_name.replace(":", "_")
-
+                    var_name = var_name.replace("=", "_")
 
                     var_line = inf.readline().split()
                     if len(var_line) == 1:
@@ -75,11 +82,11 @@ def make_template(param_file):
                     elif len(var_line) > 1:
                         ### Put exceptions here
                         if var_name == 'Proportion_symptomatic_by_age_group':
-                            outf.write('{% for value in Proportion_symptomatic %}{{ value }} {% endfor %}')
-
-                        elif var_name == 'CriticalToDeath_icdf':
-                            outf.write('{% for value in mortality_curve %}{{ value }} {% endfor %}')
-
+                            outf.write('{% for value in Proportion_symptomatic_array %}{{ value }} {% endfor %}')
+                        # elif var_name == 'CriticalToDeath_icdf':
+                            # outf.write('{% for value in Mortality_curve_array %}{{ value }} {% endfor %}')
+                        elif var_name == 'Relative_spatial_contact_rates_by_age':
+                            outf.write('{% for value in Relative_spatial_contact_rates_by_age_array %}{{ value }} {% endfor %}')
                         else:
                             for i in range(len(var_line)):
                                 add_param(var_name+str(i), covidsim_name, var_line[i])

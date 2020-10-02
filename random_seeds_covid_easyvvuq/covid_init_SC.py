@@ -15,6 +15,7 @@ output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
 # work_dir = '/tmp'
 config = 'PC_CI_SD_suppress_campaign2'
+ID = '_run2'
 
 # Set up a fresh campaign called "cannon"
 campaign = uq.Campaign(name='covid', work_dir=work_dir)
@@ -78,8 +79,8 @@ print('Number of samples = %d' % sampler._number_of_samples)
 campaign.draw_samples()
 campaign.populate_runs_dir()
 
-campaign.save_state("covid_easyvvuq_state.json")
-sampler.save_state("covid_sampler_state.pickle")
+campaign.save_state("covid_easyvvuq_state" + ID +".json")
+sampler.save_state("covid_sampler_state" + ID + ".pickle")
 
 # run the UQ ensemble
 fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',

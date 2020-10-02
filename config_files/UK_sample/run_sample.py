@@ -187,6 +187,7 @@ if __name__ == "__main__":
 
     cmd.extend([
         "/PP:" + pp_file,  # Preparam file
+        "/A:" + pp_file,
         "/P:" + no_int_file,  # Param file
         "/O:" + os.path.join(args.outputdir,
                              "{0}_NoInt_R0={1}".format(args.country, r)),  # Output
@@ -212,6 +213,7 @@ if __name__ == "__main__":
 
         cmd.extend([
             "/PP:" + pp_file,
+            "/A:" + pp_file,
             "/P:" + cf,
             "/O:" + os.path.join(args.outputdir,
                                  "{0}_{1}_R0={2}".format(args.country, root, r)),

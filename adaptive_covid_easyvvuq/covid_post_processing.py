@@ -19,8 +19,8 @@ plt.close('all')
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
 config = 'PC_CI_HQ_SD_suppress_campaign3_1_repeat'
-ID = ''
-# ID = '_campaign3_1'
+# ID = ''
+ID = '_campaign3_1'
 
 #reload Campaign, sampler, analysis
 campaign = uq.Campaign(state_file='covid_easyvvuq_state' + ID + '.json', work_dir=work_dir)
@@ -65,7 +65,7 @@ results = analysis.analyse(data_frame, compute_moments = True, compute_Sobols = 
 # # #confidence bounds
 # lower, upper = analysis.get_confidence_intervals(output_columns[0], 500, surr_samples=surr_samples)
 
-#statistical moments
+# #statistical moments
 mean = results["statistical_moments"][output_columns[0]]["mean"]
 std = results["statistical_moments"][output_columns[0]]["std"]
 
@@ -112,34 +112,14 @@ plt.tight_layout()
 
 blowup = analysis.get_uncertainty_blowup(output_columns[0])
 
-# mean_theta, D_theta, D_u_theta, S_u_theta = analysis.get_pce_sobol_indices('', samples=sampler.xi_d)
-mean_f, D_f, D_u_f, S_u_f = analysis.get_pce_sobol_indices(output_columns[0])
+####################
+# Adaptation table #
+####################
 
-mean_xi = []; std_xi = []; CV_xi = []
+params = list(sampler.vary.get_keys())
+sobols = results['sobols_first']['cumDeath']
+tmp = np.array([sobols[params[i]][-1] for i in range(analysis.N)]).flatten()
+order = np.flipud(np.argsort(tmp))
+analysis.adaptation_table(order=order)
 
-for param in sampler.params_distribution:
-    E = cp.E(param); Std = cp.Std(param)
-    mean_xi.append(E)
-    std_xi.append(Std)
-    CV_xi.append(Std/E)
-    
-CV_in = np.mean(CV_xi)
-idx = np.where(np.isnan(std/mean) == False)[0]
-CV_out = np.mean(std[idx]/mean[idx])
-print('Overall CV in =', CV_in)
-print('Overal CV out =', CV_out)
-print('Overall Cond number =', CV_out / CV_in)
-print('-----------------')
-
-for i in range(analysis.N):
-    # CV_in_u = np.linalg.norm(D_u_theta[u][u]**0.5)/np.linalg.norm(mean_xi)
-    CV_in_u = CV_xi[i]
-    tmp = D_u_f[(i,)]**0.5/mean_f
-    idx = np.where(np.isnan(tmp) == False)[0]
-    CV_out_u = np.mean(tmp[idx])
-    print('CV in for u =', (i,), ':', CV_in_u)
-    print('CV out for u =', (i,), ':', CV_out_u)
-    print('Cond number for u =', (i,), ':', CV_out_u / CV_in_u)
-    print('-----------------')
-        
 plt.show()
