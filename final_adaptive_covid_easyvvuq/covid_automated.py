@@ -15,8 +15,8 @@ from custom import CustomEncoder
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign_full1_surplus_index'
-ID = '_full1_surplus_index'
+config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_2'
+ID = '_surplus'
 method = 'surplus'
 
 #set to True if starting a new campaign
@@ -62,7 +62,7 @@ if init:
     )
     
     decoder = uq.decoders.SimpleCSV(
-        target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.6.avNE.severity.xls', 
+        target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
         output_columns=output_columns, header=0, delimiter='\t')
     
     collater = uq.collate.AggregateHDF5()
@@ -115,7 +115,7 @@ if init:
         # "Infectious_period": cp.Uniform(11.5, 15.6),
         "Household_attack_rate": cp.Uniform(0.1, 0.19),
         # "Household_transmission_denominator_power": cp.Uniform(0.7, 0.9),
-        "Delay_from_end_of_latent_period_to_start_of_symptoms": cp.Uniform(0, 1.5),
+        # "Delay_from_end_of_latent_period_to_start_of_symptoms": cp.Uniform(0, 1.5),
         # "Relative_transmission_rates_for_place_types0": cp.Uniform(0.08, 0.15),
         # "Relative_transmission_rates_for_place_types1": cp.Uniform(0.08, 0.15),
         # "Relative_transmission_rates_for_place_types2": cp.Uniform(0.05, 0.1),
@@ -209,16 +209,16 @@ if init:
     campaign.apply_analysis(analysis)
 else:
     #reload Campaign, sampler, analysis
-    campaign = uq.Campaign(state_file="covid_easyvvuq_state" + ID + ".json", 
+    campaign = uq.Campaign(state_file="states/covid_easyvvuq_state" + ID + ".json", 
                            work_dir=work_dir)
     print('========================================================')
     print('Reloaded campaign', campaign.campaign_dir.split('/')[-1])
     print('========================================================')
     sampler = campaign.get_active_sampler()
-    sampler.load_state("covid_sampler_state" + ID + ".pickle")
+    sampler.load_state("states/covid_sampler_state" + ID + ".pickle")
     campaign.set_sampler(sampler)
     analysis = uq.analysis.SCAnalysis(sampler=sampler, qoi_cols=output_columns)
-    analysis.load_state("covid_analysis_state" + ID + ".pickle")
+    analysis.load_state("states/covid_analysis_state" + ID + ".pickle")
     # analysis.init_interpolation = True
 
 max_iter = 5000
@@ -258,12 +258,12 @@ while n_iter <= max_iter and sampler._number_of_samples < max_samples:
     data_frame = campaign.get_collation_result()
     #catch IndexError, happens when not all samples are present the go to verify_ensemble, get_uq_samples, collate
     analysis.adapt_dimension(output_columns[0], data_frame, 
-                             method=method, index=-1)
+                             method=method)
 
     #save everything
-    campaign.save_state("covid_easyvvuq_state" + ID + ".json")
-    sampler.save_state("covid_sampler_state" + ID + ".pickle")
-    analysis.save_state("covid_analysis_state" + ID + ".pickle")
+    campaign.save_state("states/covid_easyvvuq_state" + ID + ".json")
+    sampler.save_state("states/covid_sampler_state" + ID + ".pickle")
+    analysis.save_state("states/covid_analysis_state" + ID + ".pickle")
     n_iter += 1
 
 #merge accepted and admissble indices
@@ -416,9 +416,9 @@ sobols_first = results["sobols_first"][output_columns[0]]
 first_order_contribution = 0
 
 #S1
-highlight = ['Relative_spatial_contact_rate_given_social_distancing',
-             'Delay_from_end_of_latent_period_to_start_of_symptoms',
-             'Latent_period']
+# highlight = ['Relative_spatial_contact_rate_given_social_distancing',
+#              'Delay_from_end_of_latent_period_to_start_of_symptoms',
+#              'Latent_period']
 # #S2
 # highlight = ['Relative_spatial_contact_rate_given_social_distancing',
 #              'Delay_to_start_case_isolation',
@@ -431,11 +431,11 @@ highlight_contribution = 0
 for param in sobols_first.keys():
     ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
     first_order_contribution += sobols_first[param][0:-1:skip]
-    if param in highlight:
-        highlight_contribution += sobols_first[param][0:-1:skip]
+    # if param in highlight:
+    #     highlight_contribution += sobols_first[param][0:-1:skip]
     
 ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+# ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
 
 leg = ax.legend(loc=0, fontsize=8)
 leg.set_draggable(True)
@@ -445,38 +445,38 @@ plt.tight_layout()
 # Plot separate Sobol windows #
 ###############################
 
-fig = plt.figure(figsize=[10, 5])
-ax = fig.add_subplot(121, title=r'First-order Sobol indices 3 most important parameters',
-                      xlabel="days", ylabel=r'$S_i$', ylim=[0,1])
-for param in highlight:
-    ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
+# fig = plt.figure(figsize=[10, 5])
+# ax = fig.add_subplot(121, title=r'First-order Sobol indices 3 most important parameters',
+#                       xlabel="days", ylabel=r'$S_i$', ylim=[0,1])
+# for param in highlight:
+#     ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
 
-ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+# ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
+# ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
 
-leg = ax.legend(loc=0, fontsize=10)
-leg.set_draggable(True)
-plt.tight_layout()
+# leg = ax.legend(loc=0, fontsize=10)
+# leg.set_draggable(True)
+# plt.tight_layout()
 
 ############################################
 # Plot histogram uninfluential Sobol indices
 ############################################
 
-fig = plt.figure(figsize=[8, 4])
-ax = fig.add_subplot(111, title='Average ' + r'$S_i$' + ' (least uninfluential)',
-                     xlabel=r'$S_i$')
+# fig = plt.figure(figsize=[8, 4])
+# ax = fig.add_subplot(111, title='Average ' + r'$S_i$' + ' (least uninfluential)',
+#                      xlabel=r'$S_i$')
 
-p = []; val = []
-for param in sobols_first.keys():
-    if param not in highlight:
-        p.append(param)
-        idx = np.where(np.isnan(sobols_first[param])==False)[0]
-        val.append(np.mean(sobols_first[param][idx]))
+# p = []; val = []
+# for param in sobols_first.keys():
+#     if param not in highlight:
+#         p.append(param)
+#         idx = np.where(np.isnan(sobols_first[param])==False)[0]
+#         val.append(np.mean(sobols_first[param][idx]))
 
-ax.barh(range(len(val)), width=val)
-ax.set_yticks(range(len(val)))
-ax.set_yticklabels(p)
-plt.tight_layout()
+# ax.barh(range(len(val)), width=val)
+# ax.set_yticks(range(len(val)))
+# ax.set_yticklabels(p)
+# plt.tight_layout()
 
 #####################
 # Robustness factor #
