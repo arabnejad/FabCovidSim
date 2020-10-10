@@ -20,7 +20,7 @@ ID = '_surplus'
 method = 'surplus'
 
 #set to True if starting a new campaign
-init = True
+init = False
 if init:
     # Set up a fresh campaign
     campaign = uq.Campaign(name='covid', work_dir=work_dir)
@@ -219,10 +219,9 @@ else:
     campaign.set_sampler(sampler)
     analysis = uq.analysis.SCAnalysis(sampler=sampler, qoi_cols=output_columns)
     analysis.load_state("states/covid_analysis_state" + ID + ".pickle")
-    # analysis.init_interpolation = True
 
 max_iter = 5000
-max_samples = 1000
+max_samples = 3000
 n_iter = 0
 
 while n_iter <= max_iter and sampler._number_of_samples < max_samples:
@@ -266,10 +265,6 @@ while n_iter <= max_iter and sampler._number_of_samples < max_samples:
     analysis.save_state("states/covid_analysis_state" + ID + ".pickle")
     n_iter += 1
 
-#merge accepted and admissble indices
-# include = np.array([1])
-# analysis.merge_accepted_and_admissible()
-
 #apply analysis
 campaign.apply_analysis(analysis)
 results = campaign.get_last_analysis()
@@ -290,7 +285,7 @@ day_start = 65  #March 6 is first datapoint, is day 66 so index 65
 # Load report 9 result #
 ########################
 
-df = pd.read_csv('./data/report9_R02p6.csv', delimiter='\t')
+df = pd.read_csv('./data/report9_R02p4.csv', delimiter='\t')
 cumDeath_rep9 = df['cumDeath'].values
 
 #################################
