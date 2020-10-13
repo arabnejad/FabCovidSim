@@ -15,7 +15,7 @@ from custom import CustomEncoder
 home = os.path.abspath(os.path.dirname(__file__))
 output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_2'
+config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_3'
 ID = '_surplus'
 method = 'surplus'
 
@@ -62,7 +62,7 @@ if init:
     )
     
     decoder = uq.decoders.SimpleCSV(
-        target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.4.avNE.severity.xls', 
+        target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.6.avNE.severity.xls', 
         output_columns=output_columns, header=0, delimiter='\t')
     
     collater = uq.collate.AggregateHDF5()
@@ -221,7 +221,7 @@ else:
     analysis.load_state("states/covid_analysis_state" + ID + ".pickle")
 
 max_iter = 5000
-max_samples = 3000
+max_samples = 2000
 n_iter = 0
 
 while n_iter <= max_iter and sampler._number_of_samples < max_samples:
@@ -285,7 +285,7 @@ day_start = 65  #March 6 is first datapoint, is day 66 so index 65
 # Load report 9 result #
 ########################
 
-df = pd.read_csv('./data/report9_R02p4.csv', delimiter='\t')
+df = pd.read_csv('./data/report9_R02p6.csv', delimiter='\t')
 cumDeath_rep9 = df['cumDeath'].values
 
 #################################
