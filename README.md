@@ -147,4 +147,11 @@ This loads a JSON file with all CovidSim parameters, and their default values. T
             target_filename='param_files/p_seeds.txt')
     )
 ```
- This code tells EasyVVUQ that CovidSim expects a `param_files` directory with three input files in it (`p_PC_CI_HQ_SD.txt`, `preGB_R0=2.0.txt` and `p_seeds.txt`). Here we used the standard [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Encoder
+ This code tells EasyVVUQ that CovidSim expects a `param_files` directory with three input files in it (`p_PC_CI_HQ_SD.txt`, `preGB_R0=2.0.txt` and `p_seeds.txt`). Here we used the standard [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Encoder, and a custom encoder (`final_adaptive_covid_easyvvuq/covid_automated.py`). We used the latter because we parameterized one of the vector-valued inputs of CovidSim, see the paper for details. Next we have the EasyVVUQ decoder element:
+ 
+ ```python
+     decoder = uq.decoders.SimpleCSV(
+        target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.6.avNE.severity.xls', 
+        output_columns=output_columns, header=0, delimiter='\t')
+ ```
+This tell EasyVVUQ the name and the format of CovidSim output files, of which `cumDeath` is one of the columns.
