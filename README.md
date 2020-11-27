@@ -109,7 +109,7 @@ The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimensi
 
 Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
 
-We will go through the script step by step. First:
+Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step. First:
 
 ```python
 output_columns = ["cumDeath"]
@@ -158,4 +158,17 @@ This tells EasyVVUQ the name and the format of CovidSim output files, of which `
 
 ```python
     collater = uq.collate.AggregateHDF5()
+```
+
+To put all UQ elements together we execute
+
+```python
+    # Add the app
+    campaign.add_app(name=config,
+                     params=params,
+                     encoder=multiencoder_p_PC_CI_HQ_SD,
+                     collater=collater,
+                     decoder=decoder)
+    # Set the active app 
+    campaign.set_app(config)
 ```
