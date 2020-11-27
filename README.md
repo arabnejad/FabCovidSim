@@ -217,8 +217,6 @@ Next is it time to execute the first ensemble (which will just consist of a sing
     # run the UQ ensemble
     fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
                         machine="eagle_vecma", PilotJob = False)
-    #wait for job to complete
-    fab.wait(machine="eagle_vecma")
     
     #wait for jobs to complete and check if all output files are retrieved 
     #from the remote machine
@@ -318,3 +316,31 @@ while n_iter <= max_iter and sampler._number_of_samples < max_samples:
     analysis.save_state("states/covid_analysis_state" + ID + ".pickle")
     n_iter += 1
 ```
+
+Many commands are similar to those we have seen before. The main difference is the appearance of `look_ahead` and `adapt_dimension`.
+
+We start with `sampler.look_ahead(analysis.l_norm)`. First, `l_norm` is a set of multi indices, denoting the order of the 1D quadrature (and therefore the number of points) used per input parameter. For instance:
+``` python
+l_norm = array([[1, 1]])
+```
+means we have 2 input parameters, both of which have a 1D quadrature rule of order 1. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 1. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`. If on the other hand we have
+``` python
+l_norm = array([[1, 1],
+                [1, 2],
+                [2, 1]])
+```
+we are building a grid using a linear combination of 3 tensor products. If our 1D quadrature rule generates `x = [0.0, 0.5, 1.0]` for order 2, our grid consistis of the points:
+```python 
+l_norm = [1, 1]  ==> [0.5] x [0.5] = [[0.5, 0.5]]
+```
+and
+```python
+l_norm = [1, 2]  ==> [0.5] x [0.0, 0.5, 1.0] = [[0.5, 0.0], [0.5, 0.5], [0.5, 1.0]]
+```
+and
+```python
+l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.5]]
+```
+Notice that this makes a "cross" of 5 (unique) points in the input space. A standard EasyVVUQ campaign always has a single `l_norm`, such as for instance `[2,2]`, which leads to a full "square" of 9 points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`. Sparse grids on the other hand, build the grid from the bottom up, using a linear combination of `l_norm` multi indices, which can lead to more sparse sampling plans. 
+
+The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are sampled using `fab.run_uq_ensemble` as before.
