@@ -119,5 +119,6 @@ ID = '_recap2_surplus'
 method = 'surplus'
 ```
 
+Here `output_columns` is a list containing the name of the column in the CovidSim output csv file that we use as our Quantity of Interest (QoI). Here we used the cumulative deaths. In a dimension-adaptive setting this list should contain only one QoI. The `work_dir` is where the EasyVVUQ Campaign will be stored, and `config` must match a directory name in the `config_files` directory of FabCovidSim. These config directories contain all the files needed to run CovidSim with at a specified setting. In particular, examine the `run_sample.py` file in these config directories. This file is responsible for passing the commandline parameters (seeds, R0 and ICU triggers) to CovidSim. We specify the seeds from within EasyVVUQ, and the other two are hard coded.
 
-
+Above, `ID` is just a unique identifier that we use to save the state of EasyVVUQ, and `method` is the error method that we use in the dimension adaptive sampling. Here, the sampling plan is refined by using the hierarchical surplus.
