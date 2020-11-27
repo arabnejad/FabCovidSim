@@ -13,10 +13,10 @@ import fabsim3_cmd_api as fab
 from custom import CustomEncoder
 
 home = os.path.abspath(os.path.dirname(__file__))
-output_columns = ["cumDeath"]
+output_columns = ["cumDeath", "Rt"]
 work_dir = '/home/wouter/VECMA/Campaigns'
-config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_3'
-ID = '_surplus'
+config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_4'
+ID = '_recap2_surplus'
 method = 'surplus'
 
 #set to True if starting a new campaign
@@ -192,12 +192,12 @@ if init:
     #wait for jobs to complete and check if all output files are retrieved 
     #from the remote machine
     fab.verify(config, campaign.campaign_dir, 
-               campaign._active_app_decoder.target_filename, 
-               machine="eagle_vecma", PilotJob=False)
+                campaign._active_app_decoder.target_filename, 
+                machine="eagle_vecma", PilotJob=False)
     
     #run the UQ ensemble
     fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
-                       skip=0, machine='eagle_vecma')
+                       skip=0, max_run=1, machine='eagle_vecma')
     campaign.collate()
     
     # Post-processing analysis
@@ -221,7 +221,7 @@ else:
     analysis.load_state("states/covid_analysis_state" + ID + ".pickle")
 
 max_iter = 5000
-max_samples = 2000
+max_samples = 3000
 n_iter = 0
 
 while n_iter <= max_iter and sampler._number_of_samples < max_samples:
@@ -244,11 +244,11 @@ while n_iter <= max_iter and sampler._number_of_samples < max_samples:
     #wait for jobs to complete and check if all output files are retrieved 
     #from the remote machine
     fab.verify(config, campaign.campaign_dir, 
-               campaign._active_app_decoder.target_filename, 
-               machine="eagle_vecma", PilotJob=False)
+                campaign._active_app_decoder.target_filename, 
+                machine="eagle_vecma", PilotJob=False)
 
     fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
-                       skip=skip, machine='eagle_vecma')
+                       skip=skip, max_run=sampler.count, machine='eagle_vecma')
 
     campaign.collate()
 
@@ -307,19 +307,6 @@ ax = fig.add_subplot(111, xlabel = 'refinement step', ylabel='max surplus error'
 ax.plot(range(1, len(surplus_errors) + 1), surplus_errors, '-b*')
 plt.tight_layout()
 
-# #########################
-# # plot mean +/- std dev #
-# #########################
-
-fig = plt.figure()
-ax = fig.add_subplot(111, xlabel="days", ylabel=output_columns[0])
-mean = results["statistical_moments"][output_columns[0]]["mean"]
-std = results["statistical_moments"][output_columns[0]]["std"]
-ax.plot(mean)
-ax.plot(mean + std, '--r')
-ax.plot(mean - std, '--r')
-plt.tight_layout()
-
 # #################################
 # # Plot the confidence intervals #
 # #################################
@@ -347,21 +334,20 @@ import seaborn as sns
 
 x = range(analysis.N_qoi)
 
-surr_samples = analysis.get_sample_array(output_columns[0])
-n_samples = surr_samples.shape[0]
+code_samples = analysis.get_sample_array(output_columns[0])
+n_samples = code_samples.shape[0]
 
 #confidence bounds
 lower1, upper1 = analysis.get_confidence_intervals(output_columns[0], n_samples, conf=0.63,
-                                                    surr_samples=surr_samples)
+                                                    surr_samples=code_samples)
 lower2, upper2 = analysis.get_confidence_intervals(output_columns[0], n_samples, conf=0.95,
-                                                    surr_samples=surr_samples)
+                                                    surr_samples=code_samples)
 
 fig = plt.figure(figsize=(10,5))
 spec = gridspec.GridSpec(ncols=2, nrows=1,
                           width_ratios=[3, 1])
 
-# ax1 = fig.add_subplot(spec[0], xlim=[0, 840], ylim=[-100, 80000])
-ax1 = fig.add_subplot(spec[0])
+ax1 = fig.add_subplot(spec[0], xlim=[0, 840])
 ax2 = fig.add_subplot(spec[1], sharey=ax1)
 ax2.get_xaxis().set_ticks([])
 fig.subplots_adjust(wspace=0)
@@ -371,7 +357,10 @@ ax1.fill_between(x, lower2, upper2, color='#aa99cc', label='95% CI', alpha=0.5)
 ax1.fill_between(x, lower1, upper1, color='#aa99cc', label='68% CI')
 
 mean = results["statistical_moments"][output_columns[0]]["mean"]
-ax1.plot(x, mean, label=r'$\mathbb{E}[q|\mathcal{M}, \mathcal{S}_2]$')
+ax1.plot(x, mean, label='Mean')
+
+# median = np.median(code_samples, axis=0)
+# ax1.plot(x, median, label='Median')
 
 #plot a single sample of report 9
 ax1.plot(cumDeath_rep9, '--', color='#ffb20a', label=r'Baseline report 9 sample', linewidth=3)
@@ -383,15 +372,35 @@ ax1.plot(np.arange(day_start, day_start + cumDeath_data.size)[0:-1:7],
 ax1.legend(loc="upper left")
 
 ax1.set_xlabel('Days')
-ax1.set_ylabel('Cumulative deaths q')
+ax1.set_ylabel('Cumulative deaths')
 # ax2.set_xlabel('Frequency')
 #ax2.set_title('Total deaths distribution')
 ax2.axis('off')
 
-total_deaths = surr_samples[:, -1]
+total_deaths = code_samples[:, -1]
 ax2 = sns.distplot(total_deaths, vertical=True)
 
 plt.tight_layout()
+
+# #########################
+# # plot mean +/- std dev #
+# #########################
+
+fig = plt.figure()
+ax = fig.add_subplot(111, xlabel="days", ylabel=output_columns[0])
+mean = results["statistical_moments"][output_columns[0]]["mean"]
+std = results["statistical_moments"][output_columns[0]]["std"]
+ax.plot(mean)
+ax.plot(mean + std, '--r')
+ax.plot(mean - std, '--r')
+#plot data
+ax.plot(np.arange(day_start, day_start + cumDeath_data.size)[0:-1:7],
+        cumDeath_data[0:-1:7], 's', color='olivedrab', label='Data')
+#plot a single sample of report 9
+ax.plot(cumDeath_rep9, '--', color='#ffb20a', label=r'Baseline report 9 sample', linewidth=3)
+
+plt.tight_layout()
+
 ##################################
 # Plot first-order Sobol indices #
 ##################################
@@ -410,15 +419,10 @@ sobols_first = results["sobols_first"][output_columns[0]]
 
 first_order_contribution = 0
 
-#S1
-# highlight = ['Relative_spatial_contact_rate_given_social_distancing',
-#              'Delay_from_end_of_latent_period_to_start_of_symptoms',
-#              'Latent_period']
-# #S2
-# highlight = ['Relative_spatial_contact_rate_given_social_distancing',
-#              'Delay_to_start_case_isolation',
-#              'Delay_from_end_of_latent_period_to_start_of_symptoms',
-#              'Latent_period']
+#
+highlight = ['Relative_spatial_contact_rate_given_social_distancing',
+              'Delay_to_start_case_isolation',
+              'Latent_period']
 
 
 highlight_contribution = 0
@@ -426,11 +430,11 @@ highlight_contribution = 0
 for param in sobols_first.keys():
     ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
     first_order_contribution += sobols_first[param][0:-1:skip]
-    # if param in highlight:
-    #     highlight_contribution += sobols_first[param][0:-1:skip]
+    if param in highlight:
+        highlight_contribution += sobols_first[param][0:-1:skip]
     
 ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-# ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
 
 leg = ax.legend(loc=0, fontsize=8)
 leg.set_draggable(True)
@@ -440,38 +444,38 @@ plt.tight_layout()
 # Plot separate Sobol windows #
 ###############################
 
-# fig = plt.figure(figsize=[10, 5])
-# ax = fig.add_subplot(121, title=r'First-order Sobol indices 3 most important parameters',
-#                       xlabel="days", ylabel=r'$S_i$', ylim=[0,1])
-# for param in highlight:
-#     ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
+fig = plt.figure(figsize=[10, 5])
+ax = fig.add_subplot(121, title=r'First-order Sobol indices 3 most important parameters',
+                      xlabel="days", ylabel=r'$S_i$', ylim=[0,1])
+for param in highlight:
+    ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
 
-# ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-# ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
+ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
 
-# leg = ax.legend(loc=0, fontsize=10)
-# leg.set_draggable(True)
-# plt.tight_layout()
+leg = ax.legend(loc=0, fontsize=10)
+leg.set_draggable(True)
+plt.tight_layout()
 
 ############################################
 # Plot histogram uninfluential Sobol indices
 ############################################
 
-# fig = plt.figure(figsize=[8, 4])
-# ax = fig.add_subplot(111, title='Average ' + r'$S_i$' + ' (least uninfluential)',
-#                      xlabel=r'$S_i$')
+fig = plt.figure(figsize=[8, 4])
+ax = fig.add_subplot(111, title='Average ' + r'$S_i$' + ' (least uninfluential)',
+                      xlabel=r'$S_i$')
 
-# p = []; val = []
-# for param in sobols_first.keys():
-#     if param not in highlight:
-#         p.append(param)
-#         idx = np.where(np.isnan(sobols_first[param])==False)[0]
-#         val.append(np.mean(sobols_first[param][idx]))
+p = []; val = []
+for param in sobols_first.keys():
+    if param not in highlight:
+        p.append(param)
+        idx = np.where(np.isnan(sobols_first[param])==False)[0]
+        val.append(np.mean(sobols_first[param][idx]))
 
-# ax.barh(range(len(val)), width=val)
-# ax.set_yticks(range(len(val)))
-# ax.set_yticklabels(p)
-# plt.tight_layout()
+ax.barh(range(len(val)), width=val)
+ax.set_yticks(range(len(val)))
+ax.set_yticklabels(p)
+plt.tight_layout()
 
 #####################
 # Robustness factor #
@@ -541,7 +545,46 @@ data = pd.DataFrame(data, index=params)
 # data.sort_values('max quadrature order', ascending=False)
 
 print(data.to_latex())
-data   
+data  
+
+####################
+# Plot another QoI #
+####################
+
+# campaign._active_app_decoder.output_columns.append("Rt")
+# # campaign.recollate()
+# df = campaign.get_collation_result()
+# Rt = []
+# for sample in df['Rt'].values():
+#     Rt.append(sample)
+# Rt = np.array(Rt)
+
+# n_samples = Rt.shape[0]
+
+# #confidence bounds
+
+# lower2, upper2 = analysis.get_confidence_intervals(output_columns[0], n_samples, conf=0.95,
+#                                                     surr_samples=Rt)
+
+# fig = plt.figure(figsize=(8,4))
+
+# ax1 = fig.add_subplot(111, xlim=[0, 840])
+
+# x = range(analysis.N_qoi)
+# skip=5
+# ax1.fill_between(x[0:-1:skip], lower2[0:-1:skip], upper2[0:-1:skip], color='#aa99cc', label='95% CI', alpha=0.5)
+
+# mean = np.mean(Rt, axis=0)
+# ax1.plot([0, 800], [1, 1], ':k', label=r'$R_t=1$')
+# ax1.plot(x[0:-1:skip], mean[0:-1:skip], label='Mean')
+# ax1.plot(x[0:-1:skip], Rt[99][0:-1:skip], '--', label='Single sample')
+
+# ax1.legend(loc=0)
+
+# ax1.set_xlabel('Days')
+# ax1.set_ylabel(r'$R_t$')
+
+# plt.tight_layout()
 
 ############################
 # check surrogate accuracy #

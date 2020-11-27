@@ -98,7 +98,7 @@ def run_adaptive_easyvvuq(config,
 def get_adaptive_easyvvuq(config,
                           campaign_dir,
                           number_of_samples,
-                          skip=0, **args):
+                          skip=0, max_run=10**10, **args):
     """
     Fetches sample output from host, copies results to adaptive EasyVVUQ work directory
     """
@@ -121,7 +121,7 @@ def get_adaptive_easyvvuq(config,
         #This compies the entire result directory from the (remote) host back to the
         #EasyVVUQ Campaign directory
         print('Copying results from', env.local_results + '/' + dir_i + 'to' + campaign_dir)
-        ensemble2campaign(env.local_results + '/' + dir_i, campaign_dir, skip, **args)
+        ensemble2campaign(env.local_results + '/' + dir_i, campaign_dir, skip, max_run, **args)
         
         #If the same FabSim3 config name was used before, the statement above
         #might have copied more runs than currently are used by EasyVVUQ.

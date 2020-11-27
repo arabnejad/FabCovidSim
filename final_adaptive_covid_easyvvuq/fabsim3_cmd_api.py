@@ -173,9 +173,10 @@ def verify_last_ensemble(config, campaign_dir, target_filename, machine):
     target_filename = target_filename.replace('=', 'replace_equal')
 
     #Run FabSim3 verify_last_ensemble command
-    arguments = "{},campaign_dir={},target_filename={}".format(config, 
+    arguments = "{},campaign_dir={},target_filename={},machine={}".format(config, 
                                                                campaign_dir, 
-                                                               target_filename)
+                                                               target_filename,
+                                                               machine)
     fabsim("verify_last_ensemble", arguments, machine='localhost')
     #FabSim3 verify_last_ensemble command writes a flag to the check.dat file
     #in the EasuVVUQ work dir. Read to see if all files were present.
@@ -299,10 +300,10 @@ def run_uq_ensemble(config, campaign_dir, script, machine='localhost', skip=0,
     arguments = "{},campaign_dir={},script={},skip={},PilotJob={}".format(config, campaign_dir, script, skip, PilotJob)
     fabsim("run_adaptive_easyvvuq", arguments, machine=machine)
     
-def get_uq_samples(config, campaign_dir, number_of_samples, skip=0, machine = 'localhost'):
+def get_uq_samples(config, campaign_dir, number_of_samples, skip=0, max_run=10**10, machine = 'localhost'):
     """
     Retrieves results from UQ ensemble
     """
     # sim_ID = campaign_dir.split('/')[-1]
-    arguments = "{},campaign_dir={},number_of_samples={},skip={}".format(config, campaign_dir, number_of_samples, skip)
+    arguments = "{},campaign_dir={},number_of_samples={},skip={},max_run={}".format(config, campaign_dir, number_of_samples, skip, max_run)
     fabsim("get_adaptive_easyvvuq", arguments, machine=machine)
