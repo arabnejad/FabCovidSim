@@ -350,3 +350,5 @@ The array `analysis.l_norm` contains the currently accepted multi indices, and t
 *Adapt_dimension*
 
 The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. This goes round and round until we have spent our computational budget (3000 CovidSim samples in this case).
+
+What follows in our Python script are just several post-processing steps to produces the Figures we used in the article.
