@@ -183,3 +183,20 @@ The `vary` dict contain all input file we wish to vary, where we use [Chaospy](h
         "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
         ...
 ```
+
+We select the dimension-adaptive Stochastic Collocation sampler via:
+```python
+sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
+                                quadrature_rule="C",
+                                sparse=True, growth=True,
+                                midpoint_level1=True,
+                                dimension_adaptive=True)
+```
+Here:
+
+* `polynomial_order=1`: do not change, will be adaptively increased for influential parameters. (Technically, it'll change the quadrature order for different (combinations of) parameters)
+* `quadrature_rule="C":`selects the Clenshaw Curtis quadrature rule. This not required, although it is common.
+* `sparse = True`: selects a sparse grid. This is required.
+* `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
+* `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. 
+* `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
