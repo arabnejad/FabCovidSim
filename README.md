@@ -251,7 +251,7 @@ eagle_vecma:
     loaded: ["python/3.7.3", "r/3.6.1-gcc620"] # do not change
     unloaded: [] 
 ```
-The `PJ` entries are not important, as we did not use the PilotJon capability. For more information on FabSim we refer to [here](https://github.com/djgroen/FabSim3).
+The `PJ` entries are not important, as we did not use the PilotJob capability. For more information on FabSim we refer to [here](https://github.com/djgroen/FabSim3).
 
 We then collate the results in the HDF5 dataframe and create a Stochastic Collocation analysis object:
 ```python
@@ -270,4 +270,51 @@ This concludes the initial iteration.
 
 ### Refining the sampling plan ###
 
-We now have computed a single sample of CovidSim, which we will start to refine in an iterative fashion.
+We now have computed a single sample of CovidSim, which we will start to refine in an iterative fashion. The loop we use for this purpose is given by
+
+```python
+max_iter = 5000
+max_samples = 3000
+n_iter = 0
+
+while n_iter <= max_iter and sampler._number_of_samples < max_samples:
+    #required parameter in the case of a Fabsim run
+    skip = sampler.count
+
+    #look-ahead step (compute the code at admissible forward points)
+    sampler.look_ahead(analysis.l_norm)
+
+    #proceed as usual
+    campaign.draw_samples()
+    campaign.populate_runs_dir()
+
+    #run the UQ ensemble at the admissible forward points
+    #skip (int) = the number of previous samples: required to avoid recomputing
+    #already computed samples from a previous iteration
+    fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
+                        machine="eagle_vecma", skip=skip, PilotJob=False)
+
+    #wait for jobs to complete and check if all output files are retrieved 
+    #from the remote machine
+    fab.verify(config, campaign.campaign_dir, 
+                campaign._active_app_decoder.target_filename, 
+                machine="eagle_vecma", PilotJob=False)
+
+    fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
+                       skip=skip, max_run=sampler.count, machine='eagle_vecma')
+
+    campaign.collate()
+
+    #compute the error at all admissible points, select direction with
+    #highest error and add that direction to the grid 
+    data_frame = campaign.get_collation_result()
+    #catch IndexError, happens when not all samples are present the go to verify_ensemble, get_uq_samples, collate
+    analysis.adapt_dimension(output_columns[0], data_frame, 
+                             method=method)
+
+    #save everything
+    campaign.save_state("states/covid_easyvvuq_state" + ID + ".json")
+    sampler.save_state("states/covid_sampler_state" + ID + ".pickle")
+    analysis.save_state("states/covid_analysis_state" + ID + ".pickle")
+    n_iter += 1
+```
