@@ -191,6 +191,7 @@ sampler = uq.sampling.SCSampler(vary=vary, polynomial_order=1,
                                 sparse=True, growth=True,
                                 midpoint_level1=True,
                                 dimension_adaptive=True)
+campaign.set_sampler(sampler)
 ```
 Here:
 
@@ -200,3 +201,31 @@ Here:
 * `growth = True`: selects a nested quadrature rule (a quadrature rule such that a 1D rule of order p contains all points of the same rule of order p-1). Also not required, but is efficient in high dimensions. Note that this can only be selected with a subset of all quadrature rules in Chaospy, including Clenshaw Curtis.
 * `midpoint_level1=True`: this means that the first iteration of the dimension-adaptive sampler consists of a single sample. 
 * `dimension_adaptive=True`: selects the dimension-adaptive sparse grid sampler (opposed to the isotropic sparse grid sampler, which treats each input the same).
+
+We draw the input samples and create the run directories in `work_dir` via:
+
+```python
+campaign.draw_samples()
+campaign.populate_runs_dir()
+```
+
+Next is it time to execute the first ensemble (which will just consist of a single sample):
+
+```python
+    # run the UQ ensemble
+    fab.run_uq_ensemble(config, campaign.campaign_dir, script='CovidSim',
+                        machine="eagle_vecma", PilotJob = False)
+    #wait for job to complete
+    fab.wait(machine="eagle_vecma")
+    
+    #wait for jobs to complete and check if all output files are retrieved 
+    #from the remote machine
+    fab.verify(config, campaign.campaign_dir, 
+                campaign._active_app_decoder.target_filename, 
+                machine="eagle_vecma", PilotJob=False)
+    
+    #run the UQ ensemble
+    fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
+                       skip=0, max_run=1, machine='eagle_vecma')
+    campaign.collate()
+```
