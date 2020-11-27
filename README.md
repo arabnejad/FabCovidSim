@@ -109,7 +109,9 @@ The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimensi
 
 Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
 
-Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step. First:
+Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step, which starts with the initial iteration of the dimension-adaptive sampler
+
+### Initial iteration ###
 
 ```python
 output_columns = ["cumDeath"]
@@ -227,5 +229,20 @@ Next is it time to execute the first ensemble (which will just consist of a sing
     #run the UQ ensemble
     fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
                        skip=0, max_run=1, machine='eagle_vecma')
+
+```
+
+The comments above each command are self explanatory. Basically `fab` is an interface between Python and standard FabSim3 commands, that we use to execute the ensemble. Here we run the ensembles on the PSNC Eagle supercomputer in Poland. The basic steps are: 1) send ensemble to Eagle, 2) wait for jobs to complete, 3) copy results back to the FabSim results directory on the localhost and check if all output files are present, and 4) copy the results to `work_dir`.
+
+We then collate the results in the HDF5 dataframe and create a Stochastic Collocation analysis object:
+```python
     campaign.collate()
+    
+    # Post-processing analysis
+    analysis = uq.analysis.SCAnalysis(
+        sampler=campaign._active_sampler,
+        qoi_cols=output_columns
+    )
+    
+    campaign.apply_analysis(analysis)
 ```
