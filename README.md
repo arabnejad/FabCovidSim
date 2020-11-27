@@ -105,7 +105,19 @@ fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
 
 ## Running a dimension-adaptive EasyVVUQ - CovidSim campaign via Python
 
-The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimension-adaptive Python script that we used to produce the results of the folloing article:
+The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimension-adaptive EasyVVUQ script that we used to produce the results of the following article:
+
+Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
+
+We will go through the script step by step. First:
+
+```python
+output_columns = ["cumDeath"]
+work_dir = '/home/wouter/VECMA/Campaigns'
+config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_4'
+ID = '_recap2_surplus'
+method = 'surplus'
 ```
-Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code, 2020.
-```
+
+
+
