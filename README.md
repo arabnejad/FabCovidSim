@@ -154,7 +154,7 @@ This loads a JSON file with all CovidSim parameters, and their default values. T
         target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.6.avNE.severity.xls', 
         output_columns=output_columns, header=0, delimiter='\t')
  ```
-This tells EasyVVUQ the name and the format of CovidSim output files, of which `cumDeath` is one of the columns. We store all the predictions in an single HDF5 data file for analysis via
+This tells EasyVVUQ the name and the format of CovidSim's output files, of which `cumDeath` is one of the columns. We store all the predictions in an single HDF5 data file for analysis via
 
 ```python
     collater = uq.collate.AggregateHDF5()
@@ -171,4 +171,15 @@ To put all UQ elements together we execute
                      decoder=decoder)
     # Set the active app 
     campaign.set_app(config)
+```
+
+The `vary` dict contain all input file we wish to vary, where we use [Chaospy](https://chaospy.readthedocs.io/en/master/) to specify the input distributions
+
+```python
+    vary = {
+        ###########################
+        # Intervention parameters #
+        ###########################
+        "Relative_household_contact_rate_after_closure": cp.Uniform(1.5*0.8, 1.5*1.2),
+        ...
 ```
