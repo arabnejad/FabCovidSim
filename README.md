@@ -154,4 +154,8 @@ This loads a JSON file with all CovidSim parameters, and their default values. T
         target_filename='output_dir/United_Kingdom_PC_CI_HQ_SD_R0=2.6.avNE.severity.xls', 
         output_columns=output_columns, header=0, delimiter='\t')
  ```
-This tell EasyVVUQ the name and the format of CovidSim output files, of which `cumDeath` is one of the columns.
+This tells EasyVVUQ the name and the format of CovidSim output files, of which `cumDeath` is one of the columns. We store all the predictions in an single HDF5 data file for analysis via
+
+```python
+    collater = uq.collate.AggregateHDF5()
+```
