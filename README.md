@@ -128,4 +128,23 @@ Next we have
 ```python
     params = json.load(open(home + '/../templates_campaign_full1/params.json'))
 ```
-This loads a JSON file with all CovidSim parameters
+This loads a JSON file with all CovidSim parameters, and their default values. This file was created during the making of the EasyVVUQ input file templates. These templates are made using the scripts in the `make_template` folder of FabCovidSim. CovidSim has two main input files, for instance `p_PC_CI_HQ_SD.txt` and `preGB_R0=2.0.txt`. The template scripts take a standard CovidSim input file and remove the default values with a flag that EasyVVUQ can replace with values drawn from a specified input distribution. This is done by the Encoder elements of EasyVVUQ. We hook the Encoder templates to EasyVVUQ via:
+
+```python
+    # Create an encoder and decoder
+    directory_tree = {'param_files': None}
+    
+    multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
+        uq.encoders.DirectoryBuilder(tree=directory_tree),
+        uq.encoders.JinjaEncoder(         
+            template_fname=home + '/../templates_campaign_full1/p_PC_CI_HQ_SD.txt',
+            target_filename='param_files/p_PC_CI_HQ_SD.txt'),
+        CustomEncoder(
+            template_fname=home + '/../templates_campaign_full1/preGB_R0=2.0.txt',
+            target_filename='param_files/preGB_R0=2.0.txt'),    
+        uq.encoders.JinjaEncoder(
+            template_fname=home + '/../templates_campaign_full1/p_seeds.txt',
+            target_filename='param_files/p_seeds.txt')
+    )
+```
+ This code tells EasyVVUQ that CovidSim expects a `param_files` directory with three input files in it (`p_PC_CI_HQ_SD.txt`, `preGB_R0=2.0.txt` and `p_seeds.txt`). Here we used the standard [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Encoder
