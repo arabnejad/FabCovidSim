@@ -324,13 +324,13 @@ We start with `sampler.look_ahead(analysis.l_norm)`. First, `l_norm` is a set of
 ``` python
 l_norm = array([[1, 1]])
 ```
-means we have 2 input parameters, both of which have a 1D quadrature rule of order 1. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 1. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`. If on the other hand we have
+means we have 2 input parameters, both of which have a 1D quadrature rule of order 0. Lets say the chosen quadrature rule generates `x = [0.5]` as point for order 0. Then the 2D grid is built as a tensor product `[0.5] x [0.5] = [0.5, 0.5]`. Hence `l_norm = array([[1, 1]])` means we have a 2D grid consisting of just one point `[0,5, 0.5]`. If on the other hand we have
 ``` python
 l_norm = array([[1, 1],
                 [1, 2],
                 [2, 1]])
 ```
-we are building a grid using a linear combination of 3 tensor products. If our 1D quadrature rule generates `x = [0.0, 0.5, 1.0]` for order 2, our grid consistis of the points:
+we are building a grid using a linear combination of 3 tensor products. If our 1D quadrature rule generates `x = [0.0, 0.5, 1.0]` for order 1, our grid consistis of the points:
 ```python 
 l_norm = [1, 1]  ==> [0.5] x [0.5] = [[0.5, 0.5]]
 ```
@@ -344,10 +344,10 @@ l_norm = [2, 1]  ==> [0.0, 0.5, 1.0] x [0.5] = [[0.0, 0.5], [0.5, 0.5], [1.0, 0.
 ```
 Notice that this makes a "cross" of 5 (unique) points in the input space. A standard EasyVVUQ campaign always has a single `l_norm`, such as for instance `[2,2]`, which leads to a full "square" of 9 points: `[0.0, 0.5, 1.0] x [0.0, 0.5, 1.0]`. Sparse grids on the other hand, build the grid from the bottom up, using a linear combination of `l_norm` multi indices, which can lead to more sparse sampling plans. 
 
-The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are sampled using `fab.run_uq_ensemble` as before. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. 
+The array `analysis.l_norm` contains the currently accepted multi indices, and therefore the current configuration of points. What `analysis.look_ahead(analysis.l_norm)` does is take these multi indices, and compute new "candidate" `l_norm` entries, which are stored in `sampler.admissible_idx`. These new candidate multi indices will (probably) contain unsampled points, which are then sampled using `fab.run_uq_ensemble` as before. The `skip` parameter is used to prevent recomputing already computed samples. We set it equal to the number of samples which are already computed through `skip=sampler.count`. 
 
 *Adapt_dimension*
 
-The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. This goes round and round until we have spent our computational budget (3000 CovidSim samples in this case).
+The function `analysis.adapt_dimension` takes the name of the quantity of interest (QoI), and the sample database as input. For every multi index in `sampler.admissible_idx`, it computes the so-called "hierarchical surplus error", which is the difference between the new sample of our QoI (`output_columns[0]`), and the polynomial approximation of that sample at the previous iteration. The surplus is therefore used as a local error estimator, and the multi index in `sampler.admissible_idx` with the highest surplus will get added to `analysis.l_norm`, and then `dummy_look_ahead.py` can get executed again. This goes round and round until we have spent our computational budget (3000 CovidSim samples in this case).
 
 What follows in our Python script are just several post-processing steps to produces the Figures we used in the article.
