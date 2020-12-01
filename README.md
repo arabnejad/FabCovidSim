@@ -3,8 +3,11 @@
 
 
 # FabCovidsim
-This is a FabSim3 /EasyVVUQ plugin for Covid-19 simulation
+This is a FabSim3 / EasyVVUQ plugin for Covid-19 simulation. It was used to compute the ensembles of the following paper:
 
+Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
+
+In the first section we will detail the FabSim3 commands used for ensemble execution. The the section following that we discuss the EasyVVUQ script for dimension-adaptive sampling, and show how these commands are integrated in Python.
 
 ## Dependencies:
 
@@ -105,11 +108,7 @@ fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
 
 ## Running a dimension-adaptive EasyVVUQ - CovidSim campaign via Python
 
-The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimension-adaptive EasyVVUQ script that we used to produce the results of the following article:
-
-Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
-
-Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step, which starts with the initial iteration of the dimension-adaptive sampler.
+The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimension-adaptive EasyVVUQ script that we used to produce the results of the article above. Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step, which starts with the initial iteration of the dimension-adaptive sampler.
 
 ### Initial iteration ###
 
