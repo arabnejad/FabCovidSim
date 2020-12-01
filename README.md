@@ -109,7 +109,7 @@ The file `final_adaptive_covid_easyvvuq/covid_automated.py` contains the dimensi
 
 Edeling, Wouter and Hamid, Arabnejad and Sinclair, Robert and Suleimenova, Diana and Gopalakrishnan, Krishnakumar and Bosak, Bartosz and Groen, Derek and Mahmood, Imran and Crommelin, Daan and Coveney, Peter, *The Impact of Uncertainty on Predictions of the CovidSim Epidemiological Code*, 2020.
 
-Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step, which starts with the initial iteration of the dimension-adaptive sampler
+Running this file will require you to checkout the `CovidSim` branch of EasyVVUQ. We will go through the script step by step, which starts with the initial iteration of the dimension-adaptive sampler.
 
 ### Initial iteration ###
 
@@ -130,10 +130,9 @@ Next we have
 ```python
     params = json.load(open(home + '/../templates_campaign_full1/params.json'))
 ```
-This loads a JSON file with all CovidSim parameters, and their default values. This file was created during the making of the EasyVVUQ input file templates. These templates are made using the scripts in the `make_template` folder of FabCovidSim. CovidSim has two main input files, for instance `p_PC_CI_HQ_SD.txt` and `preGB_R0=2.0.txt`. The template scripts take a standard CovidSim input file and remove the default values with a flag that EasyVVUQ can replace with values drawn from a specified input distribution. This is done by the Encoder elements of EasyVVUQ. We hook the Encoder templates to EasyVVUQ via:
-
+This loads a JSON file with all CovidSim parameters, and their default values. This file was created during the making of the EasyVVUQ input file templates. These templates are made using the scripts in the `make_template` folder of FabCovidSim. CovidSim has two main input files, for instance `p_PC_CI_HQ_SD.txt` and `preGB_R0=2.0.txt`. The template scripts take a standard CovidSim input file and replaces the default values with a flag that EasyVVUQ can seed with values drawn from a specified input distribution. This is done by the Encoder elements of EasyVVUQ:
 ```python
-    # Create an encoder and decoder
+    # Create an encoder
     directory_tree = {'param_files': None}
     
     multiencoder_p_PC_CI_HQ_SD = uq.encoders.MultiEncoder(
@@ -149,7 +148,7 @@ This loads a JSON file with all CovidSim parameters, and their default values. T
             target_filename='param_files/p_seeds.txt')
     )
 ```
- This code tells EasyVVUQ that CovidSim expects a `param_files` directory with three input files in it (`p_PC_CI_HQ_SD.txt`, `preGB_R0=2.0.txt` and `p_seeds.txt`). Here we used the standard [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Encoder, and a custom encoder (`final_adaptive_covid_easyvvuq/covid_automated.py`). We used the latter because we parameterized one of the vector-valued inputs of CovidSim, see the paper for details. Next we have the EasyVVUQ decoder element:
+ This code tells EasyVVUQ that CovidSim expects a `param_files` directory with three input files in it (`p_PC_CI_HQ_SD.txt`, `preGB_R0=2.0.txt` and `p_seeds.txt`). Here we used the standard [Jinja](https://jinja.palletsprojects.com/en/2.11.x/) Encoder, and a custom encoder (`final_adaptive_covid_easyvvuq/custom.py`). We used the latter because we parameterized one of the vector-valued inputs of CovidSim, see the paper for details. Next we have the EasyVVUQ decoder element:
  
  ```python
      decoder = uq.decoders.SimpleCSV(
@@ -175,7 +174,7 @@ To put all UQ elements together we execute
     campaign.set_app(config)
 ```
 
-The `vary` dict contain all input file we wish to vary, where we use [Chaospy](https://chaospy.readthedocs.io/en/master/) to specify the input distributions
+The `vary` dict contains all input parameters we wish to vary, where we use [Chaospy](https://chaospy.readthedocs.io/en/master/) to specify the input distributions
 
 ```python
     vary = {
@@ -230,7 +229,7 @@ Next is it time to execute the first ensemble (which will just consist of a sing
 
 ```
 
-The comments above each command are self explanatory. Basically `fab` is an interface between Python and standard FabSim3 commands, that we use to execute the ensemble. Here we run the ensembles on the PSNC Eagle supercomputer in Poland. The basic steps are: 1) send ensemble to Eagle, 2) wait for jobs to complete, 3) copy results back to the FabSim results directory on the localhost and check if all output files are present, and 4) copy the results to `work_dir`.
+The comments above each command are self explanatory. Basically `fab` is an interface between Python and the FabSim3 commands found above (e.g. `CovidSim_ensemble`), that we use to execute the ensemble. Here we run the ensembles on the PSNC Eagle supercomputer in Poland. The basic steps are: 1) send ensemble to Eagle, 2) wait for jobs to complete, 3) copy results back to the FabSim results directory on the localhost and check if all output files are present, and 4) copy the results to `work_dir`.
 
 To run the samples on Eagle, we used 28 cores (1 node) per sample. This is specified in FabSim's `machine_user.yml` file, which in this case looks like
 
