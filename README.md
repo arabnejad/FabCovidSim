@@ -230,26 +230,8 @@ Next is it time to execute the first ensemble (which will just consist of a sing
 
 The comments above each command are self explanatory. Basically `fab` is an interface between Python and the FabSim3 commands found above (e.g. `CovidSim_ensemble`), that we use to execute the ensemble. Here we run the ensembles on the PSNC Eagle supercomputer in Poland. The basic steps are: 1) send ensemble to Eagle, 2) wait for jobs to complete, 3) copy results back to the FabSim results directory on the localhost and check if all output files are present, and 4) copy the results to `work_dir`.
 
-To run the samples on Eagle, we used 28 cores (1 node) per sample. This is specified in FabSim's `machine_user.yml` file, which in this case looks like
+To run the samples on Eagle, we used 28 cores (1 node) per sample. This is specified in FabSim's `machine_user.yml` file, see the FabSim3 configuration section above. We then collate the results in the HDF5 dataframe and create a Stochastic Collocation analysis object:
 
-```
-#covidsim settings
-eagle_vecma:
-  username: "plg<your_username>"
-  # settings for Imperial College COVID-19 simulator
-  cores: 28
-  budget: "vecma2020"
-  # job wall time for each job, format Days-Hours:Minutes:Seconds
-  job_wall_time : "0-0:59:00" # job wall time for each single job without PJ
-  PJ_size : "2" # number of requested nodes for PJ
-  PJ_wall_time : "0-00:59:00" # job wall time for PJ
-  modules:
-    loaded: ["python/3.7.3", "r/3.6.1-gcc620"] # do not change
-    unloaded: [] 
-```
-The `PJ` entries are not important, as we did not use the PilotJob capability. For more information on FabSim we refer to [here](https://github.com/djgroen/FabSim3).
-
-We then collate the results in the HDF5 dataframe and create a Stochastic Collocation analysis object:
 ```python
     campaign.collate()
     
