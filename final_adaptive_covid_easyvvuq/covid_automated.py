@@ -13,7 +13,7 @@ import fabsim3_cmd_api as fab
 from custom import CustomEncoder
 
 home = os.path.abspath(os.path.dirname(__file__))
-output_columns = ["cumDeath", "Rt"]
+output_columns = ["cumDeath"]
 work_dir = '/home/wouter/VECMA/Campaigns'
 config = 'PC_CI_HQ_SD_suppress_campaign_full1_19param_4'
 ID = '_recap2_surplus'
@@ -189,13 +189,12 @@ if init:
     #wait for job to complete
     fab.wait(machine="eagle_vecma")
     
-    #wait for jobs to complete and check if all output files are retrieved 
-    #from the remote machine
+    #check if all output files are retrieved from the remote machine
     fab.verify(config, campaign.campaign_dir, 
                 campaign._active_app_decoder.target_filename, 
                 machine="eagle_vecma", PilotJob=False)
     
-    #run the UQ ensemble
+    #copy the results from the FabSim results dir to the work_dir
     fab.get_uq_samples(config, campaign.campaign_dir, sampler._number_of_samples,
                        skip=0, max_run=1, machine='eagle_vecma')
     campaign.collate()
@@ -310,24 +309,6 @@ plt.tight_layout()
 # #################################
 # # Plot the confidence intervals #
 # #################################
-
-# n_samples = 500
-
-# #draw n_samples draws from the input distributions
-# xi_mc = np.zeros([n_samples, analysis.N])
-# idx = 0
-# for dist in sampler.vary.get_values():
-#     xi_mc[:, idx] = dist.sample(n_samples)
-#     idx += 1
-
-# #sample the surrogate n_samples times
-# surr_samples = np.zeros([n_samples, analysis.N_qoi])
-# print('Sampling surrogate %d times' % (n_samples,))
-# for i in range(n_samples):
-#     surr_samples[i, :] = analysis.surrogate(output_columns[0], xi_mc[i])
-#     if np.mod(i, 10) == 0:
-#         print('%d of %d' % (i + 1, n_samples))
-# print('done')
 
 from matplotlib import gridspec
 import seaborn as sns
@@ -483,40 +464,6 @@ plt.tight_layout()
 
 analysis.get_uncertainty_blowup(output_columns[0])
 
-# qoi = 'cumDeath'
-# conf = 0.9
-# alpha = (1.0 - conf)/2
-
-# samples = analysis.get_sample_array(qoi)
-# samples = np.sort(samples, axis=0)
-# S = samples.shape[0]
-
-# L = int(alpha*S)
-# U = int((1-alpha)*S)
-
-# lower = samples[L, :]
-# upper = samples[U, :]
-
-# N_bootstrap = 10000
-
-# delta_lower = np.zeros([N_bootstrap, samples.shape[1]])
-# delta_upper = np.zeros([N_bootstrap, samples.shape[1]])
-
-# for i in range(N_bootstrap):
-#     idx = np.random.randint(0, S-1, S)
-#     resample = np.sort(samples[idx], axis=0)
-    
-#     delta_lower[i] = resample[L, :] - lower
-#     delta_upper[i] = resample[U, :] - upper
-
-# delta_lower = np.sort(delta_lower, axis=0)
-# delta_upper = np.sort(delta_upper, axis=0)
-
-# plt.plot((lower - delta_lower).T, 'r', alpha=0.1)
-# plt.plot((upper - delta_upper).T, 'r', alpha=0.1)
-# plt.plot(lower, 'b')
-# plt.plot(upper, 'b') 
-
 ###############################
 # print Latex parameter table #
 ###############################
@@ -546,62 +493,5 @@ data = pd.DataFrame(data, index=params)
 
 print(data.to_latex())
 data  
-
-####################
-# Plot another QoI #
-####################
-
-# campaign._active_app_decoder.output_columns.append("Rt")
-# # campaign.recollate()
-# df = campaign.get_collation_result()
-# Rt = []
-# for sample in df['Rt'].values():
-#     Rt.append(sample)
-# Rt = np.array(Rt)
-
-# n_samples = Rt.shape[0]
-
-# #confidence bounds
-
-# lower2, upper2 = analysis.get_confidence_intervals(output_columns[0], n_samples, conf=0.95,
-#                                                     surr_samples=Rt)
-
-# fig = plt.figure(figsize=(8,4))
-
-# ax1 = fig.add_subplot(111, xlim=[0, 840])
-
-# x = range(analysis.N_qoi)
-# skip=5
-# ax1.fill_between(x[0:-1:skip], lower2[0:-1:skip], upper2[0:-1:skip], color='#aa99cc', label='95% CI', alpha=0.5)
-
-# mean = np.mean(Rt, axis=0)
-# ax1.plot([0, 800], [1, 1], ':k', label=r'$R_t=1$')
-# ax1.plot(x[0:-1:skip], mean[0:-1:skip], label='Mean')
-# ax1.plot(x[0:-1:skip], Rt[99][0:-1:skip], '--', label='Single sample')
-
-# ax1.legend(loc=0)
-
-# ax1.set_xlabel('Days')
-# ax1.set_ylabel(r'$R_t$')
-
-# plt.tight_layout()
-
-############################
-# check surrogate accuracy #
-# ############################
-
-# fig = plt.figure(figsize=[12, 4])
-# ax = fig.add_subplot(131, xlabel='days', ylabel=output_columns[0],
-#                       title='Surrogate samples')
-# ax.plot(analysis.get_sample_array(output_columns[0]).T, 'ro', alpha = 0.5)
-
-# xi_mc = sampler.xi_d
-# n_mc = sampler.xi_d.shape[0]
-    
-# # evaluate the surrogate at these values
-# print('Evaluating surrogate model', n_mc, 'times')
-# for i in range(n_mc):
-#     ax.plot(analysis.surrogate(output_columns[0], xi_mc[i]), 'g')
-# print('done')
 
 plt.show()
