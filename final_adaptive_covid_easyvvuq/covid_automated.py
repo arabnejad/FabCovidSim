@@ -300,11 +300,6 @@ idx_sorted = np.flipud(np.argsort(tmp))
 analysis.adaptation_table(order=idx_sorted)
 
 analysis.plot_stat_convergence()
-surplus_errors = analysis.get_adaptation_errors()
-fig = plt.figure()
-ax = fig.add_subplot(111, xlabel = 'refinement step', ylabel='max surplus error')
-ax.plot(range(1, len(surplus_errors) + 1), surplus_errors, '-b*')
-plt.tight_layout()
 
 # #################################
 # # Plot the confidence intervals #
@@ -363,6 +358,13 @@ ax2 = sns.distplot(total_deaths, vertical=True)
 
 plt.tight_layout()
 
+#store figure data to file
+header = 'x,lower1,upper1,lower2,upper2,mean,rep9'
+data_fig1 = np.array([x, lower1, upper1, lower2, upper2,mean,cumDeath_rep9])
+np.savetxt('Fig1.csv', data_fig1.T,
+           delimiter=",", comments='',
+           header=header)
+
 # #########################
 # # plot mean +/- std dev #
 # #########################
@@ -415,7 +417,7 @@ for param in sobols_first.keys():
         highlight_contribution += sobols_first[param][0:-1:skip]
     
 ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+ax.plot(x, highlight_contribution, 'md', label=r'First-order contribution 3 most important parameters')
 
 leg = ax.legend(loc=0, fontsize=8)
 leg.set_draggable(True)
@@ -428,15 +430,26 @@ plt.tight_layout()
 fig = plt.figure(figsize=[10, 5])
 ax = fig.add_subplot(121, title=r'First-order Sobol indices 3 most important parameters',
                       xlabel="days", ylabel=r'$S_i$', ylim=[0,1])
+data_fig2 = [x]
 for param in highlight:
     ax.plot(x, sobols_first[param][0:-1:skip], label=param, marker=next(marker))
+    data_fig2.append(sobols_first[param][0:-1:skip])
 
 ax.plot(x, first_order_contribution, 'b*', label=r'First-order contribution all 20 parameters')
-ax.plot(x, highlight_contribution, 'rd', label=r'First-order contribution 3 most important parameters')
+ax.plot(x, highlight_contribution, 'md', label=r'First-order contribution 3 most important parameters')
+data_fig2.append(first_order_contribution)
+data_fig2.append(highlight_contribution)
 
 leg = ax.legend(loc=0, fontsize=10)
 leg.set_draggable(True)
 plt.tight_layout()
+
+#store figure data to file
+header = 't,%s,%s,%s,first_order_contribution,3_param_contribution' % (highlight[0], highlight[1], highlight[2])
+data_fig2 = np.array(data_fig2)
+np.savetxt('Fig2.csv', data_fig2.T,
+           delimiter=",", comments='',
+           header=header)
 
 ############################################
 # Plot histogram uninfluential Sobol indices
