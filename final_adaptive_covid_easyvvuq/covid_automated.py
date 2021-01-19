@@ -391,7 +391,8 @@ plt.tight_layout()
 from itertools import cycle
 
 # color = cycle(['b', 'r', 'g', 'm', 'c', 'k'])
-marker = cycle(['o', 'v', '^', '<', '>', 's', '*', 'p', 'd', 'P', 'X'])
+marker = cycle(['o', 'v', '^', '<', '>', 's', '*', 'p', 'd', 'P', 'X', 
+                '1', '2', '3', '4', 'x', 'D', '|', '_'])
 skip = 30
 x = range(0, analysis.N_qoi, skip)
 
