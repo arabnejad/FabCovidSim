@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 #
 # This source file is part of the FabSim software toolkit, which is distributed under the BSD 3-Clause license.
 # Please refer to LICENSE for detailed information regarding the licensing.
@@ -121,7 +121,7 @@ def get_adaptive_easyvvuq(config,
         #This compies the entire result directory from the (remote) host back to the
         #EasyVVUQ Campaign directory
         print('Copying results from', env.local_results + '/' + dir_i + 'to' + campaign_dir)
-        ensemble2campaign(env.local_results + '/' + dir_i, campaign_dir, skip, max_run, **args)
+        ensemble2campaign(env.local_results + '/' + dir_i, campaign_dir, skip, **args)
         
         #If the same FabSim3 config name was used before, the statement above
         #might have copied more runs than currently are used by EasyVVUQ.
