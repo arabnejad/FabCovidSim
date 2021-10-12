@@ -53,11 +53,12 @@ def CovidSim_ensemble(config,
     One job is run for each file in /FabCovidSim/config_files/UK_sample/SWEEP.
 
     fab eagle_vecma CovidSim_ensemble:UK_sample
-    fab qcg CovidSim_ensemble:UK_sample,PilotJob=True
-    fab qcg CovidSim_ensemble:UK_sample,replicas=5,PilotJob=True
-    fab eagle_vecma CovidSim_ensemble:UK_sample,PilotJob=True
+    fab qcg CovidSim_ensemble:UK_sample,PJ=True
+    fab qcg CovidSim_ensemble:UK_sample,replicas=5,PJ=True
+    fab eagle_vecma CovidSim_ensemble:UK_sample,PJ=True
     fab eagle_vecma CovidSim_ensemble:UK_sample,replicas=5
     """
+    with_config(config)
 
     update_environment(args, {"output_dir": "output_dir",
                               "memory": memory

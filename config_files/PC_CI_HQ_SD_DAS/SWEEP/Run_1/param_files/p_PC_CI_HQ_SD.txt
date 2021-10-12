@@ -104,7 +104,7 @@
 0.0 0.0 0.25 1.0 
 
 [Relative household contact rate after closure]
-1.7579145174213326
+1.5418823555589198
 
 [Relative spatial contact rate after closure]
 1.25
@@ -136,10 +136,10 @@
 0.0
 
 [Delay to start household quarantine]
-3.0
+2.0
 
 [Length of time households are quarantined]
-12.0
+15.0
 
 [Duration of household quarantine policy]
 #4
@@ -148,13 +148,13 @@
 2.0
 
 [Residual place contacts after household quarantine by place type]
-0.25 0.25 0.25 0.20473677901119064 
+0.25 0.25 0.25 0.2672091948608979 
 
 [Residual spatial contacts after household quarantine]
 0.25
 
 [Household level compliance with quarantine]
-0.5719205201390005
+0.5033104841667988
 
 [Individual level compliance with quarantine]
 1.0
@@ -224,10 +224,10 @@
 0.7
 
 [Delay to start case isolation]
-3.0
+1.0
 
 [Duration of case isolation]
-5.0
+8.0
 
 [Duration of case isolation policy]
 #4
@@ -250,13 +250,13 @@
 #2
 
 [Relative place contact rate given social distancing by place type]
-1.0 1.0 0.7004240916336592 0.8394506582974842 
+1.0 1.0 0.8133371702883337 0.8661163731709183 
 
 [Relative household contact rate given social distancing]
 1.25
 
 [Relative spatial contact rate given social distancing]
-0.3014367375975523
+0.1720953482742153
 
 [Minimum radius for social distancing]
 1.0

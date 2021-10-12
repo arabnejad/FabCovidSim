@@ -1,0 +1,30 @@
+{
+    "db_location": "sqlite:////tmp/covid_DAS1k_z16fhq/campaign.db",
+    "db_type": "sql",
+    "active_app": "PC_CI_HQ_SD_DAS",
+    "campaign_name": "covid_DAS1",
+    "campaign_dir": "covid_DAS1k_z16fhq",
+    "log": [
+        {
+            "element": {
+                "name": "random_sampler",
+                "version": "0.1",
+                "category": "sampling"
+            },
+            "info": {
+                "num_added": 5,
+                "replicas": 1
+            }
+        },
+        {
+            "element": {
+                "name": "aggregate_hdf5",
+                "version": "0.1",
+                "category": "collation"
+            },
+            "info": {
+                "num_collated": 0
+            }
+        }
+    ]
+}
