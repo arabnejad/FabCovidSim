@@ -180,18 +180,18 @@ if init:
     #wait for job to complete
     fab.wait(machine="eagle_vecma")
     
-    #check if all output files are retrieved from the remote machine
-    fab.verify(config, campaign.campaign_dir, 
-                campaign._active_app_decoder.target_filename, 
-                machine="eagle_vecma", venv=True, PJ=True)
+    # #check if all output files are retrieved from the remote machine
+    # fab.verify(config, campaign.campaign_dir, 
+    #             campaign._active_app_decoder.target_filename, 
+    #             machine="eagle_vecma", PJ=True)
     
-    #copy the results from the FabSim results dir to the work_dir
-    fab.get_uq_samples(config, campaign.campaign_dir, sampler.max_num,
-                       machine='eagle_vecma')
-    campaign.collate()
+    # #copy the results from the FabSim results dir to the work_dir
+    # fab.get_uq_samples(config, campaign.campaign_dir, sampler.max_num,
+    #                    machine='eagle_vecma')
+    # campaign.collate()
         
-    campaign.save_state("states/covid_easyvvuq_state" + ID + ".json")
-    sampler.save_state("states/covid_sampler_state" + ID + ".pickle")
+    # campaign.save_state("states/covid_easyvvuq_state" + ID + ".json")
+    # sampler.save_state("states/covid_sampler_state" + ID + ".pickle")
 
 else:
     #reload Campaign, sampler, analysis
