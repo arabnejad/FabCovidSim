@@ -30,7 +30,7 @@ def fabsim(command, arguments, machine = 'localhost'):
     -------
     None
     """
-    print('Executing', "fab {} {}:{}".format(machine, command, arguments))
+    print('Executing', "fabsim {} {}:{}".format(machine, command, arguments))
     os.system("fabsim {} {}:{}".format(machine, command, arguments))
 
 def fetch_results(machine='localhost'):
@@ -95,7 +95,7 @@ def wait(machine='localhost', sleep=1):
     while not finished:
         #get the output lines of fab <machine> stat
         try:
-            out = subprocess.run(['fab', machine, 'stat'], stdout=subprocess.PIPE)
+            out = subprocess.run(['fabsim', machine, 'stat'], stdout=subprocess.PIPE)
         except:
             print('wait subroutine failed')
             return finished

@@ -1,9 +1,9 @@
 {
-    "db_location": "sqlite:////tmp/covid_DAS1k_z16fhq/campaign.db",
+    "db_location": "sqlite:////tmp/covid_DAS1jdbvp7_m/campaign.db",
     "db_type": "sql",
     "active_app": "PC_CI_HQ_SD_DAS",
     "campaign_name": "covid_DAS1",
-    "campaign_dir": "covid_DAS1k_z16fhq",
+    "campaign_dir": "covid_DAS1jdbvp7_m",
     "log": [
         {
             "element": {

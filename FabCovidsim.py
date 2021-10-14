@@ -7,7 +7,7 @@
 #
 # authors: Hamid Arabnejad, Derek Groen, Wouter Edeling
 
-from base.fab import *
+from fabsim.base.fab import *
 import shutil
 from os import makedirs, path, walk
 import csv
@@ -86,7 +86,7 @@ def run_adaptive_easyvvuq(config,
     # path_to_config = find_config_file_path(config)
     # sweep_dir = path_to_config + "/SWEEP"
     # local("rm -rf %s/*" % sweep_dir)
-    campaign2ensemble(config, campaign_dir=campaign_dir, skip=skip, **args)
+    campaign2ensemble(config, campaign_dir=campaign_dir, skip=skip)
 
     # #option to remove earlier runs from the sweep dir
     # if int(skip) > 0:

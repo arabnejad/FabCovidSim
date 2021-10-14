@@ -183,7 +183,7 @@ if init:
     #check if all output files are retrieved from the remote machine
     fab.verify(config, campaign.campaign_dir, 
                 campaign._active_app_decoder.target_filename, 
-                machine="eagle_vecma", PJ=True)
+                machine="eagle_vecma", venv=True, PJ=True)
     
     #copy the results from the FabSim results dir to the work_dir
     fab.get_uq_samples(config, campaign.campaign_dir, sampler.max_num,
